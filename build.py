@@ -20,7 +20,7 @@ NOINDEX = True
 
 # Los capítulos del libro, en orden de lectura.
 CAPITULOS = [
-    ("club.html", "El club", "I", "Del bar Manuelito a la cancha"),
+    ("club.html", "El club", "I", "Del Café Lito a la cancha"),
     ("plantel.html", "Plantel", "II", "Primer equipo y formativas"),
     ("fixture.html", "Fixture y tabla", "III", "Domingo a domingo"),
     ("noticias.html", "Noticias", "IV", "Partes de prensa"),
@@ -117,7 +117,8 @@ def colofon():
         <div>
           <strong>Centro Atlético Lito</strong><br>
           Arroyo Seco, Montevideo, Uruguay.<br>
-          Fundado en 1917. Tercera División Profesional.
+          Fundado el 24 de julio de 1917.<br>
+          Primera División Amateur · AUF.
         </div>
       </div>
       <div>
@@ -253,17 +254,20 @@ def pagina_portada():
 # ============================================================
 
 def cap_club():
-    return portadilla("I", "El club", "Nacimos en 1917, en un bar de barrio, cuando un puñado de vecinos se cansó de jugar en el potrero y decidió formar un club.") + """
+    return portadilla("I", "El club", "Nacimos el 24 de julio de 1917 en un café de Arroyo Seco. Más de un siglo después seguimos siendo del barrio.") + """
 <section class="seccion">
   <div class="marco">
     <div class="rejilla rejilla--2">
       <div class="prosa">
         <p class="cintilla">Historia</p>
         <h2>De la vereda a la cancha</h2>
-        <p class="capitular">El nombre no se eligió: se recortó. Salió de las últimas letras del bar Manuelito, el boliche de barrio donde en 1917 un grupo de vecinos se cansó de jugar en el potrero y decidió fundar un club. De ahí en más fuimos Lito.</p>
-        <p>Es un club de barrio en el sentido más literal: se fundó entre vecinos, se sostuvo con vecinos y sigue jugando para ellos. La sede es punto de encuentro antes que oficina, y la cancha es el lugar donde el club se explica solo.</p>
-        <p>Desde entonces compartimos una sola idea: el fútbol popular se sostiene con trabajo, identidad de barrio y memoria larga.</p>
-        <p>Las fechas y los hitos que siguen se completan con el archivo institucional. Lo que no cambia es el marco: 1917, Montevideo, fútbol de ascenso y una hinchada que llega temprano.</p>
+        <p class="capitular">El nombre salió del mostrador. Manuel Semino era «Lito» para todo el barrio, y su café, en Agraciada y Santa Fe, era el punto de encuentro de Arroyo Seco. Cuando el 24 de julio de 1917 los que paraban ahí decidieron fundar el club, le pusieron el nombre del café.</p>
+        <p>La primera camiseta fue azul eléctrico con vivos rojos y pantalón blanco, con el escudo sobre el pecho izquierdo. De ahí viene el apodo: la azulgrana de Arroyo Seco.</p>
+        <p>Afiliado a la AUF, ganó la Divisional Extra en 1919 y la Intermedia en 1920. Dos ascensos al hilo lo dejaron en el Campeonato Uruguayo de 1921, y ahí se mantuvo hasta 1928. Sus mejores temporadas fueron 1922 y 1923: quinto puesto.</p>
+        <p>Por esta camiseta pasaron José Nasazzi y Héctor «el Manco» Castro, que debutaron en Lito, y también Pedro Cea. Los tres estuvieron después en las conquistas grandes de Uruguay, la del Mundial de 1930 incluida.</p>
+        <p>Durante el cisma del fútbol uruguayo, Lito fue uno de los tres clubes que presentaron dos equipos en las competencias paralelas. Al de la AUF le decían el <em>Lito redondo</em>; al de la Federación, el <em>Lito cuadrado</em>. La diferencia estaba en la forma del escudo de cada camiseta.</p>
+        <p>Cuando el fútbol se profesionalizó en 1932, el club siguió amateur y jugó en el ascenso hasta desaparecer de la competencia oficial cerca de 1947. Desde 1952 volvió a jugar en la Federación Uruguaya de Fútbol Amateur, impulsado por los hijos de Vicente Cappuccio: dos campeonatos y dos subcampeonatos. Dejó de competir en 1960.</p>
+        <p>En 2022, impulsado por Rodolfo Neme, Lito volvió a las competencias oficiales de la AUF, setenta y cinco años después, en la Divisional D. En 2023 salió campeón —2 a 0 a Rincón de Carrasco en la final— y subió a la Primera División Amateur.</p>
       </div>
       <div>
         <figure class="foto-album" style="margin:0">
@@ -274,9 +278,15 @@ def cap_club():
     </div>
 
     <ul class="cronologia" style="margin-top:44px">
-      <li><b>1917</b><span><strong>Fundación.</strong> En el bar Manuelito, un grupo de vecinos formaliza el club. El nombre sale del propio bar.</span></li>
-      <li><b>1920s</b><span><strong>Primeros años.</strong> Consolidación de la sede y de las categorías juveniles. <em>Completar con el archivo.</em></span></li>
-      <li><b>Hoy</b><span><strong>Tercera División Profesional.</strong> Primer equipo, formativas y actividad social todo el año.</span></li>
+      <li><b>1917</b><span><strong>Fundación.</strong> El 24 de julio, en el Café Lito de Agraciada y Santa Fe.</span></li>
+      <li><b>1919</b><span><strong>Divisional Extra.</strong> Primer título y primer ascenso.</span></li>
+      <li><b>1920</b><span><strong>Divisional Intermedia.</strong> Segundo título al hilo y salto a Primera.</span></li>
+      <li><b>1921</b><span><strong>Primera División.</strong> Debut en el Campeonato Uruguayo; se mantiene hasta 1928. Quinto en 1922 y en 1923.</span></li>
+      <li><b>1932</b><span><strong>Llega el profesionalismo.</strong> Lito sigue amateur y juega en el ascenso.</span></li>
+      <li><b>1947</b><span><strong>Se apaga.</strong> Desaparece de la competencia oficial.</span></li>
+      <li><b>1952</b><span><strong>La Federación.</strong> Vuelve al amateurismo: dos campeonatos y dos subcampeonatos hasta 1960.</span></li>
+      <li><b>2022</b><span><strong>El regreso.</strong> Setenta y cinco años después, de vuelta en la AUF, en la Divisional D.</span></li>
+      <li><b>2023</b><span><strong>Campeón.</strong> Final ganada 2 a 0 y ascenso a la Primera División Amateur.</span></li>
     </ul>
   </div>
 </section>
@@ -287,30 +297,63 @@ def cap_club():
     <h2>Dónde late el club</h2>
     <dl class="datos">
       <div><dt>Barrio</dt><dd>Arroyo Seco, Montevideo</dd></div>
+      <div><dt>Apodo</dt><dd>La azulgrana de Arroyo Seco</dd></div>
+      <div><dt>Fundación</dt><dd>24 de julio de 1917</dd></div>
+      <div><dt>Categoría</dt><dd>Primera División Amateur</dd></div>
+      <div><dt>Afiliación</dt><dd>Asociación Uruguaya de Fútbol (AUF)</dd></div>
       <div><dt>Dirección</dt><dd>A confirmar</dd></div>
       <div><dt>Cancha</dt><dd>A confirmar</dd></div>
-      <div><dt>Días de actividad</dt><dd>A confirmar</dd></div>
-      <div><dt>Afiliación</dt><dd>Asociación Uruguaya de Fútbol (AUF)</dd></div>
     </dl>
   </div>
 </section>
 
 <section class="seccion">
   <div class="marco">
-    <p class="cintilla">Indumentaria 2026</p>
+    <div class="rejilla rejilla--2">
+      <div>
+        <p class="cintilla">Palmarés</p>
+        <h2>Lo ganado</h2>
+        <ul class="cronologia">
+          <li><b>2023</b><span><strong>Divisional D.</strong> Campeón.</span></li>
+          <li><b>2022</b><span><strong>Divisional D.</strong> Campeón de la fase regular.</span></li>
+          <li><b>1920</b><span><strong>Divisional Intermedia.</strong> Campeón.</span></li>
+          <li><b>1919</b><span><strong>Divisional Extra.</strong> Campeón.</span></li>
+        </ul>
+        <p class="aviso-formulario" style="margin-top:14px">Más dos campeonatos y dos subcampeonatos de Primera División Amateur en la Federación, entre 1952 y 1960.</p>
+      </div>
+      <div>
+        <p class="cintilla">En números</p>
+        <h2>El paso por las divisionales</h2>
+        <dl class="datos">
+          <div><dt>Primera División</dt><dd>6 temporadas · 1921 a 1928</dd></div>
+          <div><dt>Segunda División</dt><dd>12 temporadas · 1920 y 1929 a 1941</dd></div>
+          <div><dt>Tercera División</dt><dd>8 temporadas · 1918-1919, 1942-1945 y desde 2024</dd></div>
+          <div><dt>Cuarta División</dt><dd>3 temporadas · 1946 y 2022-2023</dd></div>
+          <div><dt>Mejor puesto en Primera</dt><dd>Quinto, en 1922 y en 1923</dd></div>
+          <div><dt>Registro en Primera</dt><dd>168 partidos: 53 ganados, 50 empatados, 65 perdidos</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion">
+  <div class="marco">
+    <p class="cintilla">Indumentaria</p>
     <h2>La camiseta es el escudo en movimiento</h2>
+    <p class="prosa" style="margin-bottom:0">El conjunto oficial de local: camiseta azul francia con vivo rojo en las mangas y pantalón blanco con vivo rojo en el ruedo.</p>
     <div class="rejilla rejilla--3" style="margin-top:26px">
       <article class="camiseta">
-        <div class="muestra" style="background:var(--azul)"><i style="background:linear-gradient(90deg,transparent 42%,var(--rojo) 42% 58%,transparent 58%)"></i></div>
-        <div class="rotulo"><h4>Titular</h4><p class="detalle">Azul · banda central roja · local</p></div>
+        <div class="muestra" style="background:#1b3fa8"><i style="background:linear-gradient(180deg,transparent 0 12%,var(--rojo) 12% 15%,transparent 15%)"></i></div>
+        <div class="rotulo"><h4>Camiseta</h4><p class="detalle">Azul francia · vivo rojo en las mangas</p></div>
       </article>
       <article class="camiseta">
-        <div class="muestra" style="background:var(--hueso)"><i style="background:linear-gradient(90deg,transparent 88%,var(--rojo) 88%)"></i></div>
-        <div class="rotulo"><h4>Suplente</h4><p class="detalle">Hueso · vivo rojo en puño · visitante</p></div>
+        <div class="muestra" style="background:var(--hueso)"><i style="background:linear-gradient(180deg,transparent 0 84%,var(--rojo) 84% 88%,transparent 88%)"></i></div>
+        <div class="rotulo"><h4>Pantalón</h4><p class="detalle">Blanco · vivo rojo en el ruedo</p></div>
       </article>
       <article class="camiseta">
-        <div class="muestra" style="background:var(--oro)"><i style="background-image:repeating-linear-gradient(45deg,rgba(12,16,36,.22) 0 6px,transparent 6px 18px),repeating-linear-gradient(-45deg,rgba(12,16,36,.22) 0 6px,transparent 6px 18px)"></i></div>
-        <div class="rotulo"><h4>Arquero</h4><p class="detalle">Oro · tramado tinta · diferenciación</p></div>
+        <div class="muestra" style="background:linear-gradient(180deg,#1b3fa8 0 58%,var(--hueso) 58%)"><i style="background:linear-gradient(180deg,transparent 0 12%,var(--rojo) 12% 15%,transparent 15% 92%,var(--rojo) 92% 96%,transparent 96%)"></i></div>
+        <div class="rotulo"><h4>Conjunto de local</h4><p class="detalle">El oficial · suplente y arquero a confirmar</p></div>
       </article>
     </div>
   </div>
@@ -334,7 +377,7 @@ def cap_club():
       <div>
         <p class="cintilla">Identidad</p>
         <h2>El escudo es la firma del club</h2>
-        <p class="prosa">Blasón con borde dorado, fondo azul, banderines rojos y la pelota como protagonista. El año de fundación lo ancla al tiempo; la estrella lo proyecta hacia adelante.</p>
+        <p class="prosa">Blasón de cuarteles en rojo y azul, con las iniciales del club, la pelota al centro y el año de fundación al pie, todo dentro de un borde dorado. El azul y el rojo vienen de la primera camiseta, la de 1917.</p>
         <div class="rejilla rejilla--4" style="margin-top:18px">
           <div style="background:var(--azul);color:var(--hueso);padding:14px"><span class="mono">Azul Lito</span><br><span class="mono" style="color:var(--oro)">#1C2C6B</span></div>
           <div style="background:var(--rojo);color:var(--hueso);padding:14px"><span class="mono">Rojo Lito</span><br><span class="mono">#D12C3E</span></div>

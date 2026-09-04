@@ -2,7 +2,7 @@
   "_nota": "DATOS DE EJEMPLO. Reemplazar por el fixture real antes de publicar.",
   "ejemplo": true,
   "actualizado": "2026-05-10",
-  "competencia": "Tercera División Profesional",
+  "competencia": "Primera División Amateur",
   "ultimo": {
     "fecha": "2026-05-03",
     "competencia": "Fecha 11",
@@ -52,10 +52,45 @@
     }
   ],
   "resultados": [
-    { "fecha": "2026-05-03", "competencia": "Fecha 11", "local": "Lito", "visitante": "Atenas", "golesLocal": 2, "golesVisitante": 0 },
-    { "fecha": "2026-04-26", "competencia": "Fecha 10", "local": "Colón", "visitante": "Lito", "golesLocal": 1, "golesVisitante": 1 },
-    { "fecha": "2026-04-19", "competencia": "Fecha 9", "local": "Lito", "visitante": "Oriental", "golesLocal": 1, "golesVisitante": 0 },
-    { "fecha": "2026-04-12", "competencia": "Fecha 8", "local": "Canadian", "visitante": "Lito", "golesLocal": 2, "golesVisitante": 1 },
-    { "fecha": "2026-04-05", "competencia": "Fecha 7", "local": "Lito", "visitante": "Rocha", "golesLocal": 3, "golesVisitante": 1 }
+    {
+      "fecha": "2026-05-03",
+      "competencia": "Fecha 11",
+      "local": "Lito",
+      "visitante": "Atenas",
+      "golesLocal": 2,
+      "golesVisitante": 0
+    },
+    {
+      "fecha": "2026-04-26",
+      "competencia": "Fecha 10",
+      "local": "Colón",
+      "visitante": "Lito",
+      "golesLocal": 1,
+      "golesVisitante": 1
+    },
+    {
+      "fecha": "2026-04-19",
+      "competencia": "Fecha 9",
+      "local": "Lito",
+      "visitante": "Oriental",
+      "golesLocal": 1,
+      "golesVisitante": 0
+    },
+    {
+      "fecha": "2026-04-12",
+      "competencia": "Fecha 8",
+      "local": "Canadian",
+      "visitante": "Lito",
+      "golesLocal": 2,
+      "golesVisitante": 1
+    },
+    {
+      "fecha": "2026-04-05",
+      "competencia": "Fecha 7",
+      "local": "Lito",
+      "visitante": "Rocha",
+      "golesLocal": 3,
+      "golesVisitante": 1
+    }
   ]
 }
