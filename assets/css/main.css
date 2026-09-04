@@ -375,8 +375,11 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 }
 .grabado-arriba {
   align-self: end;
-  font-size: clamp(15px, 2.6vw, 20px);
-  letter-spacing: .3em; padding-left: .3em;
+  margin-bottom: clamp(12px, 2.4vw, 20px);
+  font-size: clamp(17px, 3.2vw, 23px);
+  /* El interletrado cede para que entre en una línea a este cuerpo. */
+  letter-spacing: .17em; padding-left: .17em;
+  white-space: nowrap;
   text-shadow:
     0 -1px 0 rgba(255, 240, 210, .34),
     0 1px 1px rgba(0, 0, 0, .78),
@@ -396,8 +399,8 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   margin: clamp(14px, 2.4vw, 20px) 0 0;
   display: flex; align-items: center; gap: clamp(9px, 1.6vw, 14px);
   font-family: var(--prosa); font-style: italic; font-weight: 500;
-  font-size: clamp(14px, 2.3vw, 19px);
-  letter-spacing: .05em;
+  font-size: clamp(16px, 2.9vw, 24px);
+  letter-spacing: .045em;
   color: var(--oro);
   text-shadow:
     0 -1px 0 rgba(255, 240, 210, .3),
@@ -420,8 +423,8 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   margin: clamp(14px, 2.4vw, 20px) 0 0;
   display: flex; align-items: center; gap: clamp(9px, 1.6vw, 14px);
   font-family: var(--prosa); font-style: italic; font-weight: 500;
-  font-size: clamp(14px, 2.3vw, 19px);
-  letter-spacing: .05em;
+  font-size: clamp(16px, 2.9vw, 24px);
+  letter-spacing: .045em;
   color: var(--oro);
   text-shadow:
     0 -1px 0 rgba(255, 240, 210, .3),
