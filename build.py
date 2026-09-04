@@ -324,7 +324,7 @@ def cap_club():
         <h2>Comisión directiva</h2>
         <p class="prosa">La comisión se renueva en asamblea de socios. Cargar la nómina vigente y la fecha de la última asamblea.</p>
         <dl class="datos">
-          <div><dt>Presidencia</dt><dd>A confirmar</dd></div>
+          <div><dt>Presidencia</dt><dd>Rodolfo Neme</dd></div>
           <div><dt>Vicepresidencia</dt><dd>A confirmar</dd></div>
           <div><dt>Secretaría</dt><dd>A confirmar</dd></div>
           <div><dt>Tesorería</dt><dd>A confirmar</dd></div>
