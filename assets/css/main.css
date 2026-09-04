@@ -478,6 +478,25 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   color: var(--sepia);
 }
 .indice-pie a { color: var(--rojo); text-decoration: none; border-bottom: 1px solid currentColor; }
+
+/* Marcas al pie del índice. Van sobre blanco y en multiply: el papel se ve a
+   través y quedan impresas en la hoja, no pegadas encima. */
+.marcas {
+  display: flex; align-items: center; justify-content: center;
+  gap: clamp(16px, 3.8vw, 30px);
+  margin-top: clamp(18px, 3.4vw, 26px);
+  padding-top: clamp(14px, 2.6vw, 20px);
+  border-top: 1px dotted var(--sepia-suave);
+  opacity: .88;
+}
+.marcas img {
+  mix-blend-mode: multiply;
+  width: auto;
+  filter: saturate(.9);
+}
+.marcas img:nth-child(1) { height: clamp(34px, 7vw, 47px); }
+.marcas img:nth-child(2) { height: clamp(17px, 3.4vw, 23px); }
+.marcas img:nth-child(3) { height: clamp(15px, 3vw, 20px); }
 .indice-pie a:hover { color: var(--azul); }
 
 .hoja-indice h1 {

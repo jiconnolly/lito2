@@ -30,6 +30,7 @@ assets/css/main.css Hoja de estilos única
 assets/js/main.js   Apertura del libro, menú, partidos, tabla, plantel y noticias
 assets/img/         Escudo, favicon, imagen para redes y fotos
 assets/img/texturas Fondo de la portada, cuero de la tapa y papel de las hojas
+assets/img/marcas   AUF y sponsors, al pie del índice
 data/*.json         Datos editables
 worker/api.js       Worker de Cloudflare (todavía sin publicar)
 build.py            Regenera las siete páginas desde plantillas compartidas
@@ -115,6 +116,15 @@ La tapa se abre con `transform: rotateY()`. Detalles que conviene no romper:
   ve el canto de las hojas; el lomo con sus nervios queda del lado opuesto.
 - **El índice son enlaces reales**, no botones de JavaScript: funcionan con
   teclado, con el buscador y con el botón "atrás".
+
+## Las marcas del índice
+
+Los logos del pie del índice (`assets/img/marcas/`) van **sobre fondo blanco a
+propósito**, no recortados: se aplican con `mix-blend-mode: multiply`, así el
+blanco desaparece y el papel se ve a través. Quedan impresos en la hoja en vez
+de pegados encima, y el escudo de la AUF conserva sus blancos internos, que un
+recorte por transparencia le comería. Si se reemplaza alguno, dejarlo sobre
+blanco.
 
 ## Las texturas
 
