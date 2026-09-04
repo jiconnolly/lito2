@@ -151,7 +151,6 @@ capítulos que cierran el arco: I y VI. Si se pone en todos, deja de significar.
 
 - [ ] Reemplazar las fotos de `assets/img/fotos/` que siguen siendo placeholders (sede, hinchada, noticias).
 - [ ] Cargar fotos de partidos en el grupo "Partidos" de `data/fotos.json`.
-- [ ] Cargar el retrato de Pedro Cea.
 - [ ] Confirmar los pies de las dos fotos de archivo de `assets/img/historia/`.
 - [ ] Cargar los dos escudos históricos: Lito redondo y Lito cuadrado.
 - [ ] Cargar cuatro fotos reales de Arroyo Seco (nada de banco de imágenes).

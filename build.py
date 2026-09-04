@@ -391,12 +391,11 @@ def cap_club():
         <p class="detalle">Debutó en Lito.</p>
       </article>
       <article class="campeon">
-""" + hueco("Retrato · Pedro Cea", "4 / 5") + """
+""" + hueco("Retrato · Pedro Cea", "4 / 5", "assets/img/historia/cea.jpg", "Retrato de Pedro Cea") + """
         <h3>Pedro Cea</h3>
         <p class="detalle">Pasó por Lito.</p>
       </article>
     </div>
-    <p class="epigrafe epigrafe--claro">Falta el retrato de Pedro Cea. Se carga en el mismo bloque.</p>
   </div>
 </section>
 
