@@ -89,6 +89,30 @@ Los grupos que están son **Plantel** y **Partidos**; para abrir uno nuevo
 El grupo **Partidos** está vacío a la espera de fotos: un grupo sin fotos no se
 dibuja, así que la sección no muestra un hueco.
 
+## La vista previa al compartir el link
+
+Las redes no leen el sitio cada vez: guardan una copia de la imagen y el título
+la primera vez que alguien pega el link, y se quedan con eso. Por eso, después
+de cambiar el escudo o `assets/img/og.png`, hay que **subir en uno el `V` de
+`build.py`** y volver a correrlo: eso cambia la URL de la imagen
+(`og.png?v=3`) y obliga a WhatsApp, X y compañía a buscarla de nuevo. Sin eso
+se sigue viendo el logo viejo aunque el archivo esté cambiado.
+
+`SITIO_URL` también vive en `build.py` y tiene que ser la dirección real del
+sitio: las redes exigen URL absoluta en `og:image` y con ruta relativa muchas
+no muestran nada. Hoy apunta a GitHub Pages; el día que `calito.uy` apunte al
+sitio hay que cambiarlo ahí.
+
+Para forzar el refresco a mano:
+
+- Facebook, Instagram y **WhatsApp** comparten caché:
+  <https://developers.facebook.com/tools/debug/> → pegar el link → *Scrape Again*.
+- X: <https://cards-dev.twitter.com/validator>.
+- LinkedIn: <https://www.linkedin.com/post-inspector/>.
+
+Ojo: mientras `NOINDEX` esté en `True` hay plataformas (LinkedIn, Slack) que
+directamente no arman la vista previa.
+
 ## Antes de publicar
 
 - [ ] Reemplazar las fotos de `assets/img/fotos/` que siguen siendo placeholders (sede, hinchada, noticias).

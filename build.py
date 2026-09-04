@@ -12,6 +12,18 @@ import os
 
 SITIO = "Centro Atlético Lito"
 DOMINIO = "calito.uy"
+
+# Dónde vive el sitio publicado. Las redes (WhatsApp, Instagram, X, LinkedIn)
+# exigen URL absoluta en og:image: con ruta relativa muchas no muestran nada o
+# se quedan con lo último que cachearon. Cambiar por "https://calito.uy" el día
+# que el dominio propio apunte acá.
+SITIO_URL = "https://jiconnolly.github.io/lito2"
+
+# Versión de los assets de marca. Los scrapers de redes y el favicon del
+# navegador cachean por URL y no se enteran de que el archivo cambió: subir
+# este número cada vez que se reemplaza el escudo, el favicon o la imagen de
+# compartir fuerza a todos a buscar la nueva.
+V = "2"
 BASE = os.path.dirname(os.path.abspath(__file__))
 
 # Mientras el contenido no esté aprobado por el club, las páginas van con
@@ -30,7 +42,7 @@ CAPITULOS = [
 ]
 
 
-def encabezado_html(titulo, descripcion):
+def encabezado_html(titulo, descripcion, archivo=""):
     robots = '<meta name="robots" content="noindex, nofollow">\n' if NOINDEX else ""
     return f"""<!DOCTYPE html>
 <html lang="es-UY">
@@ -39,15 +51,22 @@ def encabezado_html(titulo, descripcion):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{titulo} · {SITIO}</title>
 <meta name="description" content="{descripcion}">
-{robots}<meta property="og:title" content="{titulo} · {SITIO}">
+{robots}<link rel="canonical" href="{SITIO_URL}/{archivo}">
+<meta property="og:title" content="{titulo} · {SITIO}">
 <meta property="og:description" content="{descripcion}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_UY">
-<meta property="og:image" content="assets/img/og.png">
+<meta property="og:site_name" content="{SITIO}">
+<meta property="og:url" content="{SITIO_URL}/{archivo}">
+<meta property="og:image" content="{SITIO_URL}/assets/img/og.png?v={V}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Escudo del {SITIO}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{SITIO_URL}/assets/img/og.png?v={V}">
 <meta name="theme-color" content="#0F1A40">
-<link rel="icon" href="assets/img/favicon.png">
-<link rel="apple-touch-icon" href="assets/img/escudo-180.png">
+<link rel="icon" href="assets/img/favicon.png?v={V}">
+<link rel="apple-touch-icon" href="assets/img/escudo-180.png?v={V}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -655,7 +674,7 @@ DESCRIPCIONES = {
 def main():
     # Portada: la tapa. Sin cornisa ni colofón, para no romper la ilusión.
     portada = (
-        encabezado_html("El libro del club", "Sitio oficial del Centro Atlético Lito: historia, plantel, fixture, noticias y socios. Montevideo, desde 1917.")
+        encabezado_html("El libro del club", "Sitio oficial del Centro Atlético Lito: historia, plantel, fixture, noticias y socios. Montevideo, desde 1917.", "")
         + pagina_portada()
         + '\n<script src="assets/js/main.js"></script>\n</body>\n</html>\n'
     )
@@ -665,7 +684,7 @@ def main():
 
     for archivo, titulo, _romano, _apunte in CAPITULOS:
         html = (
-            encabezado_html(titulo, DESCRIPCIONES[archivo])
+            encabezado_html(titulo, DESCRIPCIONES[archivo], archivo)
             + cabecera_hoja(archivo)
             + CUERPOS[archivo]()
             + colofon()
