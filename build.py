@@ -216,13 +216,6 @@ def pagina_portada():
     </div>
   </div>
 
-  <p class="indicacion">Tocá el escudo para abrir</p>
-
-    <div class="pie-tapa">
-      <button type="button" data-abrir>Saltar la apertura</button>
-      <a href="fixture.html">Ir al fixture</a>
-    </div>
-
   </div>
 </div>
 """

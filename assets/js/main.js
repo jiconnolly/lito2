@@ -97,6 +97,8 @@ function libro() {
   };
 
   tomo.querySelectorAll('[data-abrir]').forEach(b => b.addEventListener('click', abrir));
+  // La escena entera abre el libro: el cartel de "tocá acá" sobraba.
+  if (escena) escena.addEventListener('click', abrir);
   if (!tomo.classList.contains('cerrado')) apagarTapa();
 }
 

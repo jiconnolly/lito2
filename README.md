@@ -86,8 +86,11 @@ La tapa se abre con `transform: rotateY()`. Detalles que conviene no romper:
   `prefers-reduced-motion` o si falla algo, el índice se lee igual. El JS agrega
   la clase `cerrado` para armar la ceremonia.
 - **Cerrado en cada visita.** Cada vez que se entra a la portada el libro
-  aparece cerrado y perfilado. Para el hincha apurado hay dos salidas siempre
-  visibles: "Saltar la apertura" y "Ir al fixture".
+  aparece cerrado.
+- **Sin carteles.** La portada no lleva ninguna indicación escrita: toda la
+  escena abre el libro con un toque, en cualquier punto. La tapa sigue siendo un
+  `<button>` con su etiqueta accesible, así que con teclado se llega con Tab y
+  se abre con Enter.
 - **Dos tiempos.** Primero el libro se endereza (1,05 s) y recién después gira
   la tapa (1,4 s, con 0,62 s de espera). Si se tocan esos tiempos en el CSS hay
   que mantener la espera de la tapa por encima de la duración del enderezado, o
