@@ -12,7 +12,8 @@ const RUTAS = {
   tabla:    ORIGEN_VIVO ? ORIGEN_VIVO + '/tabla'    : 'data/tabla.json',
   partidos: ORIGEN_VIVO ? ORIGEN_VIVO + '/partidos' : 'data/partidos.json',
   plantel:  'data/plantel.json',
-  noticias: 'data/noticias.json'
+  noticias: 'data/noticias.json',
+  fotos:    'data/fotos.json'
 };
 
 const CLUB = 'Lito';
@@ -331,6 +332,76 @@ function pintarNoticias(destino, d) {
     </article>`).join('');
 }
 
+
+/* ---------- Galería ----------
+   El álbum del club. Las fotos se cargan desde data/fotos.json: para sumar
+   una hay que dejar el archivo en assets/img/galeria/ y agregar la entrada
+   en ese JSON. Nada de esto toca el HTML, que lo reescribe build.py. */
+
+async function galeria() {
+  const destino = document.querySelector('[data-galeria]');
+  if (!destino) return;
+
+  let d;
+  try {
+    d = await traer(RUTAS.fotos);
+  } catch (e) {
+    falla(destino, 'las fotos');
+    return;
+  }
+
+  avisoEjemplo(d);
+
+  const grupos = (d.grupos || []).filter(g => (g.fotos || []).length);
+  if (!grupos.length) {
+    destino.innerHTML = '<p class="nota">Todavía no hay fotos cargadas en el álbum.</p>';
+    return;
+  }
+
+  destino.innerHTML = grupos.map(g => `
+    <section class="grupo-galeria">
+      <p class="cintilla">${esc(g.titulo)}</p>
+      ${g.bajada ? `<p class="prosa">${esc(g.bajada)}</p>` : ''}
+      <div class="galeria">
+        ${g.fotos.map(f => `
+          <figure class="postal">
+            <button type="button" data-foto="${esc(f.archivo)}" data-pie="${esc(f.pie || '')}">
+              <img src="${esc(f.archivo)}" alt="${esc(f.pie || g.titulo)}" loading="lazy">
+            </button>
+            <figcaption>
+              <span>${esc(f.pie || '')}</span>
+              ${f.fecha ? `<i>${esc(fechaCorta(f.fecha))}</i>` : ''}
+            </figcaption>
+          </figure>`).join('')}
+      </div>
+    </section>`).join('');
+
+  visor(destino);
+}
+
+/* Visor: agranda una foto sin sacar a nadie de la página. */
+function visor(destino) {
+  const caja = document.querySelector('[data-visor]');
+  if (!caja || !caja.showModal) return;
+
+  const img = caja.querySelector('[data-visor-img]');
+  const pie = caja.querySelector('[data-visor-pie]');
+
+  destino.addEventListener('click', ev => {
+    const boton = ev.target.closest('[data-foto]');
+    if (!boton) return;
+    img.src = boton.dataset.foto;
+    img.alt = boton.dataset.pie || '';
+    pie.textContent = boton.dataset.pie || '';
+    caja.showModal();
+  });
+
+  /* Clic en el fondo del visor: cerrar. */
+  caja.addEventListener('click', ev => {
+    if (ev.target === caja) caja.close();
+  });
+}
+
 /* ---------- Formularios (sin backend todavía) ---------- */
 
 function formularios() {
@@ -360,3 +431,4 @@ partidos();
 tabla();
 plantel();
 noticias();
+galeria();

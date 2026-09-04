@@ -23,17 +23,19 @@ club.html           Capítulo I — historia, sede, camiseta, comisión, identid
 plantel.html        Capítulo II — plantel, cuerpo técnico y formativas
 fixture.html        Capítulo III — partidos, resultados y tabla
 noticias.html       Capítulo IV — listado de noticias
-socios.html         Capítulo V — cuotas y alta de socio
-contacto.html       Capítulo VI — contacto, prensa y uso de marca
+galeria.html        Capítulo V — álbum de fotos del plantel y los partidos
+socios.html         Capítulo VI — cuotas y alta de socio
+contacto.html       Capítulo VII — contacto, prensa y uso de marca
 
 assets/css/main.css Hoja de estilos única
-assets/js/main.js   Apertura del libro, menú, partidos, tabla, plantel y noticias
+assets/js/main.js   Apertura del libro, menú, partidos, tabla, plantel, noticias y galería
 assets/img/         Escudo, favicon, imagen para redes y fotos
 assets/img/texturas Fondo de la portada, cuero de la tapa y papel de las hojas
 assets/img/marcas   AUF y sponsors, al pie del índice
+assets/img/galeria  Las fotos del álbum
 data/*.json         Datos editables
 worker/api.js       Worker de Cloudflare (todavía sin publicar)
-build.py            Regenera las siete páginas desde plantillas compartidas
+build.py            Regenera las ocho páginas desde plantillas compartidas
 ```
 
 Las páginas comparten cabecera y pie. **Para cambiar el menú, el pie, los textos
@@ -48,13 +50,44 @@ HTML sueltos: el script los sobreescribe.
 | Próximos partidos y resultados | `data/partidos.json` |
 | Plantel y cuerpo técnico | `data/plantel.json` — los jugadores sin `nombre` se muestran como "a confirmar" |
 | Noticias | `data/noticias.json` |
+| Galería | `data/fotos.json` — ver más abajo |
 
 Los archivos con `"ejemplo": true` muestran un aviso visible en el sitio
 ("datos de ejemplo"). Al cargar la información real hay que sacar esa clave.
 
+## Sumar una foto al álbum
+
+Dos pasos, sin tocar HTML:
+
+1. Dejar el archivo en `assets/img/galeria/`. Conviene JPG apaisado, más o
+   menos 1600 px de ancho, bien comprimido: la grilla lo recorta a 3:2 y el
+   visor lo muestra grande, así que archivos de más de 400 kB sólo hacen lenta
+   la página.
+2. Agregar la entrada en el grupo que corresponda de `data/fotos.json`:
+
+```json
+{ "archivo": "assets/img/galeria/partido-4.jpg",
+  "pie": "Lito 2 – Albion 1",
+  "fecha": "2026-09-14" }
+```
+
+`pie` es lo que se lee debajo de la foto y también el texto alternativo, así
+que conviene que describa la escena. `fecha` va en formato `AAAA-MM-DD` y se
+puede dejar vacía (`""`) si no se sabe. El orden de las fotos dentro del grupo
+es el orden del archivo: la primera de la lista es la primera del álbum.
+
+Los grupos que están son **Plantel** y **Partidos**; para abrir uno nuevo
+(por ejemplo "Formativas" o "Hinchada") se agrega otro objeto con `titulo`,
+`bajada` y `fotos`. Un grupo sin fotos no se dibuja.
+
+Las seis fotos que están son placeholders de marca y llevan `"ejemplo": true`,
+que es lo que enciende el aviso de datos de ejemplo. Al cargar las fotos reales
+hay que sacar esa clave.
+
 ## Antes de publicar
 
 - [ ] Reemplazar las fotos de `assets/img/fotos/` (son placeholders de marca).
+- [ ] Reemplazar las fotos de `assets/img/galeria/` y sacar `"ejemplo": true` de `data/fotos.json`.
 - [ ] Cargar dirección de la sede, cancha, teléfono y horarios en `build.py`
       (páginas `club.html` y `contacto.html`). El manual de marca indica
       Av. Carlos María Ramírez s/n — confirmar cuál corresponde.

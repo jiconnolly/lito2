@@ -24,8 +24,9 @@ CAPITULOS = [
     ("plantel.html", "Plantel", "II", "Primer equipo y formativas"),
     ("fixture.html", "Fixture y tabla", "III", "Domingo a domingo"),
     ("noticias.html", "Noticias", "IV", "Partes de prensa"),
-    ("socios.html", "Hacete socio", "V", "Cuotas y alta"),
-    ("contacto.html", "Contacto", "VI", "Sede, prensa y marca"),
+    ("galeria.html", "Galería", "V", "Fotos del plantel y los partidos"),
+    ("socios.html", "Hacete socio", "VI", "Cuotas y alta"),
+    ("contacto.html", "Contacto", "VII", "Sede, prensa y marca"),
 ]
 
 
@@ -492,8 +493,35 @@ def cap_noticias():
 """ + folio("IV", "Noticias")
 
 
+def cap_galeria():
+    return portadilla("V", "Galería", "El álbum del club: el plantel, los entrenamientos y los domingos de cancha.") + """
+<section class="seccion">
+  <div class="marco">
+    <div data-galeria><p class="cargando">Cargando fotos…</p></div>
+""" + AVISO_EJEMPLO + """  </div>
+</section>
+
+<section class="lamina">
+  <div class="marco claro">
+    <p class="cintilla">Mandanos tus fotos</p>
+    <h2>El álbum lo hacemos entre todos</h2>
+    <p class="prosa">Si tenés fotos del plantel, de un partido o de la hinchada, mandalas y las sumamos al álbum. Pedimos el archivo original, sin filtros ni recortes, y el dato de quién la sacó para dar el crédito.</p>
+    <p class="prosa"><a class="boton boton--fantasma" href="mailto:prensa@""" + DOMINIO + """?subject=Fotos%20para%20la%20galer%C3%ADa">Enviar fotos a prensa@""" + DOMINIO + """</a></p>
+  </div>
+</section>
+
+<dialog class="visor" data-visor>
+  <form method="dialog"><button class="visor-cerrar" aria-label="Cerrar">&times;</button></form>
+  <figure>
+    <img alt="" data-visor-img>
+    <figcaption data-visor-pie></figcaption>
+  </figure>
+</dialog>
+""" + folio("V", "Galería")
+
+
 def cap_socios():
-    return portadilla("V", "Hacete socio", "La cuota social paga la cancha, los viajes y las formativas. Ser socio de Lito es entrar a la cancha y tener voz en la asamblea.") + """
+    return portadilla("VI", "Hacete socio", "La cuota social paga la cancha, los viajes y las formativas. Ser socio de Lito es entrar a la cancha y tener voz en la asamblea.") + """
 <section class="seccion" id="cuotas">
   <div class="marco">
     <p class="cintilla">Categorías</p>
@@ -556,11 +584,11 @@ def cap_socios():
     </div>
   </div>
 </section>
-""" + folio("V", "Hacete socio")
+""" + folio("VI", "Hacete socio")
 
 
 def cap_contacto():
-    return portadilla("VI", "Contacto", "Sede, prensa, formativas y uso de marca. Escribinos y te respondemos.") + """
+    return portadilla("VII", "Contacto", "Sede, prensa, formativas y uso de marca. Escribinos y te respondemos.") + """
 <section class="seccion">
   <div class="marco">
     <div class="rejilla rejilla--2">
@@ -600,7 +628,7 @@ def cap_contacto():
     </div>
   </div>
 </section>
-""" + folio("VI", "Contacto")
+""" + folio("VII", "Contacto")
 
 
 CUERPOS = {
@@ -608,6 +636,7 @@ CUERPOS = {
     "plantel.html": cap_plantel,
     "fixture.html": cap_fixture,
     "noticias.html": cap_noticias,
+    "galeria.html": cap_galeria,
     "socios.html": cap_socios,
     "contacto.html": cap_contacto,
 }
@@ -617,6 +646,7 @@ DESCRIPCIONES = {
     "plantel.html": "Plantel y cuerpo técnico del Centro Atlético Lito, temporada 2026.",
     "fixture.html": "Próximos partidos, resultados y tabla de posiciones del Centro Atlético Lito.",
     "noticias.html": "Noticias, partes de prensa y anuncios del Centro Atlético Lito.",
+    "galeria.html": "Fotos del plantel y de los partidos del Centro Atlético Lito.",
     "socios.html": "Categorías de socio, cuotas y alta en el Centro Atlético Lito.",
     "contacto.html": "Datos de contacto, prensa y uso de marca del Centro Atlético Lito.",
 }
