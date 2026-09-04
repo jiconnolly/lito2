@@ -70,7 +70,7 @@ def cabecera_hoja(actual):
 <header class="cabecera">
   <div class="marco cabecera-fila">
     <a class="marca" href="index.html">
-      <img src="assets/img/escudo.png" alt="" width="720" height="981">
+      <img src="assets/img/escudo.png" alt="" width="720" height="879">
       <span class="marca-texto">Centro Atlético Lito
         <small>Montevideo · 1917</small>
       </span>
@@ -113,7 +113,7 @@ def colofon():
   <div class="marco">
     <div class="pie-grilla">
       <div class="pie-escudo">
-        <img src="assets/img/escudo.png" alt="" width="720" height="981" loading="lazy">
+        <img src="assets/img/escudo.png" alt="" width="720" height="879" loading="lazy">
         <div>
           <strong>Centro Atlético Lito</strong><br>
           Arroyo Seco, Montevideo, Uruguay.<br>
@@ -213,7 +213,7 @@ def pagina_portada():
     <div class="tapa">
       <span class="cara cara-frente" aria-hidden="true">
         <span class="grabado-arriba">Centro Atlético</span>
-        <img class="escudo-tapa" src="assets/img/escudo-tapa.png" alt="Escudo del Centro Atlético Lito" width="760" height="1009" fetchpriority="high">
+        <img class="escudo-tapa" src="assets/img/escudo-tapa.png" alt="Escudo del Centro Atlético Lito" width="760" height="911" fetchpriority="high">
         <span class="lema">Garra y Corazón</span>
         <span class="grabado-abajo">Montevideo · 1917</span>
       </span>
