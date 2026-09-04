@@ -28,7 +28,7 @@ contacto.html       Capítulo VI — contacto, prensa y uso de marca
 assets/css/main.css Hoja de estilos única
 assets/js/main.js   Apertura del libro, menú, partidos, tabla, plantel y noticias
 assets/img/         Escudo, favicon, imagen para redes y fotos
-assets/img/texturas Papel, cuero y escritorio (generados; papel y cuero en mosaico)
+assets/img/texturas Escritorio, cuero de la tapa y papel de las hojas
 data/*.json         Datos editables
 worker/api.js       Worker de Cloudflare (todavía sin publicar)
 build.py            Regenera las siete páginas desde plantillas compartidas
@@ -97,12 +97,20 @@ La tapa se abre con `transform: rotateY()`. Detalles que conviene no romper:
 - **El índice son enlaces reales**, no botones de JavaScript: funcionan con
   teclado, con el buscador y con el botón "atrás".
 
-## Cambiar el escritorio de la portada
+## Las texturas
 
-El fondo de la portada es `assets/img/texturas/escritorio.jpg`, generado por
-código. Para poner una foto real de una mesa o un escritorio antiguo basta con
-reemplazar ese archivo, sin tocar el CSS. Conviene que sea apaisada, oscura en
-los bordes y con la zona central algo más clara, porque el libro se apoya ahí.
+Tres fotografías sostienen la escena. Se cambian reemplazando el archivo, sin
+tocar el CSS:
+
+| Archivo | Dónde se usa | Cómo conviene que sea |
+| --- | --- | --- |
+| `escritorio.jpg` | Fondo de la portada | Apaisada, bordes oscuros y centro más claro: el libro se apoya ahí |
+| `cuero.jpg` | Tapa del libro | Grano parejo, sin costuras ni cantos; se usa recortada a `cover` |
+| `papel.jpg` | Hojas y guarda | **Tiene que repetir sin costura**: se repite en mosaico de 520 px |
+
+El papel del repositorio es un mosaico espejado y llevado al hueso del manual
+(`#F4EFE6`), para que la trama no cante y el color siga siendo el de la marca.
+Si se reemplaza por una foto cruda, el mosaico se va a notar.
 
 ## Reglas de marca que el sitio respeta
 

@@ -150,16 +150,16 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   overflow: hidden;
   display: grid;
   place-items: center;
-  padding: 74px 22px 112px;
+  padding: 66px 22px 176px;
   perspective: 2000px;
   perspective-origin: 50% 42%;
-  background-color: #1a1008;
+  background-color: #17110c;
   background-image:
-    radial-gradient(ellipse 58% 48% at 50% 40%, rgba(255, 214, 150, .14), transparent 70%),
-    radial-gradient(ellipse 96% 92% at 50% 44%, transparent 32%, rgba(0, 0, 0, .72) 100%),
+    radial-gradient(ellipse 52% 44% at 50% 44%, rgba(255, 214, 150, .07), transparent 72%),
+    radial-gradient(ellipse 92% 90% at 50% 46%, transparent 42%, rgba(0, 0, 0, .58) 100%),
     url('../img/texturas/escritorio.jpg');
   background-size: cover, cover, cover;
-  background-position: center, center, center;
+  background-position: center, center, 50% 46%;
   background-repeat: no-repeat;
 }
 
@@ -181,7 +181,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 
 .libro {
   position: relative;
-  width: min(470px, 86vw);
+  width: min(424px, 82vw);
   aspect-ratio: 3 / 4;
   transform-style: preserve-3d;
   transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
@@ -225,12 +225,12 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 .cara-frente {
   background-color: var(--cuero);
   background-image:
-    radial-gradient(ellipse at 30% 22%, rgba(255, 255, 255, .08), transparent 58%),
-    radial-gradient(ellipse at 88% 96%, rgba(212, 168, 90, .1), transparent 46%),
-    linear-gradient(160deg, rgba(22, 36, 90, .82), rgba(15, 26, 64, .72) 62%, rgba(10, 18, 48, .92)),
+    radial-gradient(ellipse at 76% 14%, rgba(255, 236, 200, .1), transparent 54%),
+    radial-gradient(ellipse at 88% 96%, rgba(212, 168, 90, .09), transparent 46%),
+    linear-gradient(160deg, rgba(15, 26, 64, .52), rgba(15, 26, 64, .38) 58%, rgba(8, 14, 38, .74)),
     url('../img/texturas/cuero.jpg');
-  background-size: cover, cover, cover, 190px 190px;
-  background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+  background-size: cover, cover, cover, cover;
+  background-repeat: no-repeat;
   background-position: center;
   box-shadow: inset -14px 0 34px rgba(0, 0, 0, .45), 0 30px 66px rgba(0, 0, 0, .62);
   display: grid;
@@ -298,7 +298,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
     repeating-linear-gradient(45deg, rgba(28, 44, 107, .07) 0 2px, transparent 2px 15px),
     repeating-linear-gradient(-45deg, rgba(209, 44, 62, .05) 0 2px, transparent 2px 15px),
     url('../img/texturas/papel.jpg');
-  background-size: auto, auto, 300px 300px;
+  background-size: auto, auto, 460px 460px;
   box-shadow: inset 0 0 60px rgba(138, 126, 104, .5);
 }
 
@@ -315,7 +315,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
     radial-gradient(circle at 20% 10%, rgba(138, 126, 104, .09), transparent 45%),
     radial-gradient(circle at 85% 85%, rgba(138, 126, 104, .08), transparent 48%),
     url('../img/texturas/papel.jpg');
-  background-size: cover, cover, 300px 300px;
+  background-size: cover, cover, 520px 520px;
   background-repeat: no-repeat, no-repeat, repeat;
   border-radius: 3px 6px 6px 3px;
   padding: clamp(22px, 4.4vw, 34px) clamp(20px, 4vw, 30px) clamp(18px, 3vw, 26px) clamp(30px, 5vw, 44px);
@@ -379,11 +379,12 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   position: absolute; left: 0; right: 0; bottom: -86px;
   display: flex; justify-content: center; gap: 18px;
   font-family: var(--mono); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, .95), 0 0 3px rgba(0, 0, 0, .8);
 }
 .pie-tapa button, .pie-tapa a {
   background: none; border: 0; padding: 6px 4px; cursor: pointer;
   font: inherit; letter-spacing: inherit; text-transform: inherit;
-  color: rgba(244, 239, 230, .62); text-decoration: none;
+  color: rgba(244, 239, 230, .82); text-decoration: none;
   border-bottom: 1px solid transparent;
 }
 .pie-tapa button:hover, .pie-tapa a:hover { color: var(--oro); border-bottom-color: var(--oro); }
@@ -392,12 +393,13 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   position: absolute; left: 0; right: 0; bottom: -54px;
   text-align: center;
   font-family: var(--mono); font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
-  color: rgba(212, 168, 90, .72);
+  color: var(--oro);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, .95), 0 0 3px rgba(0, 0, 0, .8);
   animation: latir 3.4s ease-in-out infinite;
 }
 .mesa:not(.cerrado) .indicacion,
 .mesa:not(.cerrado) .pie-tapa { display: none; }
-@keyframes latir { 0%, 100% { opacity: .45 } 50% { opacity: 1 } }
+@keyframes latir { 0%, 100% { opacity: .58 } 50% { opacity: 1 } }
 
 /* ============================================================
    LAS HOJAS — páginas interiores
@@ -452,7 +454,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
     radial-gradient(circle at 12% 6%, rgba(138, 126, 104, .07), transparent 40%),
     radial-gradient(circle at 88% 92%, rgba(138, 126, 104, .06), transparent 44%),
     url('../img/texturas/papel.jpg');
-  background-size: cover, cover, 300px 300px;
+  background-size: cover, cover, 520px 520px;
   background-repeat: no-repeat, no-repeat, repeat;
   background-attachment: scroll;
   padding-left: var(--encuadernacion);
