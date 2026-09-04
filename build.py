@@ -436,7 +436,7 @@ def cap_fixture():
     return portadilla("III", "Fixture y tabla", "Partidos, resultados y posiciones. Se actualiza después de cada fecha.") + """
 <section class="seccion">
   <div class="marco">
-""" + AVISO_EJEMPLO + """    <p class="cintilla" style="margin-top:26px">Próximo partido</p>
+    <p class="cintilla">Próximo partido</p>
     <div class="rejilla rejilla--2">
       <div data-partidos="proximo"><p class="cargando">Cargando…</p></div>
       <div data-partidos="ultimo"><p class="cargando">Cargando…</p></div>
@@ -463,6 +463,9 @@ def cap_fixture():
   <div class="marco">
     <p class="cintilla">Posiciones</p>
     <h2>Tabla</h2>
+    <p class="nota" data-aviso-ejemplo hidden style="margin-top:20px">
+      Tabla de ejemplo. Cargar las posiciones oficiales antes de publicar.
+    </p>
     <div data-tabla="completa" style="margin-top:22px"><p class="cargando">Cargando…</p></div>
   </div>
 </section>

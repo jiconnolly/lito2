@@ -1,96 +1,26 @@
 {
-  "_nota": "DATOS DE EJEMPLO. Reemplazar por el fixture real antes de publicar.",
-  "ejemplo": true,
-  "actualizado": "2026-05-10",
+  "_nota": "Resultados reales cargados a mano. Los próximos partidos siguen pendientes: cuando se conozcan, agregarlos a 'proximos'.",
+  "ejemplo": false,
+  "actualizado": "2026-08-23",
   "competencia": "Primera División Amateur",
   "ultimo": {
-    "fecha": "2026-05-03",
-    "competencia": "Fecha 11",
-    "local": "Lito",
-    "visitante": "Atenas",
-    "golesLocal": 2,
+    "fecha": "2026-08-23",
+    "competencia": "Divisional C · Zona de grupos",
+    "local": "Mar de Fondo",
+    "visitante": "Lito",
+    "golesLocal": 0,
     "golesVisitante": 0,
-    "cancha": "Cancha de Lito",
-    "detalle": "Goles: Pereyra · Cabrera"
+    "cancha": ""
   },
-  "proximos": [
-    {
-      "fecha": "2026-05-17",
-      "hora": "17:00",
-      "competencia": "Fecha 12",
-      "local": "Lito",
-      "visitante": "Albion",
-      "cancha": "Cancha de Lito",
-      "condicion": "local"
-    },
-    {
-      "fecha": "2026-05-24",
-      "hora": "15:30",
-      "competencia": "Fecha 13",
-      "local": "Alto Perú",
-      "visitante": "Lito",
-      "cancha": "A confirmar",
-      "condicion": "visitante"
-    },
-    {
-      "fecha": "2026-05-31",
-      "hora": "15:30",
-      "competencia": "Fecha 14",
-      "local": "Lito",
-      "visitante": "Basáñez",
-      "cancha": "Cancha de Lito",
-      "condicion": "local"
-    },
-    {
-      "fecha": "2026-06-07",
-      "hora": "11:00",
-      "competencia": "Fecha 15",
-      "local": "La Luz",
-      "visitante": "Lito",
-      "cancha": "A confirmar",
-      "condicion": "visitante"
-    }
-  ],
+  "proximos": [],
   "resultados": [
-    {
-      "fecha": "2026-05-03",
-      "competencia": "Fecha 11",
-      "local": "Lito",
-      "visitante": "Atenas",
-      "golesLocal": 2,
-      "golesVisitante": 0
-    },
-    {
-      "fecha": "2026-04-26",
-      "competencia": "Fecha 10",
-      "local": "Colón",
-      "visitante": "Lito",
-      "golesLocal": 1,
-      "golesVisitante": 1
-    },
-    {
-      "fecha": "2026-04-19",
-      "competencia": "Fecha 9",
-      "local": "Lito",
-      "visitante": "Oriental",
-      "golesLocal": 1,
-      "golesVisitante": 0
-    },
-    {
-      "fecha": "2026-04-12",
-      "competencia": "Fecha 8",
-      "local": "Canadian",
-      "visitante": "Lito",
-      "golesLocal": 2,
-      "golesVisitante": 1
-    },
-    {
-      "fecha": "2026-04-05",
-      "competencia": "Fecha 7",
-      "local": "Lito",
-      "visitante": "Rocha",
-      "golesLocal": 3,
-      "golesVisitante": 1
-    }
+    { "fecha": "2026-08-23", "competencia": "Divisional C · Zona de grupos", "local": "Mar de Fondo", "visitante": "Lito", "golesLocal": 0, "golesVisitante": 0 },
+    { "fecha": "2026-08-17", "competencia": "Divisional C · Zona de grupos", "local": "Lito", "visitante": "Sportivo Bella Italia", "golesLocal": 3, "golesVisitante": 0 },
+    { "fecha": "2026-08-02", "competencia": "Torneo Final · Fecha 2", "local": "Deportivo LSM", "visitante": "Lito", "golesLocal": 1, "golesVisitante": 0 },
+    { "fecha": "2026-07-25", "competencia": "Segunda Liga Uruguaya", "local": "Lito", "visitante": "CA Terremoto", "golesLocal": 1, "golesVisitante": 1 },
+    { "fecha": "2026-07-04", "competencia": "Torneo Inicial · Semifinal", "local": "Deportivo Colonia", "visitante": "Lito", "golesLocal": 2, "golesVisitante": 0 },
+    { "fecha": "2026-06-28", "competencia": "Fase regular", "local": "Lito", "visitante": "Deportivo LSM", "golesLocal": 1, "golesVisitante": 1 },
+    { "fecha": "2026-06-14", "competencia": "Fase regular", "local": "Lito", "visitante": "Durazno Capital", "golesLocal": 1, "golesVisitante": 0 },
+    { "fecha": "2026-05-26", "competencia": "Fase regular", "local": "Lito", "visitante": "Artigas", "golesLocal": 0, "golesVisitante": 0 }
   ]
 }
