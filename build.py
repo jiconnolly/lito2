@@ -386,7 +386,7 @@ def cap_club():
         <p class="detalle">Debutó en Lito. Capitán de Uruguay.</p>
       </article>
       <article class="campeon">
-""" + hueco("Retrato · Héctor «Manco» Castro", "4 / 5") + """
+""" + hueco("Retrato · Héctor «Manco» Castro", "4 / 5", "assets/img/historia/castro.jpg", "Retrato de Héctor «Manco» Castro") + """
         <h3>Héctor «Manco» Castro</h3>
         <p class="detalle">Debutó en Lito.</p>
       </article>
@@ -396,7 +396,7 @@ def cap_club():
         <p class="detalle">Pasó por Lito.</p>
       </article>
     </div>
-    <p class="epigrafe epigrafe--claro">Faltan dos retratos y confirmar los pies de foto. Se cargan en el mismo bloque.</p>
+    <p class="epigrafe epigrafe--claro">Falta el retrato de Pedro Cea. Se carga en el mismo bloque.</p>
   </div>
 </section>
 
