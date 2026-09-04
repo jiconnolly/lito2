@@ -204,7 +204,8 @@ def pagina_portada():
       <div class="marcas">
         <img src="assets/img/marcas/auf.png" alt="Asociación Uruguaya de Fútbol" width="111" height="180" loading="lazy">
         <img src="assets/img/marcas/mgr.png" alt="MGR Sport" width="342" height="110" loading="lazy">
-        <img src="assets/img/marcas/enas.png" alt="ENAS" width="466" height="100" loading="lazy">
+        <img src="assets/img/marcas/enas.png" alt="ENAS" width="509" height="100" loading="lazy">
+        <img src="assets/img/marcas/pinuccio.png" alt="Pinuccio Trattoria" width="279" height="130" loading="lazy">
       </div>
     </div>
 

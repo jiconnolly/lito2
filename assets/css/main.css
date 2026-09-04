@@ -486,20 +486,22 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
    través y quedan impresas en la hoja, no pegadas encima. */
 .marcas {
   display: flex; align-items: center; justify-content: center;
-  gap: clamp(16px, 3.8vw, 30px);
-  margin-top: clamp(18px, 3.4vw, 26px);
-  padding-top: clamp(14px, 2.6vw, 20px);
+  gap: clamp(11px, 2.4vw, 18px);
+  margin-top: clamp(14px, 2.6vw, 20px);
+  padding-top: clamp(12px, 2.2vw, 17px);
   border-top: 1px dotted var(--sepia-suave);
-  opacity: .88;
 }
 .marcas img {
   mix-blend-mode: multiply;
   width: auto;
+  opacity: .9;
   filter: saturate(.9);
 }
-.marcas img:nth-child(1) { height: clamp(34px, 7vw, 47px); }
-.marcas img:nth-child(2) { height: clamp(17px, 3.4vw, 23px); }
-.marcas img:nth-child(3) { height: clamp(15px, 3vw, 20px); }
+/* La AUF manda por ser la afiliación; los sponsors, parejos entre sí. */
+.marcas img:nth-child(1) { height: clamp(27px, 5.4vw, 36px); }
+.marcas img:nth-child(2) { height: clamp(13px, 2.5vw, 17px); }
+.marcas img:nth-child(3) { height: clamp(10px, 2.1vw, 14px); }
+.marcas img:nth-child(4) { height: clamp(15px, 3vw, 20px); }
 .indice-pie a:hover { color: var(--azul); }
 
 .hoja-indice h1 {

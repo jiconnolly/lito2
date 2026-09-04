@@ -123,8 +123,16 @@ Los logos del pie del índice (`assets/img/marcas/`) van **sobre fondo blanco a
 propósito**, no recortados: se aplican con `mix-blend-mode: multiply`, así el
 blanco desaparece y el papel se ve a través. Quedan impresos en la hoja en vez
 de pegados encima, y el escudo de la AUF conserva sus blancos internos, que un
-recorte por transparencia le comería. Si se reemplaza alguno, dejarlo sobre
-blanco.
+recorte por transparencia le comería.
+
+Dos cosas que rompen esto y no son obvias:
+
+- **Nunca poner `opacity` en `.marcas`.** El contenedor con opacidad aísla el
+  grupo y anula el `mix-blend-mode` de los hijos: los logos vuelven a aparecer
+  con su recuadro blanco. La opacidad va en cada `img`.
+- **Un logo con transparencia hay que aplanarlo sobre blanco**, no convertirlo
+  y listo: al pasar de RGBA a RGB sin componer, el fondo transparente se vuelve
+  negro y el logo termina como un rectángulo oscuro.
 
 ## Las texturas
 
