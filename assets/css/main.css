@@ -884,7 +884,7 @@ table.posiciones .fila-nuestra td:nth-child(2) { color: var(--azul); font-weight
 
 /* Foto pegada con esquineros, como en un álbum */
 .foto-album { position: relative; padding: 13px; background: var(--papel-sombra); box-shadow: 0 2px 0 rgba(138, 126, 104, .3); }
-.foto-album img { filter: sepia(.16) contrast(1.02); }
+.foto-album img { filter: sepia(.06) contrast(1.02); }
 .foto-album::before, .foto-album::after {
   content: ""; position: absolute; width: 20px; height: 20px; border: 2px solid var(--oro-80); opacity: .8;
 }
@@ -925,7 +925,7 @@ table.posiciones .fila-nuestra td:nth-child(2) { color: var(--azul); font-weight
   transform: translateY(-3px) rotate(-.35deg);
   box-shadow: 0 10px 22px rgba(24, 18, 10, .22);
 }
-.postal img { aspect-ratio: 3 / 2; object-fit: cover; filter: sepia(.16) contrast(1.02); }
+.postal img { aspect-ratio: 4 / 3; object-fit: cover; filter: sepia(.06) contrast(1.02); }
 
 .postal figcaption {
   display: flex; justify-content: space-between; gap: 14px; align-items: baseline;
@@ -943,7 +943,7 @@ table.posiciones .fila-nuestra td:nth-child(2) { color: var(--azul); font-weight
 .visor::backdrop { background: rgba(16, 12, 7, .84); }
 body:has(.visor[open]) .cabecera { backdrop-filter: none; z-index: 1; }
 .visor figure { margin: 0; padding: 16px; }
-.visor img { max-height: 76vh; width: auto; margin: 0 auto; filter: sepia(.12); }
+.visor img { max-height: 76vh; width: auto; margin: 0 auto; }
 .visor figcaption {
   margin-top: 12px; font-family: var(--mono); font-size: 12px;
   letter-spacing: .08em; text-transform: uppercase; color: var(--sepia); text-align: center;

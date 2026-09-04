@@ -411,7 +411,7 @@ def cap_plantel():
       </div>
       <div>
         <figure class="foto-album" style="margin:0;background:rgba(244,239,230,.1)">
-          <img src="assets/img/fotos/plantel.jpg" alt="Plantel del Centro Atlético Lito" width="1200" height="800" loading="lazy">
+          <img src="assets/img/fotos/plantel.jpg" alt="Plantel del Centro Atlético Lito" width="1400" height="1120" loading="lazy">
         </figure>
       </div>
     </div>

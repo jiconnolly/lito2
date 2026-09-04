@@ -68,7 +68,8 @@ Dos pasos, sin tocar HTML:
 ```json
 { "archivo": "assets/img/galeria/partido-4.jpg",
   "pie": "Lito 2 – Albion 1",
-  "fecha": "2026-09-14" }
+  "fecha": "2026-09-14",
+  "foco": "50% 80%" }
 ```
 
 `pie` es lo que se lee debajo de la foto y también el texto alternativo, así
@@ -76,18 +77,22 @@ que conviene que describa la escena. `fecha` va en formato `AAAA-MM-DD` y se
 puede dejar vacía (`""`) si no se sabe. El orden de las fotos dentro del grupo
 es el orden del archivo: la primera de la lista es la primera del álbum.
 
+`foco` es opcional. La grilla recorta cada foto a 4:3, y en una vertical eso
+puede comerse las cabezas o los pies: con `foco` se elige qué parte se
+conserva (`"50% 88%"` baja el encuadre, `"50% 20%"` lo sube). El visor siempre
+muestra la foto entera, sin recortar.
+
 Los grupos que están son **Plantel** y **Partidos**; para abrir uno nuevo
 (por ejemplo "Formativas" o "Hinchada") se agrega otro objeto con `titulo`,
 `bajada` y `fotos`. Un grupo sin fotos no se dibuja.
 
-Las seis fotos que están son placeholders de marca y llevan `"ejemplo": true`,
-que es lo que enciende el aviso de datos de ejemplo. Al cargar las fotos reales
-hay que sacar esa clave.
+El grupo **Partidos** está vacío a la espera de fotos: un grupo sin fotos no se
+dibuja, así que la sección no muestra un hueco.
 
 ## Antes de publicar
 
-- [ ] Reemplazar las fotos de `assets/img/fotos/` (son placeholders de marca).
-- [ ] Reemplazar las fotos de `assets/img/galeria/` y sacar `"ejemplo": true` de `data/fotos.json`.
+- [ ] Reemplazar las fotos de `assets/img/fotos/` que siguen siendo placeholders (sede, hinchada, noticias).
+- [ ] Cargar fotos de partidos en el grupo "Partidos" de `data/fotos.json`.
 - [ ] Cargar dirección de la sede, cancha, teléfono y horarios en `build.py`
       (páginas `club.html` y `contacto.html`). El manual de marca indica
       Av. Carlos María Ramírez s/n — confirmar cuál corresponde.

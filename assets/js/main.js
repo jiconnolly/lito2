@@ -366,7 +366,8 @@ async function galeria() {
         ${g.fotos.map(f => `
           <figure class="postal">
             <button type="button" data-foto="${esc(f.archivo)}" data-pie="${esc(f.pie || '')}">
-              <img src="${esc(f.archivo)}" alt="${esc(f.pie || g.titulo)}" loading="lazy">
+              <img src="${esc(f.archivo)}" alt="${esc(f.pie || g.titulo)}" loading="lazy"
+                   ${f.foco ? `style="object-position:${esc(f.foco)}"` : ''}>
             </button>
             <figcaption>
               <span>${esc(f.pie || '')}</span>
