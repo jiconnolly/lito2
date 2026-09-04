@@ -3,10 +3,11 @@
 Sitio estático, sin build de Node ni dependencias. Se publica tal cual desde
 GitHub Pages y más adelante puede migrar a Cloudflare Workers.
 
-La web está armada como un **tomo encuadernado de 1917**, apoyado de costado
-sobre un escritorio antiguo. Al tocar el escudo el libro se endereza y se abre
-sobre el índice de capítulos. La apertura es CSS 3D, no video: el escudo es el
-PNG del manual y nunca se deforma, como exige el capítulo 07 del brandbook.
+La web está armada como un **tomo encuadernado de 1917**, apoyado sobre la barra
+del bar donde nació el club. Al tocar el escudo la toma se acerca, se endereza y
+el libro se abre sobre el índice de capítulos. Todo es CSS 3D, no video: el
+escudo es el PNG del manual y nunca se deforma, como exige el capítulo 07 del
+brandbook.
 
 Identidad visual según el **Manual de Marca, edición 2026 (v1.0)**: paleta,
 tipografías y tono de voz salen de ahí. El hueso del manual (#F4EFE6) hace de
@@ -28,7 +29,7 @@ contacto.html       Capítulo VI — contacto, prensa y uso de marca
 assets/css/main.css Hoja de estilos única
 assets/js/main.js   Apertura del libro, menú, partidos, tabla, plantel y noticias
 assets/img/         Escudo, favicon, imagen para redes y fotos
-assets/img/texturas Escritorio, cuero de la tapa y papel de las hojas
+assets/img/texturas Fondo de la portada, cuero de la tapa y papel de las hojas
 data/*.json         Datos editables
 worker/api.js       Worker de Cloudflare (todavía sin publicar)
 build.py            Regenera las siete páginas desde plantillas compartidas
@@ -91,9 +92,16 @@ La tapa se abre con `transform: rotateY()`. Detalles que conviene no romper:
   la tapa (1,4 s, con 0,62 s de espera). Si se tocan esos tiempos en el CSS hay
   que mantener la espera de la tapa por encima de la duración del enderezado, o
   la tapa se abre mientras el libro todavía está de costado.
-- **Profundidad.** El libro cerrado se levanta con `translateZ(150px)` y la
-  sombra vive en `translateZ(-70px)`. Si se acercan, la sombra atraviesa la tapa
-  y le corta una diagonal encima.
+- **Es la cámara la que se mueve, no el libro.** Todo lo que se ve —el plano del
+  fondo y el libro— vive dentro de `.camara`. Si se anima el libro por separado,
+  el ojo lo lee como un objeto flotando sobre una postal.
+- **Profundidad.** El fondo está en `translateZ(-520px)` con la escala que
+  compensa la perspectiva a esa distancia: por eso el libro crece más rápido que
+  el fondo al acercarse la toma. La sombra de contacto vive apenas detrás del
+  libro (`translateZ(-12px)`).
+- **El tomo tiene cuerpo.** `.cara-lomo`, `.cara-cabeza` y `.cara-canto` son
+  caras reales rotadas 90°, y `--grosor` define el espesor. Al girar la toma se
+  ve el canto de las hojas; el lomo con sus nervios queda del lado opuesto.
 - **El índice son enlaces reales**, no botones de JavaScript: funcionan con
   teclado, con el buscador y con el botón "atrás".
 
@@ -104,7 +112,7 @@ tocar el CSS:
 
 | Archivo | Dónde se usa | Cómo conviene que sea |
 | --- | --- | --- |
-| `escritorio.jpg` | Fondo de la portada | Apaisada, bordes oscuros y centro más claro: el libro se apoya ahí |
+| `fondo.jpg` | Fondo de la portada | Apaisada y oscura en los bordes, con una superficie clara donde apoyar el libro |
 | `cuero.jpg` | Tapa del libro | Grano parejo, sin costuras ni cantos; se usa recortada a `cover` |
 | `papel.jpg` | Hojas y guarda | **Tiene que repetir sin costura**: se repite en mosaico de 520 px |
 

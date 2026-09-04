@@ -159,11 +159,11 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 .camara {
   position: absolute; inset: 0;
   transform-style: preserve-3d;
-  transform: translateZ(160px);
+  transform: translate(-4%, -13%) translateZ(215px);
   transition: transform 1.5s cubic-bezier(.32, .68, .16, 1);
 }
 .camara.lejos {
-  transform: translateZ(-200px) rotateX(12deg) rotateY(-18deg) rotateZ(-1.5deg);
+  transform: translateZ(-200px) rotateX(10deg) rotateY(-15deg) rotateZ(-1deg);
 }
 
 /* El plano de la mesa. Es más grande que el encuadre para que al girar la toma
@@ -172,9 +172,9 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 .tablero {
   position: absolute; inset: -45%;
   background-color: #17110c;
-  background-image: url('../img/texturas/escritorio.jpg');
-  background-size: auto 125vh;
-  background-position: center 46%;
+  background-image: url('../img/texturas/fondo.jpg');
+  background-size: auto 140vh;
+  background-position: 50% 40%;
   background-repeat: no-repeat;
   /* Profundidad real: el fondo está 520 px detrás del libro, así que al
      acercarse la toma el libro crece más rápido que el fondo. La escala
@@ -193,8 +193,8 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 
 /* La mesa sostiene el libro y su sombra proyectada */
 .mesa {
-  position: absolute; left: 50%; top: 47%;
-  width: min(424px, 82vw); aspect-ratio: 3 / 4;
+  position: absolute; left: 54%; top: 63%;
+  width: min(418px, 80vw); aspect-ratio: 3 / 4;
   transform: translate(-50%, -50%);
   transform-style: preserve-3d;
 }
@@ -212,22 +212,74 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   opacity: .92;
 }
 
+/* El libro queda quieto sobre la barra; el desvío de la toma lo pone la cámara. */
 .libro {
-  position: relative;
+  --grosor: 58px;
   position: absolute; inset: 0;
   transform-style: preserve-3d;
 }
 
-/* El libro queda quieto sobre la mesa; el desvío de la toma lo pone la cámara. */
+/* ---- El cuerpo del tomo: caras reales, no un canto dibujado ---- */
 
-/* Canto de las hojas asomando bajo la tapa */
-.libro::after {
-  content: "";
-  position: absolute; inset: 8px -7px 4px 14px;
-  background: linear-gradient(90deg, var(--papel-sombra), #cfc6b2 60%, #b9ae97);
-  border-radius: 2px 5px 5px 2px;
-  box-shadow: 0 34px 70px rgba(0, 0, 0, .6);
-  z-index: 0;
+/* Lomo, con los nervios de la encuadernación */
+.cara-lomo {
+  position: absolute; left: 0; top: 0; bottom: 0; width: var(--grosor);
+  transform-origin: left center;
+  transform: rotateY(90deg);
+  background-color: var(--cuero);
+  background-image:
+    repeating-linear-gradient(180deg,
+      transparent 0 52px,
+      rgba(0, 0, 0, .5) 52px 55px,
+      rgba(255, 236, 200, .16) 55px 63px,
+      rgba(212, 168, 90, .3) 63px 65px,
+      rgba(0, 0, 0, .42) 65px 69px,
+      transparent 69px 116px),
+    linear-gradient(90deg, rgba(0, 0, 0, .55), rgba(255, 236, 200, .07) 42%, rgba(0, 0, 0, .5)),
+    url('../img/texturas/cuero.jpg');
+  background-size: auto, auto, cover;
+  box-shadow: inset 0 0 22px rgba(0, 0, 0, .5);
+}
+
+/* Canto de cabeza: las hojas vistas desde arriba */
+.cara-cabeza {
+  position: absolute; left: 0; right: 0; top: 0; height: var(--grosor);
+  transform-origin: center top;
+  transform: rotateX(-90deg);
+  background-image:
+    repeating-linear-gradient(90deg,
+      rgba(108, 92, 68, .5) 0 1px,
+      rgba(232, 224, 205, .45) 1px 2px,
+      transparent 2px 4px),
+    linear-gradient(180deg, #e6ddc5, #cabda2 58%, #a3957c);
+  box-shadow: inset 0 -6px 12px rgba(0, 0, 0, .35);
+}
+
+/* Canto delantero */
+.cara-canto {
+  position: absolute; right: 0; top: 0; bottom: 0; width: var(--grosor);
+  transform-origin: right center;
+  transform: rotateY(-90deg);
+  background-image:
+    repeating-linear-gradient(180deg,
+      rgba(108, 92, 68, .55) 0 1px,
+      rgba(232, 224, 205, .5) 1px 2px,
+      transparent 2px 4px),
+    linear-gradient(90deg, #a89b80 0%, #ded5be 34%, #efe8d6 52%, #cfc3a8 78%, #a1937a 100%);
+  box-shadow: inset 0 12px 20px -10px rgba(0, 0, 0, .55), inset 0 -12px 20px -10px rgba(0, 0, 0, .55);
+}
+
+/* Contratapa, para que el tomo no quede hueco al abrirse */
+.contratapa {
+  position: absolute; inset: 0;
+  transform: translateZ(calc(var(--grosor) * -1));
+  background-color: var(--cuero);
+  background-image:
+    linear-gradient(160deg, rgba(15, 26, 64, .6), rgba(8, 14, 38, .8)),
+    url('../img/texturas/cuero.jpg');
+  background-size: cover;
+  border-radius: 3px 8px 8px 3px;
+  box-shadow: 0 38px 60px rgba(0, 0, 0, .6);
 }
 
 .tapa {
@@ -245,13 +297,16 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   position: absolute; inset: 0;
   backface-visibility: hidden;
   transform: translateZ(.5px);
-  border-radius: 3px 7px 7px 3px;
+  border-radius: 3px 8px 8px 3px;
   overflow: hidden;
 }
 
 .cara-frente {
   background-color: var(--cuero);
   background-image:
+    radial-gradient(circle at 99% 2%, rgba(176, 184, 205, .3), transparent 9%),
+    radial-gradient(circle at 99% 98%, rgba(176, 184, 205, .26), transparent 8%),
+    radial-gradient(circle at 4% 99%, rgba(176, 184, 205, .2), transparent 7%),
     radial-gradient(ellipse at 76% 14%, rgba(255, 236, 200, .1), transparent 54%),
     radial-gradient(ellipse at 88% 96%, rgba(212, 168, 90, .09), transparent 46%),
     linear-gradient(160deg, rgba(15, 26, 64, .52), rgba(15, 26, 64, .38) 58%, rgba(8, 14, 38, .74)),
@@ -285,9 +340,14 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 .cara-frente::after {
   content: "";
   position: absolute; inset: 15px 13px 15px 26px;
-  border: 1.5px solid rgba(212, 168, 90, .62);
+  border: 1.5px solid rgba(212, 168, 90, .66);
   border-radius: 2px;
-  box-shadow: inset 0 0 0 4px rgba(15, 26, 64, .9), inset 0 0 0 5.5px rgba(212, 168, 90, .34);
+  box-shadow:
+    inset 0 0 0 3px rgba(15, 26, 64, .55),
+    inset 0 0 0 4.5px rgba(212, 168, 90, .3),
+    inset 0 0 0 10px rgba(0, 0, 0, .16),
+    inset 0 0 0 11px rgba(255, 236, 200, .07),
+    0 1px 0 rgba(255, 236, 200, .08);
   pointer-events: none;
 }
 
@@ -345,9 +405,10 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   background-size: cover, cover, 520px 520px;
   background-repeat: no-repeat, no-repeat, repeat;
   border-radius: 3px 6px 6px 3px;
-  padding: clamp(22px, 4.4vw, 34px) clamp(20px, 4vw, 30px) clamp(18px, 3vw, 26px) clamp(30px, 5vw, 44px);
+  padding: clamp(20px, 4vw, 30px) clamp(16px, 3.2vw, 24px) clamp(16px, 2.6vw, 22px) clamp(26px, 4.4vw, 38px);
   overflow: auto;
-  box-shadow: inset 15px 0 22px -14px rgba(12, 16, 36, .5);
+  transform: translateZ(-3px);
+  box-shadow: inset 22px 0 30px -18px rgba(12, 16, 36, .62);
   transition: opacity .55s ease 1.95s;
 }
 .libro.cerrado .hoja-indice { opacity: 0; transition-delay: 0s; }
@@ -379,10 +440,10 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 .indice li { margin: 0; }
 .indice a {
   display: grid;
-  grid-template-columns: 2.1em 1fr auto;
+  grid-template-columns: 1.9em minmax(0, 1fr) auto;
   align-items: baseline;
-  gap: 8px;
-  padding: 9px 2px;
+  gap: 7px;
+  padding: 8px 2px;
   text-decoration: none;
   color: var(--tinta);
   border-bottom: 1px dotted var(--sepia-suave);
@@ -394,12 +455,12 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 }
 .indice .titulo {
   font-family: var(--display); font-weight: 500;
-  font-size: clamp(15px, 2.2vw, 18px);
-  text-transform: uppercase; letter-spacing: .045em;
+  font-size: clamp(14px, 2vw, 16.5px);
+  text-transform: uppercase; letter-spacing: .03em;
 }
 .indice .apunte {
   font-family: var(--prosa); font-style: italic;
-  font-size: 13.5px; color: var(--sepia);
+  font-size: 12.5px; color: var(--sepia); text-align: right;
 }
 
 .pie-tapa {

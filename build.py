@@ -185,6 +185,11 @@ def pagina_portada():
       <div class="sombra"></div>
       <div class="libro" data-libro>
 
+      <span class="cara-lomo" aria-hidden="true"></span>
+      <span class="cara-cabeza" aria-hidden="true"></span>
+      <span class="cara-canto" aria-hidden="true"></span>
+      <div class="contratapa" aria-hidden="true"></div>
+
     <div class="hoja-indice">
       <h1>El libro del club</h1>
       <p class="sello">Centro Atlético Lito · Montevideo · 1917</p>
@@ -193,7 +198,7 @@ def pagina_portada():
 {indice}
       </ul>
       <p class="indice-pie">
-        <span>Tomo del club · edición 2026</span>
+        <span>Tomo del club · 2026</span>
         <a href="socios.html">Hacete socio</a>
       </p>
     </div>
