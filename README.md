@@ -102,6 +102,14 @@ La tapa se abre con `transform: rotateY()`. Detalles que conviene no romper:
   compensa la perspectiva a esa distancia: por eso el libro crece más rápido que
   el fondo al acercarse la toma. La sombra de contacto vive apenas detrás del
   libro (`translateZ(-12px)`).
+- **Nada decorativo intercepta clicks.** Las caras del tomo y la hoja que se da
+  vuelta llevan `pointer-events: none`, y el índice no lleva `translateZ`
+  negativo: si se corre hacia atrás queda detrás del propio contenedor y sus
+  enlaces dejan de recibir clicks.
+- **El pasaje al capítulo.** Al elegir un capítulo se pasa una hoja, la cámara
+  entra y un velo del color del papel toma la pantalla; el capítulo arranca con
+  un fundido desde ese mismo color, así la costura entre las dos páginas no se
+  ve. Si se cambia `--papel` hay que mirar que las dos puntas sigan coincidiendo.
 - **El tomo tiene cuerpo.** `.cara-lomo`, `.cara-cabeza` y `.cara-canto` son
   caras reales rotadas 90°, y `--grosor` define el espesor. Al girar la toma se
   ve el canto de las hojas; el lomo con sus nervios queda del lado opuesto.

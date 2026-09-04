@@ -99,6 +99,23 @@ function libro() {
   tomo.querySelectorAll('[data-abrir]').forEach(b => b.addEventListener('click', abrir));
   // La escena entera abre el libro: el cartel de "tocá acá" sobraba.
   if (escena) escena.addEventListener('click', abrir);
+
+  // Al elegir un capítulo, se pasa la hoja antes de ir a la página.
+  if (escena && !quieto) {
+    tomo.querySelectorAll('.indice a').forEach(a => {
+      a.addEventListener('click', ev => {
+        if (ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+        ev.preventDefault();
+        escena.classList.add('pasando');
+        setTimeout(() => { window.location.href = a.getAttribute('href'); }, 640);
+      });
+    });
+  }
+
+  // Al volver con el botón "atrás", la portada no debe quedar en pleno pasaje.
+  window.addEventListener('pageshow', () => {
+    if (escena) escena.classList.remove('pasando');
+  });
   if (!tomo.classList.contains('cerrado')) apagarTapa();
 }
 

@@ -213,6 +213,8 @@ def pagina_portada():
       <span class="cara cara-dorso"></span>
     </button>
 
+    <div class="hoja-vuelta" aria-hidden="true"></div>
+
       </div>
     </div>
   </div>
