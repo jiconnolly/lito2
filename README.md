@@ -35,7 +35,7 @@ assets/img/texturas Fondo de la portada, cuero de la tapa y papel de las hojas
 assets/img/marcas   AUF y sponsors, al pie del índice
 assets/img/galeria  Las fotos del álbum
 assets/img/historia Archivo y retratos históricos
-assets/img/proyecto El predio actual y los renders del proyecto
+assets/img/proyecto El predio actual y los tres renders del proyecto
 data/*.json         Datos editables
 worker/api.js       Worker de Cloudflare (todavía sin publicar)
 build.py            Regenera las nueve páginas desde plantillas compartidas
@@ -155,7 +155,6 @@ capítulos que cierran el arco: I y VI. Si se pone en todos, deja de significar.
 - [ ] Confirmar los pies de las dos fotos de archivo de `assets/img/historia/`.
 - [ ] Cargar los dos escudos históricos: Lito redondo y Lito cuadrado.
 - [ ] Cargar cuatro fotos reales de Arroyo Seco (nada de banco de imágenes).
-- [ ] Cargar los renders del proyecto en el capítulo VI.
 - [ ] Cargar dirección de la sede, cancha, teléfono y horarios en `build.py`
       (páginas `club.html` y `contacto.html`). El manual de marca indica
       Av. Carlos María Ramírez s/n — confirmar cuál corresponde.

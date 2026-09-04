@@ -505,7 +505,7 @@ def cap_club():
       <div>
         <p class="cintilla">Lo que viene</p>
         <h2>El terreno ya existe</h2>
-        <p class="prosa">Sobre el predio que el club usa hoy hay un proyecto de cancha, tribunas e instalaciones deportivas para el barrio. Está dibujado, no construido: los renders del capítulo VI muestran cómo sería.</p>
+        <p class="prosa">Sobre el predio que el club usa hoy hay un proyecto de cancha, tribunas e instalaciones deportivas para el barrio. Está dibujado, no construido: el capítulo VI lo muestra entero.</p>
         <p><a class="boton boton--oro" href="proyecto.html">Ver el proyecto</a></p>
       </div>
       <div>
@@ -621,10 +621,18 @@ def cap_proyecto():
     <p class="cintilla">La cancha que viene</p>
     <h2>Cómo se vería</h2>
     <p class="prosa">Cancha con tribunas, instalaciones deportivas y espacio abierto para el barrio. Las imágenes que siguen son renders del proyecto: muestran una intención, no una obra terminada ni una fecha.</p>
-    <div class="renders">
-""" + hueco("Render · vista aérea de la cancha", "16 / 9") + hueco("Render · el frente sobre la calle", "16 / 9") + hueco("Render · interior de las instalaciones", "16 / 9") + """
+    <div class="renders renders--principal">
+""" + hueco("Render · vista aérea de la cancha", "16 / 9", "assets/img/proyecto/render-1.jpg",
+            "Render aéreo del proyecto: la cancha, las tribunas y el barrio, con la bahía de fondo",
+            "La cancha y las tribunas, con la bahía de fondo. Una de ellas lleva el nombre de Pedro Cea.") + """
     </div>
-    <p class="epigrafe epigrafe--claro">Los renders se cargan en este bloque, en <code>assets/img/proyecto/</code>.</p>
+    <div class="renders">
+""" + hueco("Render · el frente sobre la calle", "16 / 9", "assets/img/proyecto/render-2.jpg",
+            "Render del frente del proyecto sobre la calle, con la plaza y el muro del año de fundación",
+            "El frente sobre la calle y la plaza de acceso.") + hueco("Render · interior de las instalaciones", "16 / 9", "assets/img/proyecto/render-3.jpg",
+            "Render del interior de las instalaciones, con la cancha del otro lado del vidrio",
+            "El interior, con la cancha del otro lado del vidrio.") + """
+    </div>
   </div>
 </section>
 

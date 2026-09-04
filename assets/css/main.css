@@ -1116,6 +1116,8 @@ table.posiciones .fila-nuestra td:nth-child(2) { color: var(--azul); font-weight
   display: grid; gap: clamp(16px, 2.6vw, 26px); margin-top: 30px;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
+/* El aéreo es el que explica el proyecto: va solo y a todo el ancho. */
+.renders--principal { grid-template-columns: 1fr; }
 .renders .hueco { position: relative; }
 /* Cada render lleva su propia marca: nadie tiene que deducir que es un dibujo. */
 .renders .hueco::after {
