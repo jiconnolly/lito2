@@ -228,7 +228,7 @@ def pagina_portada():
               triunfante, triunfante,<br>
               porque tiene garra y corazón,<br>
               campeón, campeón.</p>
-            <p>Que proclamen tus parciales,<br>
+            <p>Que proclaman tus parciales,<br>
               que son inmortales,<br>
               tu gloria y honor.</p>
           </div>
