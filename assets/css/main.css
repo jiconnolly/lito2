@@ -208,7 +208,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   background-color: #17110c;
   background-image: url('../img/texturas/fondo.jpg');
   background-size: auto 140vh;
-  background-position: 50% 40%;
+  background-position: 44% 40%;
   background-repeat: no-repeat;
   /* Profundidad real: el fondo está 520 px detrás del libro, así que al
      acercarse la toma el libro crece más rápido que el fondo. La escala
@@ -227,8 +227,8 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 
 /* La mesa sostiene el libro y su sombra proyectada */
 .mesa {
-  position: absolute; left: 54%; top: 63%;
-  width: min(418px, 80vw); aspect-ratio: 3 / 4;
+  position: absolute; left: 58%; top: 62%;
+  width: min(396px, 78vw); aspect-ratio: 3 / 4;
   transform: translate(-50%, -50%);
   transform-style: preserve-3d;
 }

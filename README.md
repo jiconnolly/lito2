@@ -124,7 +124,7 @@ tocar el CSS:
 | Archivo | Dónde se usa | Cómo conviene que sea |
 | --- | --- | --- |
 | `fondo.jpg` | Fondo de la portada | Apaisada y oscura en los bordes, con una superficie clara donde apoyar el libro |
-| `tapa.jpg` | Tapa y contratapa | Tapa de cuero fotografiada de frente, con su filete dorado impreso. El escudo y las letras se componen encima en CSS |
+| `tapa.jpg` | Tapa y contratapa | Cuero fotografiado de frente, con su filete impreso. El escudo y las letras se componen encima en CSS |
 | `lomo.jpg` | Lomo del tomo | Lomo con nervios, de frente y vertical; se recorta a `cover` sobre una cara de 58 px |
 | `cuero.jpg` | (sin uso hoy) | Quedó de la etapa anterior; el troquel del escudo ya toma su grano de `tapa.jpg` |
 | `papel.jpg` | Hojas y guarda | **Tiene que repetir sin costura**: se repite en mosaico de 520 px |
@@ -133,7 +133,15 @@ El papel del repositorio es un mosaico espejado y llevado al hueso del manual
 (`#F4EFE6`), para que la trama no cante y el color siga siendo el de la marca.
 Si se reemplaza por una foto cruda, el mosaico se va a notar.
 
-**La tapa trae su propio filete dorado.** Por eso `.cara-frente` no dibuja
+**El filete de la tapa es rojo, y no venía así.** La fotografía original tenía
+el filete dorado; se lo pasó a rojo Lito por matiz: se toma la máscara de los
+amarillos con saturación (matiz 33°–68°, S > .26, V > .30), se les fija el
+matiz del rojo del manual y se les conserva el valor, para que el gastado y los
+raspones del oro original sigan leyéndose en el rojo. Las esquinas peladas del
+cuero quedan fuera de la máscara por ser más anaranjadas y menos saturadas. Si
+se cambia la foto de tapa hay que rehacer esa conversión.
+
+**La tapa trae su propio filete.** Por eso `.cara-frente` no dibuja
 ningún marco y el contenido va con `padding: 13% 14% 12.5%`, que es lo que lo
 mantiene dentro del filete de la foto. Si se cambia la foto de tapa hay que
 volver a medir ese padding contra el nuevo marco.
