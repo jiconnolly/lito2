@@ -240,8 +240,9 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
       rgba(0, 0, 0, .42) 65px 69px,
       transparent 69px 116px),
     linear-gradient(90deg, rgba(0, 0, 0, .55), rgba(255, 236, 200, .07) 42%, rgba(0, 0, 0, .5)),
+    url('../img/texturas/desgaste.png'),
     url('../img/texturas/cuero.jpg');
-  background-size: auto, auto, cover;
+  background-size: auto, auto, cover, cover;
   box-shadow: inset 0 0 22px rgba(0, 0, 0, .5);
 }
 
@@ -280,6 +281,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   background-color: var(--cuero);
   background-image:
     linear-gradient(160deg, rgba(15, 26, 64, .6), rgba(8, 14, 38, .8)),
+    url('../img/texturas/desgaste.png'),
     url('../img/texturas/cuero.jpg');
   background-size: cover;
   border-radius: 3px 8px 8px 3px;
@@ -308,6 +310,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 .cara-frente {
   background-color: var(--cuero);
   background-image:
+    url('../img/texturas/desgaste.png'),
     radial-gradient(circle at 99% 2%, rgba(176, 184, 205, .3), transparent 9%),
     radial-gradient(circle at 99% 98%, rgba(176, 184, 205, .26), transparent 8%),
     radial-gradient(circle at 4% 99%, rgba(176, 184, 205, .2), transparent 7%),
@@ -365,7 +368,10 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   align-self: end;
   font-size: clamp(15px, 2.6vw, 20px);
   letter-spacing: .3em; padding-left: .3em;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, .55);
+  text-shadow:
+    0 -1px 0 rgba(255, 240, 210, .34),
+    0 1px 1px rgba(0, 0, 0, .78),
+    0 2px 3px rgba(0, 0, 0, .5);
 }
 .grabado-abajo {
   align-self: start;
@@ -373,6 +379,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   font-family: var(--mono); font-size: clamp(9px, 1.5vw, 11px);
   letter-spacing: .34em; padding-left: .34em;
   color: rgba(212, 168, 90, .82);
+  text-shadow: 0 -1px 0 rgba(255, 240, 210, .26), 0 1px 1px rgba(0, 0, 0, .72);
 }
 
 .lema {
@@ -383,7 +390,10 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   font-size: clamp(14px, 2.3vw, 19px);
   letter-spacing: .05em;
   color: var(--oro);
-  text-shadow: 0 1px 0 rgba(0, 0, 0, .55), 0 0 10px rgba(212, 168, 90, .16);
+  text-shadow:
+    0 -1px 0 rgba(255, 240, 210, .3),
+    0 1px 1px rgba(0, 0, 0, .8),
+    0 0 10px rgba(212, 168, 90, .14);
   white-space: nowrap;
 }
 .lema::before, .lema::after {
@@ -404,7 +414,10 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   font-size: clamp(14px, 2.3vw, 19px);
   letter-spacing: .05em;
   color: var(--oro);
-  text-shadow: 0 1px 0 rgba(0, 0, 0, .55), 0 0 10px rgba(212, 168, 90, .16);
+  text-shadow:
+    0 -1px 0 rgba(255, 240, 210, .3),
+    0 1px 1px rgba(0, 0, 0, .8),
+    0 0 10px rgba(212, 168, 90, .14);
   white-space: nowrap;
 }
 .lema::before, .lema::after {

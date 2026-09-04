@@ -118,6 +118,7 @@ tocar el CSS:
 | `fondo.jpg` | Fondo de la portada | Apaisada y oscura en los bordes, con una superficie clara donde apoyar el libro |
 | `cuero.jpg` | Tapa del libro | Grano parejo, sin costuras ni cantos; se usa recortada a `cover` |
 | `papel.jpg` | Hojas y guarda | **Tiene que repetir sin costura**: se repite en mosaico de 520 px |
+| `desgaste.png` | Tapa, lomo y contratapa | Capa RGBA de rozaduras y rayones, generada por código. Se estira a `cover`, no repite |
 
 El papel del repositorio es un mosaico espejado y llevado al hueso del manual
 (`#F4EFE6`), para que la trama no cante y el color siga siendo el de la marca.
