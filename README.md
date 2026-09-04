@@ -117,6 +117,21 @@ La tapa se abre con `transform: rotateY()`. Detalles que conviene no romper:
 - **El índice son enlaces reales**, no botones de JavaScript: funcionan con
   teclado, con el buscador y con el botón "atrás".
 
+## La guarda con la canción
+
+La letra de la canción oficial va en la contracara de la tapa (`.cara-dorso`),
+que es la página izquierda cuando el libro se abre. Dos cosas la sostienen:
+
+- **La tapa no es un `<button>`.** La canción es contenido, y dentro de un
+  control quedaría como parte del nombre accesible del botón, además de tapada
+  por el `aria-hidden` que llevaba al abrirse. El teclado se resuelve con
+  `.abrir-libro`, un botón que sólo aparece al enfocarlo.
+- **En pantalla angosta manda el índice.** Las dos páginas del pliego no entran
+  en un teléfono sin achicar la tipografía por debajo de lo legible, así que
+  bajo 760 px la cámara vuelve a centrar el índice y la guarda queda fuera de
+  cuadro. Si la canción tiene que leerse en el celular, hay que darle un segundo
+  lugar en el capítulo del club.
+
 ## Las marcas del índice
 
 Los logos del pie del índice (`assets/img/marcas/`) van **sobre fondo blanco a

@@ -79,19 +79,15 @@ function libro() {
     if (camara) camara.classList.add('lejos');
   }
 
-  const tapa = tomo.querySelector('.tapa');
-  const apagarTapa = () => {
-    if (!tapa) return;
-    tapa.setAttribute('aria-hidden', 'true');
-    tapa.tabIndex = -1;
-  };
+  const boton = escena && escena.querySelector('.abrir-libro');
+  const guardarBoton = () => { if (boton) boton.hidden = true; };
 
   const abrir = () => {
     if (!tomo.classList.contains('cerrado')) return;
     tomo.classList.remove('cerrado');
     if (escena) escena.classList.remove('lejos');
     if (camara) camara.classList.remove('lejos');
-    apagarTapa();
+    guardarBoton();
     const primero = tomo.querySelector('.indice a');
     if (primero) setTimeout(() => primero.focus({ preventScroll: true }), 2600);
   };
@@ -116,7 +112,7 @@ function libro() {
   window.addEventListener('pageshow', () => {
     if (escena) escena.classList.remove('pasando');
   });
-  if (!tomo.classList.contains('cerrado')) apagarTapa();
+  if (!tomo.classList.contains('cerrado')) guardarBoton();
 }
 
 /* ---------- Aviso de datos de ejemplo ---------- */

@@ -188,12 +188,22 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
    ningún cartel que explique dónde tocar. */
 .escena.lejos { cursor: pointer; }
 
+/* La escena se abre con un toque en cualquier parte; esto es para el teclado.
+   Sólo se ve al enfocarlo, como el salto al contenido. */
+.abrir-libro {
+  position: absolute; left: -9999px; top: 16px; z-index: 20;
+  background: var(--oro); color: var(--tinta); border: 0;
+  padding: 10px 16px; cursor: pointer;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+}
+.abrir-libro:focus { left: 16px; }
+
 /* La cámara: mesa y libro se mueven juntos, como una sola toma.
    Cerrado, la toma está lejos y de costado; al abrir, se acerca y se endereza. */
 .camara {
   position: absolute; inset: 0;
   transform-style: preserve-3d;
-  transform: translate(-4%, -13%) translateZ(215px);
+  transform: translate(9%, -13%) translateZ(215px);
   transition: transform 1.5s cubic-bezier(.32, .68, .16, 1);
 }
 .camara.lejos {
@@ -442,12 +452,16 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 /* Guarda: el reverso de la tapa */
 .cara-dorso {
   transform: rotateY(180deg) translateZ(.5px);
+  display: grid;
+  place-items: center;
+  padding: clamp(20px, 4vw, 32px) clamp(18px, 3.6vw, 30px);
   background-color: var(--papel-sombra);
   background-image:
-    repeating-linear-gradient(45deg, rgba(28, 44, 107, .07) 0 2px, transparent 2px 15px),
-    repeating-linear-gradient(-45deg, rgba(209, 44, 62, .05) 0 2px, transparent 2px 15px),
+    radial-gradient(ellipse 76% 68% at 50% 48%, rgba(244, 239, 230, .82), transparent 72%),
+    repeating-linear-gradient(45deg, rgba(28, 44, 107, .06) 0 2px, transparent 2px 15px),
+    repeating-linear-gradient(-45deg, rgba(209, 44, 62, .04) 0 2px, transparent 2px 15px),
     url('../img/texturas/papel.jpg');
-  background-size: auto, auto, 460px 460px;
+  background-size: auto, auto, auto, 460px 460px;
   box-shadow: inset 0 0 60px rgba(138, 126, 104, .5);
 }
 
@@ -457,6 +471,54 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 .libro:not(.cerrado) .cara-frente { box-shadow: none; }
 
 /* La hoja del índice, debajo de la tapa */
+.cancion {
+  position: relative; z-index: 2;
+  text-align: center;
+  color: var(--tinta);
+  max-width: 30ch;
+}
+.cancion-rotulo {
+  margin: 0 0 clamp(8px, 1.6vw, 13px);
+  font-family: 'Pinyon Script', 'EB Garamond', serif;
+  font-size: clamp(20px, 4vw, 30px);
+  line-height: 1;
+  color: var(--azul);
+}
+.cancion-rotulo::after {
+  content: "";
+  display: block; width: 46%; height: 1px; margin: clamp(7px, 1.4vw, 11px) auto 0;
+  background: linear-gradient(90deg, transparent, var(--oro-80), transparent);
+}
+.cancion-letra p {
+  margin: 0 0 clamp(9px, 1.8vw, 14px);
+  max-width: none;
+  font-family: var(--prosa);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(11.5px, 2.3vw, 15px);
+  line-height: 1.62;
+  color: rgba(12, 16, 36, .88);
+}
+.cancion-letra p:last-child { margin-bottom: 0; }
+/* La inicial, en la misma mano que el rótulo */
+.inicial {
+  font-family: 'Pinyon Script', 'EB Garamond', serif;
+  font-style: normal;
+  font-size: 2.1em;
+  line-height: .7;
+  color: var(--rojo);
+  padding-right: .04em;
+  vertical-align: -.18em;
+}
+.cancion-pie {
+  margin: clamp(10px, 2vw, 16px) 0 0;
+  max-width: none;
+  font-family: var(--mono);
+  font-size: clamp(7px, 1.4vw, 9px);
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--sepia);
+}
+
 .hoja-indice {
   position: absolute; inset: 0; z-index: 1;
   background-color: var(--papel);
@@ -472,6 +534,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   box-shadow: inset 22px 0 30px -18px rgba(12, 16, 36, .62);
   transition: opacity .55s ease 1.95s;
 }
+
 .libro.cerrado .hoja-indice { opacity: 0; transition-delay: 0s; }
 
 .indice-pie {
@@ -544,8 +607,6 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   font-family: var(--prosa); font-style: italic;
   font-size: 12.5px; color: var(--sepia); text-align: right;
 }
-
-
 
 /* ============================================================
    LAS HOJAS — páginas interiores
@@ -982,6 +1043,9 @@ table.posiciones .fila-nuestra td:nth-child(2) { color: var(--azul); font-weight
   .campo-doble { grid-template-columns: 1fr; }
   .cronologia li { grid-template-columns: 1fr; gap: 5px; }
   .libro { width: min(340px, 88vw); }
+  /* En una pantalla angosta no entran las dos páginas: manda el índice.
+     .camara.lejos gana por especificidad, así que el cerrado no se toca. */
+  .camara { transform: translate(-10%, -13%) translateZ(215px); }
   .indice-pie { flex-direction: column; align-items: flex-start; gap: 5px; letter-spacing: .14em; }
   .hoja-indice .sello { letter-spacing: .16em; }
 }
@@ -997,7 +1061,9 @@ table.posiciones .fila-nuestra td:nth-child(2) { color: var(--azul); font-weight
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .tapa { display: none; }
-  .hoja-indice { opacity: 1; }
+  
+
+.hoja-indice { opacity: 1; }
 }
 
 @media print {

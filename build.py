@@ -49,7 +49,7 @@ def encabezado_html(titulo, descripcion):
 <link rel="apple-touch-icon" href="assets/img/escudo-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
@@ -179,6 +179,7 @@ def pagina_portada():
 
     return f"""
 <div class="escena" data-escena>
+  <button class="abrir-libro" type="button" data-abrir>Abrir el libro del club</button>
   <div class="camara" data-camara>
     <div class="tablero"></div>
     <div class="mesa">
@@ -209,15 +210,32 @@ def pagina_portada():
       </div>
     </div>
 
-    <button class="tapa" type="button" data-abrir aria-label="Abrir el libro del club">
-      <span class="cara cara-frente">
+    <div class="tapa">
+      <span class="cara cara-frente" aria-hidden="true">
         <span class="grabado-arriba">Centro Atlético</span>
         <img class="escudo-tapa" src="assets/img/escudo-tapa.png" alt="Escudo del Centro Atlético Lito" width="760" height="1009" fetchpriority="high">
         <span class="lema">Garra y Corazón</span>
         <span class="grabado-abajo">Montevideo · 1917</span>
       </span>
-      <span class="cara cara-dorso"></span>
-    </button>
+      <span class="cara cara-dorso">
+        <div class="cancion">
+          <p class="cancion-rotulo">Canción oficial</p>
+          <div class="cancion-letra">
+            <p><span class="inicial">L</span>ito querido,<br>
+              cuadro invencible,<br>
+              fuerte, aguerrido e irresistible.</p>
+            <p>Siempre Centro Lito adelante,<br>
+              triunfante, triunfante,<br>
+              porque tiene garra y corazón,<br>
+              campeón, campeón.</p>
+            <p>Que proclamen tus parciales,<br>
+              que son inmortales,<br>
+              tu gloria y honor.</p>
+          </div>
+          <p class="cancion-pie">Centro Atlético Lito · Montevideo · 1917</p>
+        </div>
+      </span>
+    </div>
 
     <div class="hoja-vuelta" aria-hidden="true"></div>
 
