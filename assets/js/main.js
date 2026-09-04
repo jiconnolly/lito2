@@ -63,17 +63,19 @@ function menu() {
 }
 
 /* ---------- La tapa del libro ----------
-   Por defecto el libro está abierto (así se lee sin JS y con
-   prefers-reduced-motion). La ceremonia de apertura se agrega una vez por
-   visita: al abrirla queda anotado y al volver se entra directo al índice. */
+   Por defecto el libro está abierto: así se lee sin JS y con
+   prefers-reduced-motion. Con JS y movimiento permitido, el libro aparece
+   cerrado y perfilado cada vez que se entra a la portada. */
 function libro() {
   const tomo = document.querySelector('[data-libro]');
   if (!tomo) return;
 
-  let yaEntro = false;
-  try { yaEntro = sessionStorage.getItem('lito:libro') === '1'; } catch (e) { /* sin storage */ }
+  const mesa = tomo.closest('.mesa');
   const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!yaEntro && !quieto) tomo.classList.add('cerrado');
+  if (!quieto) {
+    tomo.classList.add('cerrado');
+    if (mesa) mesa.classList.add('cerrado');
+  }
 
   const tapa = tomo.querySelector('.tapa');
   const apagarTapa = () => {
@@ -85,10 +87,10 @@ function libro() {
   const abrir = () => {
     if (!tomo.classList.contains('cerrado')) return;
     tomo.classList.remove('cerrado');
-    try { sessionStorage.setItem('lito:libro', '1'); } catch (e) { /* sin storage */ }
+    if (mesa) mesa.classList.remove('cerrado');
     apagarTapa();
     const primero = tomo.querySelector('.indice a');
-    if (primero) setTimeout(() => primero.focus({ preventScroll: true }), 950);
+    if (primero) setTimeout(() => primero.focus({ preventScroll: true }), 1750);
   };
 
   tomo.querySelectorAll('[data-abrir]').forEach(b => b.addEventListener('click', abrir));

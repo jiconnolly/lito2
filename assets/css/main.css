@@ -150,17 +150,47 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   overflow: hidden;
   display: grid;
   place-items: center;
-  padding: 54px 22px 96px;
-  background:
-    radial-gradient(ellipse 70% 55% at 50% 34%, rgba(28, 44, 107, .5), transparent 72%),
-    linear-gradient(180deg, #0a0f24 0%, #0c1128 55%, #070b1c 100%);
+  padding: 74px 22px 112px;
+  perspective: 2000px;
+  perspective-origin: 50% 42%;
+  background-color: #1a1008;
+  background-image:
+    radial-gradient(ellipse 58% 48% at 50% 40%, rgba(255, 214, 150, .14), transparent 70%),
+    radial-gradient(ellipse 96% 92% at 50% 44%, transparent 32%, rgba(0, 0, 0, .72) 100%),
+    url('../img/texturas/escritorio.jpg');
+  background-size: cover, cover, cover;
+  background-position: center, center, center;
+  background-repeat: no-repeat;
+}
+
+/* La mesa sostiene el libro y su sombra proyectada */
+.mesa { position: relative; transform-style: preserve-3d; }
+
+.sombra {
+  position: absolute; left: 6%; right: -6%; bottom: -3%; height: 88%;
+  background: radial-gradient(ellipse at 42% 60%, rgba(0, 0, 0, .72), transparent 68%);
+  filter: blur(26px);
+  transform: translateZ(-70px) scaleY(.96);
+  transition: transform 1.05s cubic-bezier(.3, .7, .2, 1), opacity 1.05s ease;
+  pointer-events: none;
+}
+.mesa.cerrado .sombra {
+  transform: translateZ(-70px) translate(9%, 4%) rotate(-4deg) scale(1.08, .92);
+  opacity: .95;
 }
 
 .libro {
   position: relative;
-  width: min(430px, 84vw);
+  width: min(470px, 86vw);
   aspect-ratio: 3 / 4;
-  perspective: 2400px;
+  transform-style: preserve-3d;
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  transition: transform 1.05s cubic-bezier(.3, .7, .2, 1);
+}
+
+/* Apoyado de costado sobre la mesa: al tocarlo se endereza y recién ahí se abre. */
+.libro.cerrado {
+  transform: translateZ(150px) rotateX(17deg) rotateY(-25deg) rotateZ(-3.5deg) scale(.9);
 }
 
 /* Canto de las hojas asomando bajo la tapa */
@@ -177,7 +207,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   position: absolute; inset: 0; z-index: 3;
   transform-origin: left center;
   transform-style: preserve-3d;
-  transition: transform 1.5s cubic-bezier(.32, .72, .2, 1);
+  transition: transform 1.4s cubic-bezier(.32, .72, .2, 1) .62s;
   cursor: pointer;
   border: 0; padding: 0; margin: 0;
   background: transparent;
@@ -187,6 +217,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 .cara {
   position: absolute; inset: 0;
   backface-visibility: hidden;
+  transform: translateZ(.5px);
   border-radius: 3px 7px 7px 3px;
   overflow: hidden;
 }
@@ -254,15 +285,14 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 
 .escudo-tapa {
   position: relative; z-index: 2;
-  width: clamp(120px, 28vw, 168px);
-  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, .55));
+  width: clamp(120px, 28vw, 176px);
   transition: transform .5s ease;
 }
 .tapa:hover .escudo-tapa { transform: translateY(-4px) scale(1.02); }
 
 /* Guarda: el reverso de la tapa */
 .cara-dorso {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(.5px);
   background-color: var(--papel-sombra);
   background-image:
     repeating-linear-gradient(45deg, rgba(28, 44, 107, .07) 0 2px, transparent 2px 15px),
@@ -274,7 +304,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 
 /* Por defecto el libro está abierto; JS agrega .cerrado para la ceremonia. */
 .tapa { transform: rotateY(-162deg); pointer-events: none; }
-.libro.cerrado .tapa { transform: none; pointer-events: auto; }
+.libro.cerrado .tapa { transform: none; pointer-events: auto; transition-delay: 0s; }
 .libro:not(.cerrado) .cara-frente { box-shadow: none; }
 
 /* La hoja del índice, debajo de la tapa */
@@ -291,7 +321,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   padding: clamp(22px, 4.4vw, 34px) clamp(20px, 4vw, 30px) clamp(18px, 3vw, 26px) clamp(30px, 5vw, 44px);
   overflow: auto;
   box-shadow: inset 15px 0 22px -14px rgba(12, 16, 36, .5);
-  transition: opacity .5s ease .5s;
+  transition: opacity .55s ease 1.15s;
 }
 .libro.cerrado .hoja-indice { opacity: 0; transition-delay: 0s; }
 
@@ -346,7 +376,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 }
 
 .pie-tapa {
-  position: absolute; left: 0; right: 0; bottom: -70px;
+  position: absolute; left: 0; right: 0; bottom: -86px;
   display: flex; justify-content: center; gap: 18px;
   font-family: var(--mono); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase;
 }
@@ -359,14 +389,14 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 .pie-tapa button:hover, .pie-tapa a:hover { color: var(--oro); border-bottom-color: var(--oro); }
 
 .indicacion {
-  position: absolute; left: 0; right: 0; bottom: -38px;
+  position: absolute; left: 0; right: 0; bottom: -54px;
   text-align: center;
   font-family: var(--mono); font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
   color: rgba(212, 168, 90, .72);
   animation: latir 3.4s ease-in-out infinite;
 }
-.libro:not(.cerrado) .indicacion,
-.libro:not(.cerrado) .pie-tapa { display: none; }
+.mesa:not(.cerrado) .indicacion,
+.mesa:not(.cerrado) .pie-tapa { display: none; }
 @keyframes latir { 0%, 100% { opacity: .45 } 50% { opacity: 1 } }
 
 /* ============================================================

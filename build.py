@@ -179,7 +179,9 @@ def pagina_portada():
 
     return f"""
 <div class="escena">
-  <div class="libro" data-libro>
+  <div class="mesa">
+    <div class="sombra"></div>
+    <div class="libro" data-libro>
 
     <div class="hoja-indice">
       <h1>El libro del club</h1>
@@ -202,6 +204,8 @@ def pagina_portada():
       </span>
       <span class="cara cara-dorso"></span>
     </button>
+
+    </div>
 
     <p class="indicacion">Tocá el escudo para abrir</p>
 

@@ -3,10 +3,10 @@
 Sitio estático, sin build de Node ni dependencias. Se publica tal cual desde
 GitHub Pages y más adelante puede migrar a Cloudflare Workers.
 
-La web está armada como un **tomo encuadernado de 1917**: la portada es la tapa
-de cuero con el escudo grabado, y cada sección es un capítulo del libro. La
-apertura es CSS 3D, no video: el escudo es el PNG del manual y nunca se
-deforma, como exige el capítulo 07 del brandbook.
+La web está armada como un **tomo encuadernado de 1917**, apoyado de costado
+sobre un escritorio antiguo. Al tocar el escudo el libro se endereza y se abre
+sobre el índice de capítulos. La apertura es CSS 3D, no video: el escudo es el
+PNG del manual y nunca se deforma, como exige el capítulo 07 del brandbook.
 
 Identidad visual según el **Manual de Marca, edición 2026 (v1.0)**: paleta,
 tipografías y tono de voz salen de ahí. El hueso del manual (#F4EFE6) hace de
@@ -28,7 +28,7 @@ contacto.html       Capítulo VI — contacto, prensa y uso de marca
 assets/css/main.css Hoja de estilos única
 assets/js/main.js   Apertura del libro, menú, partidos, tabla, plantel y noticias
 assets/img/         Escudo, favicon, imagen para redes y fotos
-assets/img/texturas Papel y cuero generados (procedurales, se repiten en mosaico)
+assets/img/texturas Papel, cuero y escritorio (generados; papel y cuero en mosaico)
 data/*.json         Datos editables
 worker/api.js       Worker de Cloudflare (todavía sin publicar)
 build.py            Regenera las siete páginas desde plantillas compartidas
@@ -84,11 +84,25 @@ La tapa se abre con `transform: rotateY()`. Detalles que conviene no romper:
 - **El estado por defecto es "abierto".** Sin JavaScript, con
   `prefers-reduced-motion` o si falla algo, el índice se lee igual. El JS agrega
   la clase `cerrado` para armar la ceremonia.
-- **Una vez por visita.** Al abrir queda anotado en `sessionStorage`
-  (`lito:libro`); si el hincha vuelve en la misma sesión entra directo al
-  índice. Siempre hay un botón para saltearla.
+- **Cerrado en cada visita.** Cada vez que se entra a la portada el libro
+  aparece cerrado y perfilado. Para el hincha apurado hay dos salidas siempre
+  visibles: "Saltar la apertura" y "Ir al fixture".
+- **Dos tiempos.** Primero el libro se endereza (1,05 s) y recién después gira
+  la tapa (1,4 s, con 0,62 s de espera). Si se tocan esos tiempos en el CSS hay
+  que mantener la espera de la tapa por encima de la duración del enderezado, o
+  la tapa se abre mientras el libro todavía está de costado.
+- **Profundidad.** El libro cerrado se levanta con `translateZ(150px)` y la
+  sombra vive en `translateZ(-70px)`. Si se acercan, la sombra atraviesa la tapa
+  y le corta una diagonal encima.
 - **El índice son enlaces reales**, no botones de JavaScript: funcionan con
   teclado, con el buscador y con el botón "atrás".
+
+## Cambiar el escritorio de la portada
+
+El fondo de la portada es `assets/img/texturas/escritorio.jpg`, generado por
+código. Para poner una foto real de una mesa o un escritorio antiguo basta con
+reemplazar ese archivo, sin tocar el CSS. Conviene que sea apaisada, oscura en
+los bordes y con la zona central algo más clara, porque el libro se apoya ahí.
 
 ## Reglas de marca que el sitio respeta
 
