@@ -1,25 +1,34 @@
-# Sitio oficial — Centro Atlético Lito
+# El libro del club — Centro Atlético Lito
 
 Sitio estático, sin build de Node ni dependencias. Se publica tal cual desde
 GitHub Pages y más adelante puede migrar a Cloudflare Workers.
 
+La web está armada como un **tomo encuadernado de 1917**: la portada es la tapa
+de cuero con el escudo grabado, y cada sección es un capítulo del libro. La
+apertura es CSS 3D, no video: el escudo es el PNG del manual y nunca se
+deforma, como exige el capítulo 07 del brandbook.
+
 Identidad visual según el **Manual de Marca, edición 2026 (v1.0)**: paleta,
-tipografías, texturas y tono de voz salen de ahí.
+tipografías y tono de voz salen de ahí. El hueso del manual (#F4EFE6) hace de
+papel y el azul profundo de cuero. La única adición al sistema tipográfico es
+**EB Garamond**, para la prosa larga; los datos, tablas y formularios siguen en
+Manrope, y los titulares en Oswald, como manda el manual.
 
 ## Estructura
 
 ```
-index.html          Portada
-club.html           Historia, sede, camiseta, comisión directiva, identidad
-plantel.html        Plantel, cuerpo técnico y formativas
-fixture.html        Próximos partidos, resultados y tabla
-noticias.html       Listado de noticias
-socios.html         Cuotas y alta de socio
-contacto.html       Contacto, prensa y uso de marca
+index.html          La tapa: escudo, apertura del libro e índice de capítulos
+club.html           Capítulo I — historia, sede, camiseta, comisión, identidad
+plantel.html        Capítulo II — plantel, cuerpo técnico y formativas
+fixture.html        Capítulo III — partidos, resultados y tabla
+noticias.html       Capítulo IV — listado de noticias
+socios.html         Capítulo V — cuotas y alta de socio
+contacto.html       Capítulo VI — contacto, prensa y uso de marca
 
 assets/css/main.css Hoja de estilos única
-assets/js/main.js   Menú, partidos, tabla, plantel y noticias
+assets/js/main.js   Apertura del libro, menú, partidos, tabla, plantel y noticias
 assets/img/         Escudo, favicon, imagen para redes y fotos
+assets/img/texturas Papel y cuero generados (procedurales, se repiten en mosaico)
 data/*.json         Datos editables
 worker/api.js       Worker de Cloudflare (todavía sin publicar)
 build.py            Regenera las siete páginas desde plantillas compartidas
@@ -67,6 +76,19 @@ con la dirección de correo. Para activarlos hay que publicar el Worker.
 
 El Worker sirve `tabla` y `partidos` desde KV y guarda los envíos de los
 formularios, sin exponer claves ni correos en el HTML.
+
+## La apertura del libro
+
+La tapa se abre con `transform: rotateY()`. Detalles que conviene no romper:
+
+- **El estado por defecto es "abierto".** Sin JavaScript, con
+  `prefers-reduced-motion` o si falla algo, el índice se lee igual. El JS agrega
+  la clase `cerrado` para armar la ceremonia.
+- **Una vez por visita.** Al abrir queda anotado en `sessionStorage`
+  (`lito:libro`); si el hincha vuelve en la misma sesión entra directo al
+  índice. Siempre hay un botón para saltearla.
+- **El índice son enlaces reales**, no botones de JavaScript: funcionan con
+  teclado, con el buscador y con el botón "atrás".
 
 ## Reglas de marca que el sitio respeta
 

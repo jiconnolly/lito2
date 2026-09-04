@@ -62,11 +62,44 @@ function menu() {
   });
 }
 
+/* ---------- La tapa del libro ----------
+   Por defecto el libro está abierto (así se lee sin JS y con
+   prefers-reduced-motion). La ceremonia de apertura se agrega una vez por
+   visita: al abrirla queda anotado y al volver se entra directo al índice. */
+function libro() {
+  const tomo = document.querySelector('[data-libro]');
+  if (!tomo) return;
+
+  let yaEntro = false;
+  try { yaEntro = sessionStorage.getItem('lito:libro') === '1'; } catch (e) { /* sin storage */ }
+  const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!yaEntro && !quieto) tomo.classList.add('cerrado');
+
+  const tapa = tomo.querySelector('.tapa');
+  const apagarTapa = () => {
+    if (!tapa) return;
+    tapa.setAttribute('aria-hidden', 'true');
+    tapa.tabIndex = -1;
+  };
+
+  const abrir = () => {
+    if (!tomo.classList.contains('cerrado')) return;
+    tomo.classList.remove('cerrado');
+    try { sessionStorage.setItem('lito:libro', '1'); } catch (e) { /* sin storage */ }
+    apagarTapa();
+    const primero = tomo.querySelector('.indice a');
+    if (primero) setTimeout(() => primero.focus({ preventScroll: true }), 950);
+  };
+
+  tomo.querySelectorAll('[data-abrir]').forEach(b => b.addEventListener('click', abrir));
+  if (!tomo.classList.contains('cerrado')) apagarTapa();
+}
+
 /* ---------- Aviso de datos de ejemplo ---------- */
 
-function avisoEjemplo(d, destino) {
-  if (!d.ejemplo || !destino) return;
-  destino.hidden = false;
+function avisoEjemplo(d) {
+  if (!d.ejemplo) return;
+  document.querySelectorAll('[data-aviso-ejemplo]').forEach(n => { n.hidden = false; });
 }
 
 /* ---------- Próximo partido y resultados ---------- */
@@ -103,7 +136,7 @@ async function partidos() {
     return;
   }
 
-  avisoEjemplo(d, document.querySelector('[data-aviso-ejemplo]'));
+  avisoEjemplo(d);
 
   destinos.forEach(destino => {
     const modo = destino.dataset.partidos;
@@ -166,19 +199,24 @@ function filaTabla(e, resumida) {
 }
 
 async function tabla() {
-  const destino = document.querySelector('[data-tabla]');
-  if (!destino) return;
-  const resumida = destino.dataset.tabla === 'resumida';
+  const destinos = document.querySelectorAll('[data-tabla]');
+  if (!destinos.length) return;
 
   let d;
   try {
     d = await traer(RUTAS.tabla);
   } catch (e) {
-    falla(destino, 'las posiciones');
+    destinos.forEach(x => falla(x, 'las posiciones'));
     return;
   }
 
-  avisoEjemplo(d, document.querySelector('[data-aviso-ejemplo]'));
+  avisoEjemplo(d);
+
+  destinos.forEach(destino => pintarTabla(destino, d));
+}
+
+function pintarTabla(destino, d) {
+  const resumida = destino.dataset.tabla === 'resumida';
 
   const encabezados = resumida
     ? ['#', 'Equipo', 'PJ', 'DG', 'Pts']
@@ -242,20 +280,24 @@ async function plantel() {
 /* ---------- Noticias ---------- */
 
 async function noticias() {
-  const destino = document.querySelector('[data-noticias]');
-  if (!destino) return;
-  const limite = Number(destino.dataset.noticias) || 0;
+  const destinos = document.querySelectorAll('[data-noticias]');
+  if (!destinos.length) return;
 
   let d;
   try {
     d = await traer(RUTAS.noticias);
   } catch (e) {
-    falla(destino, 'las noticias');
+    destinos.forEach(x => falla(x, 'las noticias'));
     return;
   }
 
-  avisoEjemplo(d, document.querySelector('[data-aviso-ejemplo]'));
+  avisoEjemplo(d);
 
+  destinos.forEach(destino => pintarNoticias(destino, d));
+}
+
+function pintarNoticias(destino, d) {
+  const limite = Number(destino.dataset.noticias) || 0;
   const notas = limite ? d.notas.slice(0, limite) : d.notas;
   destino.innerHTML = notas.map(n => `
     <article class="noticia">
@@ -290,6 +332,7 @@ function anio() {
   document.querySelectorAll('[data-anio]').forEach(n => { n.textContent = new Date().getFullYear(); });
 }
 
+libro();
 menu();
 anio();
 formularios();

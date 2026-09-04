@@ -17,7 +17,7 @@
 <link rel="apple-touch-icon" href="assets/img/escudo-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
@@ -31,9 +31,9 @@
         <small>Montevideo · 1917</small>
       </span>
     </a>
-    <button class="menu-boton" aria-expanded="false" aria-controls="menu-principal">Menú</button>
-    <nav class="menu" id="menu-principal" aria-label="Principal">
-        <a href="index.html">Inicio</a>
+    <button class="menu-boton" aria-expanded="false" aria-controls="menu-principal">Capítulos</button>
+    <nav class="menu" id="menu-principal" aria-label="Capítulos del libro">
+        <a href="index.html">Portada</a>
         <a href="club.html">El club</a>
         <a href="plantel.html">Plantel</a>
         <a href="fixture.html" aria-current="page">Fixture y tabla</a>
@@ -43,46 +43,53 @@
     </nav>
   </div>
 </header>
-<div class="filete"><i></i><i></i><i></i><i></i></div>
 
-<main id="contenido">
-
-<section class="seccion seccion--profundo tex-diagonal">
-  <div class="marco claro">
-    <p class="cintilla">Tercera División Profesional · 2026</p>
+<main id="contenido" class="hoja">
+<section class="portadilla">
+  <div class="marco">
+    <p class="romano-grande">Capítulo III</p>
     <h1>Fixture y tabla</h1>
     <p class="plomo">Partidos, resultados y posiciones. Se actualiza después de cada fecha.</p>
+    <div class="filete-cap"></div>
   </div>
 </section>
 
-<section class="seccion seccion--hueso">
+<section class="seccion">
   <div class="marco">
       <p class="nota" data-aviso-ejemplo hidden>
         Datos de ejemplo. Cargar la información oficial antes de publicar el sitio.
       </p>
-    <p class="cintilla">Próximo partido</p>
-    <div data-partidos="proximo" style="margin-bottom:36px"><p class="cargando">Cargando…</p></div>
+    <p class="cintilla" style="margin-top:26px">Próximo partido</p>
+    <div class="rejilla rejilla--2">
+      <div data-partidos="proximo"><p class="cargando">Cargando…</p></div>
+      <div data-partidos="ultimo"><p class="cargando">Cargando…</p></div>
+    </div>
+  </div>
+</section>
 
+<section class="seccion">
+  <div class="marco">
     <p class="cintilla">Próximas fechas</p>
     <div class="lista-partidos" data-partidos="proximos"><p class="cargando">Cargando…</p></div>
   </div>
 </section>
 
-<section class="seccion seccion--hueso-80">
+<section class="seccion">
   <div class="marco">
     <p class="cintilla">Resultados</p>
     <h2>Últimos partidos</h2>
-    <div class="lista-partidos" data-partidos="resultados" style="margin-top:24px"><p class="cargando">Cargando…</p></div>
+    <div class="lista-partidos" data-partidos="resultados" style="margin-top:22px"><p class="cargando">Cargando…</p></div>
   </div>
 </section>
 
-<section class="seccion seccion--hueso" id="tabla">
+<section class="seccion" id="tabla">
   <div class="marco">
     <p class="cintilla">Posiciones</p>
     <h2>Tabla</h2>
-    <div data-tabla="completa" style="margin-top:24px"><p class="cargando">Cargando…</p></div>
+    <div data-tabla="completa" style="margin-top:22px"><p class="cargando">Cargando…</p></div>
   </div>
 </section>
+<p class="folio"><i></i> III · Fixture y tabla · Centro Atlético Lito <i></i></p>
 </main>
 
 <footer class="pie">
@@ -97,7 +104,7 @@
         </div>
       </div>
       <div>
-        <h4>El club</h4>
+        <h4>Capítulos</h4>
         <ul>
           <li><a href="club.html">El club</a></li>
           <li><a href="plantel.html">Plantel</a></li>

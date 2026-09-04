@@ -17,7 +17,7 @@
 <link rel="apple-touch-icon" href="assets/img/escudo-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
@@ -31,9 +31,9 @@
         <small>Montevideo · 1917</small>
       </span>
     </a>
-    <button class="menu-boton" aria-expanded="false" aria-controls="menu-principal">Menú</button>
-    <nav class="menu" id="menu-principal" aria-label="Principal">
-        <a href="index.html">Inicio</a>
+    <button class="menu-boton" aria-expanded="false" aria-controls="menu-principal">Capítulos</button>
+    <nav class="menu" id="menu-principal" aria-label="Capítulos del libro">
+        <a href="index.html">Portada</a>
         <a href="club.html">El club</a>
         <a href="plantel.html">Plantel</a>
         <a href="fixture.html">Fixture y tabla</a>
@@ -43,19 +43,18 @@
     </nav>
   </div>
 </header>
-<div class="filete"><i></i><i></i><i></i><i></i></div>
 
-<main id="contenido">
-
-<section class="seccion seccion--profundo tex-diagonal">
-  <div class="marco claro">
-    <p class="cintilla">Contacto</p>
-    <h1>Hablemos.</h1>
+<main id="contenido" class="hoja">
+<section class="portadilla">
+  <div class="marco">
+    <p class="romano-grande">Capítulo VI</p>
+    <h1>Contacto</h1>
     <p class="plomo">Sede, prensa, formativas y uso de marca. Escribinos y te respondemos.</p>
+    <div class="filete-cap"></div>
   </div>
 </section>
 
-<section class="seccion seccion--hueso">
+<section class="seccion">
   <div class="marco">
     <div class="rejilla rejilla--2">
       <div>
@@ -72,7 +71,7 @@
         <div id="prensa" style="margin-top:36px">
           <p class="cintilla">Prensa y marca</p>
           <h3>Acreditaciones y archivos</h3>
-          <p>Para acreditaciones de prensa, fotos institucionales, archivos vectoriales del escudo o autorizaciones de uso de marca: <a href="mailto:marca@calito.uy">marca@calito.uy</a>.</p>
+          <p class="prosa">Para acreditaciones de prensa, fotos institucionales, archivos vectoriales del escudo o autorizaciones de uso de marca: <a href="mailto:marca@calito.uy">marca@calito.uy</a>.</p>
           <p class="aviso-formulario">El escudo no se estira, no se rota y no cambia de color fuera de paleta. Manual de marca, edición 2026.</p>
         </div>
       </div>
@@ -80,28 +79,13 @@
         <p class="cintilla">Formulario</p>
         <h2>Escribinos</h2>
         <form class="formulario" data-sin-backend="marca@calito.uy">
-          <div class="campo">
-            <label for="c-nombre">Nombre</label>
-            <input id="c-nombre" name="nombre" type="text" autocomplete="name" required>
-          </div>
-          <div class="campo">
-            <label for="c-correo">Correo</label>
-            <input id="c-correo" name="correo" type="email" autocomplete="email" required>
-          </div>
+          <div class="campo"><label for="c-nombre">Nombre</label><input id="c-nombre" name="nombre" type="text" autocomplete="name" required></div>
+          <div class="campo"><label for="c-correo">Correo</label><input id="c-correo" name="correo" type="email" autocomplete="email" required></div>
           <div class="campo">
             <label for="c-motivo">Motivo</label>
-            <select id="c-motivo" name="motivo">
-              <option>Consulta general</option>
-              <option>Socios</option>
-              <option>Formativas</option>
-              <option>Prensa</option>
-              <option>Sponsors</option>
-            </select>
+            <select id="c-motivo" name="motivo"><option>Consulta general</option><option>Socios</option><option>Formativas</option><option>Prensa</option><option>Sponsors</option></select>
           </div>
-          <div class="campo">
-            <label for="c-mensaje">Mensaje</label>
-            <textarea id="c-mensaje" name="mensaje" required></textarea>
-          </div>
+          <div class="campo"><label for="c-mensaje">Mensaje</label><textarea id="c-mensaje" name="mensaje" required></textarea></div>
           <button class="boton" type="submit">Enviar</button>
           <p class="aviso-formulario" data-respuesta hidden></p>
         </form>
@@ -109,6 +93,7 @@
     </div>
   </div>
 </section>
+<p class="folio"><i></i> VI · Contacto · Centro Atlético Lito <i></i></p>
 </main>
 
 <footer class="pie">
@@ -123,7 +108,7 @@
         </div>
       </div>
       <div>
-        <h4>El club</h4>
+        <h4>Capítulos</h4>
         <ul>
           <li><a href="club.html">El club</a></li>
           <li><a href="plantel.html">Plantel</a></li>

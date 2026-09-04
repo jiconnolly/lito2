@@ -17,7 +17,7 @@
 <link rel="apple-touch-icon" href="assets/img/escudo-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
@@ -31,9 +31,9 @@
         <small>Montevideo · 1917</small>
       </span>
     </a>
-    <button class="menu-boton" aria-expanded="false" aria-controls="menu-principal">Menú</button>
-    <nav class="menu" id="menu-principal" aria-label="Principal">
-        <a href="index.html">Inicio</a>
+    <button class="menu-boton" aria-expanded="false" aria-controls="menu-principal">Capítulos</button>
+    <nav class="menu" id="menu-principal" aria-label="Capítulos del libro">
+        <a href="index.html">Portada</a>
         <a href="club.html" aria-current="page">El club</a>
         <a href="plantel.html">Plantel</a>
         <a href="fixture.html">Fixture y tabla</a>
@@ -43,41 +43,44 @@
     </nav>
   </div>
 </header>
-<div class="filete"><i></i><i></i><i></i><i></i></div>
 
-<main id="contenido">
-
-<section class="seccion seccion--profundo tex-diagonal">
-  <div class="marco claro">
-    <p class="cintilla">El club</p>
-    <h1>Más de un siglo de barrio, balón y camiseta.</h1>
-    <p class="plomo">Nacimos en 1917, cuando un puñado de vecinos se cansó de jugar en el potrero y decidió formar un club. Desde entonces compartimos una sola idea: el fútbol popular se sostiene con trabajo, identidad de barrio y memoria larga.</p>
+<main id="contenido" class="hoja">
+<section class="portadilla">
+  <div class="marco">
+    <p class="romano-grande">Capítulo I</p>
+    <h1>El club</h1>
+    <p class="plomo">Nacimos en 1917, cuando un puñado de vecinos se cansó de jugar en el potrero y decidió formar un club.</p>
+    <div class="filete-cap"></div>
   </div>
 </section>
 
-<section class="seccion seccion--hueso">
+<section class="seccion">
   <div class="marco">
     <div class="rejilla rejilla--2">
-      <div>
+      <div class="prosa">
         <p class="cintilla">Historia</p>
         <h2>De la vereda a la cancha</h2>
-        <p>Lito es un club de barrio en el sentido más literal: se fundó entre vecinos, se sostuvo con vecinos y sigue jugando para ellos. La sede es punto de encuentro antes que oficina y la cancha, el lugar donde el club se explica solo.</p>
+        <p class="capitular">Lito es un club de barrio en el sentido más literal: se fundó entre vecinos, se sostuvo con vecinos y sigue jugando para ellos. La sede es punto de encuentro antes que oficina, y la cancha es el lugar donde el club se explica solo.</p>
+        <p>Desde entonces compartimos una sola idea: el fútbol popular se sostiene con trabajo, identidad de barrio y memoria larga.</p>
         <p>Las fechas y los hitos que siguen se completan con el archivo institucional. Lo que no cambia es el marco: 1917, Montevideo, fútbol de ascenso y una hinchada que llega temprano.</p>
-        <ul class="cronologia">
-          <li><b>1917</b><span><strong>Fundación.</strong> Un grupo de vecinos del barrio formaliza el club.</span></li>
-          <li><b>1920s</b><span><strong>Primeros años.</strong> Consolidación de la sede y de las categorías juveniles. <em>Completar con el archivo.</em></span></li>
-          <li><b>Hoy</b><span><strong>Tercera División Profesional.</strong> Primer equipo, formativas y actividad social todo el año.</span></li>
-        </ul>
       </div>
       <div>
-        <img src="assets/img/fotos/sede.jpg" alt="Sede y cancha del Centro Atlético Lito" width="1200" height="800" loading="lazy" style="border-radius:4px">
-        <p class="aviso-formulario" style="margin-top:12px">Reemplazar por una foto real de la sede o la cancha.</p>
+        <figure class="foto-album" style="margin:0">
+          <img src="assets/img/fotos/sede.jpg" alt="Sede y cancha del Centro Atlético Lito" width="1200" height="800" loading="lazy">
+        </figure>
+        <p class="epigrafe">Reemplazar por una foto real de la sede o la cancha.</p>
       </div>
     </div>
+
+    <ul class="cronologia" style="margin-top:44px">
+      <li><b>1917</b><span><strong>Fundación.</strong> Un grupo de vecinos del barrio formaliza el club.</span></li>
+      <li><b>1920s</b><span><strong>Primeros años.</strong> Consolidación de la sede y de las categorías juveniles. <em>Completar con el archivo.</em></span></li>
+      <li><b>Hoy</b><span><strong>Tercera División Profesional.</strong> Primer equipo, formativas y actividad social todo el año.</span></li>
+    </ul>
   </div>
 </section>
 
-<section class="seccion seccion--azul tex-diagonal">
+<section class="lamina">
   <div class="marco claro">
     <p class="cintilla">Sede y cancha</p>
     <h2>Dónde late el club</h2>
@@ -91,43 +94,34 @@
   </div>
 </section>
 
-<section class="seccion seccion--hueso-80">
+<section class="seccion">
   <div class="marco">
     <p class="cintilla">Indumentaria 2026</p>
     <h2>La camiseta es el escudo en movimiento</h2>
-    <div class="rejilla rejilla--3" style="margin-top:28px">
+    <div class="rejilla rejilla--3" style="margin-top:26px">
       <article class="camiseta">
         <div class="muestra" style="background:var(--azul)"><i style="background:linear-gradient(90deg,transparent 42%,var(--rojo) 42% 58%,transparent 58%)"></i></div>
-        <div class="pie">
-          <h4>Titular</h4>
-          <p class="detalle">Azul · banda central roja · local</p>
-        </div>
+        <div class="rotulo"><h4>Titular</h4><p class="detalle">Azul · banda central roja · local</p></div>
       </article>
       <article class="camiseta">
         <div class="muestra" style="background:var(--hueso)"><i style="background:linear-gradient(90deg,transparent 88%,var(--rojo) 88%)"></i></div>
-        <div class="pie">
-          <h4>Suplente</h4>
-          <p class="detalle">Hueso · vivo rojo en puño · visitante</p>
-        </div>
+        <div class="rotulo"><h4>Suplente</h4><p class="detalle">Hueso · vivo rojo en puño · visitante</p></div>
       </article>
       <article class="camiseta">
         <div class="muestra" style="background:var(--oro)"><i style="background-image:repeating-linear-gradient(45deg,rgba(12,16,36,.22) 0 6px,transparent 6px 18px),repeating-linear-gradient(-45deg,rgba(12,16,36,.22) 0 6px,transparent 6px 18px)"></i></div>
-        <div class="pie">
-          <h4>Arquero</h4>
-          <p class="detalle">Oro · tramado tinta · diferenciación</p>
-        </div>
+        <div class="rotulo"><h4>Arquero</h4><p class="detalle">Oro · tramado tinta · diferenciación</p></div>
       </article>
     </div>
   </div>
 </section>
 
-<section class="seccion seccion--hueso">
+<section class="seccion">
   <div class="marco">
     <div class="rejilla rejilla--2">
       <div>
         <p class="cintilla">Institucional</p>
         <h2>Comisión directiva</h2>
-        <p>La comisión se renueva en asamblea de socios. Cargar la nómina vigente y la fecha de la última asamblea.</p>
+        <p class="prosa">La comisión se renueva en asamblea de socios. Cargar la nómina vigente y la fecha de la última asamblea.</p>
         <dl class="datos">
           <div><dt>Presidencia</dt><dd>A confirmar</dd></div>
           <div><dt>Vicepresidencia</dt><dd>A confirmar</dd></div>
@@ -139,18 +133,19 @@
       <div>
         <p class="cintilla">Identidad</p>
         <h2>El escudo es la firma del club</h2>
-        <p>Blasón con borde dorado, fondo azul, banderines rojos y la pelota como protagonista. El año de fundación lo ancla al tiempo; la estrella lo proyecta hacia adelante.</p>
-        <div class="rejilla rejilla--4" style="margin-top:20px">
-          <div class="tarjeta" style="background:var(--azul);color:var(--hueso);padding:16px"><span class="mono">Azul Lito</span><br><span class="mono" style="color:var(--oro)">#1C2C6B</span></div>
-          <div class="tarjeta" style="background:var(--rojo);color:var(--hueso);padding:16px"><span class="mono">Rojo Lito</span><br><span class="mono">#D12C3E</span></div>
-          <div class="tarjeta" style="background:var(--oro);color:var(--tinta);padding:16px"><span class="mono">Oro Lito</span><br><span class="mono">#D4A85A</span></div>
-          <div class="tarjeta" style="background:var(--hueso-80);color:var(--tinta);padding:16px"><span class="mono">Hueso</span><br><span class="mono">#F4EFE6</span></div>
+        <p class="prosa">Blasón con borde dorado, fondo azul, banderines rojos y la pelota como protagonista. El año de fundación lo ancla al tiempo; la estrella lo proyecta hacia adelante.</p>
+        <div class="rejilla rejilla--4" style="margin-top:18px">
+          <div style="background:var(--azul);color:var(--hueso);padding:14px"><span class="mono">Azul Lito</span><br><span class="mono" style="color:var(--oro)">#1C2C6B</span></div>
+          <div style="background:var(--rojo);color:var(--hueso);padding:14px"><span class="mono">Rojo Lito</span><br><span class="mono">#D12C3E</span></div>
+          <div style="background:var(--oro);color:var(--tinta);padding:14px"><span class="mono">Oro Lito</span><br><span class="mono">#D4A85A</span></div>
+          <div style="background:var(--hueso-80);color:var(--tinta);padding:14px"><span class="mono">Hueso</span><br><span class="mono">#F4EFE6</span></div>
         </div>
         <p class="aviso-formulario" style="margin-top:14px">Uso de marca y archivos vectoriales: <a href="mailto:marca@calito.uy">marca@calito.uy</a></p>
       </div>
     </div>
   </div>
 </section>
+<p class="folio"><i></i> I · El club · Centro Atlético Lito <i></i></p>
 </main>
 
 <footer class="pie">
@@ -165,7 +160,7 @@
         </div>
       </div>
       <div>
-        <h4>El club</h4>
+        <h4>Capítulos</h4>
         <ul>
           <li><a href="club.html">El club</a></li>
           <li><a href="plantel.html">Plantel</a></li>

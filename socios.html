@@ -17,7 +17,7 @@
 <link rel="apple-touch-icon" href="assets/img/escudo-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
@@ -31,9 +31,9 @@
         <small>Montevideo · 1917</small>
       </span>
     </a>
-    <button class="menu-boton" aria-expanded="false" aria-controls="menu-principal">Menú</button>
-    <nav class="menu" id="menu-principal" aria-label="Principal">
-        <a href="index.html">Inicio</a>
+    <button class="menu-boton" aria-expanded="false" aria-controls="menu-principal">Capítulos</button>
+    <nav class="menu" id="menu-principal" aria-label="Capítulos del libro">
+        <a href="index.html">Portada</a>
         <a href="club.html">El club</a>
         <a href="plantel.html">Plantel</a>
         <a href="fixture.html">Fixture y tabla</a>
@@ -43,19 +43,18 @@
     </nav>
   </div>
 </header>
-<div class="filete"><i></i><i></i><i></i><i></i></div>
 
-<main id="contenido">
-
-<section class="seccion seccion--profundo tex-diagonal">
-  <div class="marco claro">
-    <p class="cintilla">Socios y socias</p>
-    <h1>El club se sostiene con vos.</h1>
+<main id="contenido" class="hoja">
+<section class="portadilla">
+  <div class="marco">
+    <p class="romano-grande">Capítulo V</p>
+    <h1>Hacete socio</h1>
     <p class="plomo">La cuota social paga la cancha, los viajes y las formativas. Ser socio de Lito es entrar a la cancha y tener voz en la asamblea.</p>
+    <div class="filete-cap"></div>
   </div>
 </section>
 
-<section class="seccion seccion--hueso" id="cuotas">
+<section class="seccion" id="cuotas">
   <div class="marco">
     <p class="cintilla">Categorías</p>
     <h2>Cuotas</h2>
@@ -64,81 +63,52 @@
       <article class="tarjeta cuota">
         <h3>Adherente</h3>
         <p class="precio">$ 350<small>por mes · pesos uruguayos</small></p>
-        <ul>
-          <li>Carné de socio</li>
-          <li>Entrada a partidos de local</li>
-          <li>Novedades por correo</li>
-        </ul>
+        <ul><li>Carné de socio</li><li>Entrada a partidos de local</li><li>Novedades por correo</li></ul>
       </article>
       <article class="tarjeta cuota cuota--destacada">
         <h3>Activo</h3>
         <p class="precio">$ 600<small>por mes · pesos uruguayos</small></p>
-        <ul>
-          <li>Todo lo del adherente</li>
-          <li>Voz y voto en la asamblea</li>
-          <li>Descuento en indumentaria</li>
-        </ul>
+        <ul><li>Todo lo del adherente</li><li>Voz y voto en la asamblea</li><li>Descuento en indumentaria</li></ul>
       </article>
       <article class="tarjeta cuota">
         <h3>Vitalicio</h3>
         <p class="precio">$ 1.200<small>por mes · pesos uruguayos</small></p>
-        <ul>
-          <li>Todo lo del activo</li>
-          <li>Invitación a actos institucionales</li>
-          <li>Reconocimiento en la sede</li>
-        </ul>
+        <ul><li>Todo lo del activo</li><li>Invitación a actos institucionales</li><li>Reconocimiento en la sede</li></ul>
       </article>
     </div>
   </div>
 </section>
 
-<section class="seccion seccion--hueso-80">
+<section class="seccion">
   <div class="marco">
     <div class="rejilla rejilla--2">
       <div>
         <p class="cintilla">Alta de socio</p>
         <h2>Sumate</h2>
-        <p>Completá el formulario y el club se comunica para cerrar el alta y la forma de pago.</p>
+        <p class="prosa">Completá el formulario y el club se comunica para cerrar el alta y la forma de pago.</p>
         <form class="formulario" data-sin-backend="marca@calito.uy">
           <div class="campo-doble">
-            <div class="campo">
-              <label for="nombre">Nombre y apellido</label>
-              <input id="nombre" name="nombre" type="text" autocomplete="name" required>
-            </div>
-            <div class="campo">
-              <label for="documento">Documento</label>
-              <input id="documento" name="documento" type="text" inputmode="numeric" required>
-            </div>
+            <div class="campo"><label for="nombre">Nombre y apellido</label><input id="nombre" name="nombre" type="text" autocomplete="name" required></div>
+            <div class="campo"><label for="documento">Documento</label><input id="documento" name="documento" type="text" inputmode="numeric" required></div>
           </div>
           <div class="campo-doble">
-            <div class="campo">
-              <label for="correo">Correo</label>
-              <input id="correo" name="correo" type="email" autocomplete="email" required>
-            </div>
-            <div class="campo">
-              <label for="telefono">Teléfono</label>
-              <input id="telefono" name="telefono" type="tel" autocomplete="tel">
-            </div>
+            <div class="campo"><label for="correo">Correo</label><input id="correo" name="correo" type="email" autocomplete="email" required></div>
+            <div class="campo"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel"></div>
           </div>
           <div class="campo">
             <label for="categoria">Categoría</label>
-            <select id="categoria" name="categoria">
-              <option>Adherente</option>
-              <option>Activo</option>
-              <option>Vitalicio</option>
-            </select>
+            <select id="categoria" name="categoria"><option>Adherente</option><option>Activo</option><option>Vitalicio</option></select>
           </div>
-          <div class="campo">
-            <label for="mensaje">Comentario</label>
-            <textarea id="mensaje" name="mensaje"></textarea>
-          </div>
+          <div class="campo"><label for="mensaje">Comentario</label><textarea id="mensaje" name="mensaje"></textarea></div>
           <button class="boton" type="submit">Enviar solicitud</button>
           <p class="aviso-formulario" data-respuesta hidden></p>
           <p class="aviso-formulario">Los datos se usan solo para gestionar el alta de socio.</p>
         </form>
       </div>
       <div>
-        <img src="assets/img/fotos/hinchada.jpg" alt="Hinchada del Centro Atlético Lito" width="1200" height="800" loading="lazy" style="border-radius:4px">
+        <figure class="foto-album" style="margin:0">
+          <img src="assets/img/fotos/hinchada.jpg" alt="Hinchada del Centro Atlético Lito" width="1200" height="800" loading="lazy">
+        </figure>
         <div class="nota" style="margin-top:20px">
           El formulario todavía no está conectado a un backend. Ver README para publicar el Worker de Cloudflare.
         </div>
@@ -146,6 +116,7 @@
     </div>
   </div>
 </section>
+<p class="folio"><i></i> V · Hacete socio · Centro Atlético Lito <i></i></p>
 </main>
 
 <footer class="pie">
@@ -160,7 +131,7 @@
         </div>
       </div>
       <div>
-        <h4>El club</h4>
+        <h4>Capítulos</h4>
         <ul>
           <li><a href="club.html">El club</a></li>
           <li><a href="plantel.html">Plantel</a></li>
