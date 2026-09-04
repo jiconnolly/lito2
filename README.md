@@ -124,13 +124,19 @@ tocar el CSS:
 | Archivo | Dónde se usa | Cómo conviene que sea |
 | --- | --- | --- |
 | `fondo.jpg` | Fondo de la portada | Apaisada y oscura en los bordes, con una superficie clara donde apoyar el libro |
-| `cuero.jpg` | Tapa del libro | Grano parejo, sin costuras ni cantos; se usa recortada a `cover` |
+| `tapa.jpg` | Tapa y contratapa | Tapa de cuero fotografiada de frente, con su filete dorado impreso. El escudo y las letras se componen encima en CSS |
+| `lomo.jpg` | Lomo del tomo | Lomo con nervios, de frente y vertical; se recorta a `cover` sobre una cara de 58 px |
+| `cuero.jpg` | (sin uso hoy) | Quedó de la etapa anterior; el troquel del escudo ya toma su grano de `tapa.jpg` |
 | `papel.jpg` | Hojas y guarda | **Tiene que repetir sin costura**: se repite en mosaico de 520 px |
-| `desgaste.png` | Tapa, lomo y contratapa | Capa RGBA de rozaduras y rayones, generada por código. Se estira a `cover`, no repite |
 
 El papel del repositorio es un mosaico espejado y llevado al hueso del manual
 (`#F4EFE6`), para que la trama no cante y el color siga siendo el de la marca.
 Si se reemplaza por una foto cruda, el mosaico se va a notar.
+
+**La tapa trae su propio filete dorado.** Por eso `.cara-frente` no dibuja
+ningún marco y el contenido va con `padding: 13% 14% 12.5%`, que es lo que lo
+mantiene dentro del filete de la foto. Si se cambia la foto de tapa hay que
+volver a medir ese padding contra el nuevo marco.
 
 ## Reglas de marca que el sitio respeta
 
