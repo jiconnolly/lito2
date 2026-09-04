@@ -32,13 +32,14 @@ NOINDEX = True
 
 # Los capítulos del libro, en orden de lectura.
 CAPITULOS = [
-    ("club.html", "El club", "I", "Del Café Lito a la cancha"),
+    ("club.html", "El club", "I", "De 1917 a hoy"),
     ("plantel.html", "Plantel", "II", "Primer equipo y formativas"),
     ("fixture.html", "Fixture y tabla", "III", "Domingo a domingo"),
     ("noticias.html", "Noticias", "IV", "Partes de prensa"),
     ("galeria.html", "Galería", "V", "Fotos del plantel y los partidos"),
-    ("socios.html", "Hacete socio", "VI", "Cuotas y alta"),
-    ("contacto.html", "Contacto", "VII", "Sede, prensa y marca"),
+    ("proyecto.html", "El próximo capítulo", "VI", "La cancha nueva"),
+    ("socios.html", "Hacete socio", "VII", "Cuotas y alta"),
+    ("contacto.html", "Contacto", "VIII", "Sede, prensa y marca"),
 ]
 
 
@@ -78,9 +79,11 @@ def encabezado_html(titulo, descripcion, archivo=""):
 
 
 def cabecera_hoja(actual):
-    """Cornisa de las páginas interiores: escudo chico y los capítulos."""
-    enlaces = '        <a href="index.html">Portada</a>\n'
-    enlaces += "\n".join(
+    """Cornisa de las páginas interiores: escudo chico y los capítulos.
+
+    Sin enlace a la portada: el escudo de la izquierda ya lleva ahí, y con
+    ocho capítulos cada palabra de más manda la cornisa a dos líneas."""
+    enlaces = "\n".join(
         '        <a href="{h}"{a}>{t}</a>'.format(
             h=h, t=t, a=' aria-current="page"' if h == actual else ""
         )
@@ -138,7 +141,7 @@ def colofon():
           <strong>Centro Atlético Lito</strong><br>
           Arroyo Seco, Montevideo, Uruguay.<br>
           Fundado el 24 de julio de 1917.<br>
-          Primera División Amateur · AUF.
+          Primera Divisional C · AUF.
         </div>
       </div>
       <div>
@@ -273,21 +276,67 @@ def pagina_portada():
 # Capítulos
 # ============================================================
 
+def hueco(rotulo, proporcion="4 / 5", archivo=None, alt="", credito=""):
+    """Un lugar reservado para una foto que todavía no existe.
+
+    Cuando la foto llegue, se pasa el archivo por `archivo` y este mismo
+    llamado la dibuja: no hay que tocar el marcado alrededor. Sin archivo
+    dibuja un marco discreto con el rótulo de lo que va ahí."""
+    pie = f'<figcaption>{credito}</figcaption>' if credito else ""
+    if archivo:
+        return (f'<figure class="hueco"><img src="{archivo}" alt="{alt or rotulo}" loading="lazy">'
+                f'{pie}</figure>')
+    return (f'<figure class="hueco hueco--vacio" style="aspect-ratio:{proporcion}">'
+            f'<span class="hueco-rotulo">{rotulo}</span></figure>')
+
+
+def momento(anio, titulo, bajada, ancla):
+    """Cabecera de uno de los cuatro grandes momentos del club."""
+    return f"""
+<section class="momento" id="{ancla}">
+  <div class="marco momento-fila">
+    <p class="momento-anio">{anio}</p>
+    <div>
+      <h2 class="momento-titulo">{titulo}</h2>
+      <p class="momento-bajada">{bajada}</p>
+    </div>
+  </div>
+</section>
+"""
+
+
+def cierre():
+    """La última página del libro. Va sólo en los capítulos que cierran el
+    arco narrativo, no en todos, para que no se gaste."""
+    return """
+<section class="cierre">
+  <div class="marco">
+    <p class="cierre-frase">La historia ya está escrita.<br><em>El próximo capítulo, no.</em></p>
+    <img class="cierre-escudo" src="assets/img/escudo.png" alt="" width="720" height="879" loading="lazy">
+    <p class="cierre-firma">Centro Atlético Lito<span>1917 — Montevideo</span></p>
+  </div>
+</section>
+"""
+
+
 def cap_club():
-    return portadilla("I", "El club", "Nacimos el 24 de julio de 1917 en un café de Arroyo Seco. Más de un siglo después seguimos siendo del barrio.") + """
+    return portadilla("I", "El club", "Nacimos el 24 de julio de 1917 en un café de Arroyo Seco. Desaparecimos, volvimos, y estamos escribiendo lo que sigue.") + """
+<nav class="riel" aria-label="Los cuatro momentos del club">
+  <div class="marco riel-fila">
+    <a href="#nacimos"><b>1917</b><span>Nacimos</span></a>
+    <a href="#historia"><b>1921</b><span>Hicimos historia</span></a>
+    <a href="#volvimos"><b>2022</b><span>Volvimos</span></a>
+    <a href="#proximo"><b>2026</b><span>El próximo capítulo</span></a>
+  </div>
+</nav>
+""" + momento("1917", "Nacimos", "En un café de Arroyo Seco, con el nombre del hombre del mostrador.", "nacimos") + """
 <section class="seccion">
   <div class="marco">
     <div class="rejilla rejilla--2">
       <div class="prosa">
-        <p class="cintilla">Historia</p>
-        <h2>De la vereda a la cancha</h2>
         <p class="capitular">El nombre salió del mostrador. Manuel Semino era «Lito» para todo el barrio, y su café, en Agraciada y Santa Fe, era el punto de encuentro de Arroyo Seco. Cuando el 24 de julio de 1917 los que paraban ahí decidieron fundar el club, le pusieron el nombre del café.</p>
         <p>La primera camiseta fue azul eléctrico con vivos rojos y pantalón blanco, con el escudo sobre el pecho izquierdo. De ahí viene el apodo: la azulgrana de Arroyo Seco. La de hoy sigue esa línea: azul francia, cuello rojo y vivo rojo en las mangas.</p>
-        <p>Afiliado a la AUF, ganó la Divisional Extra en 1919 y la Intermedia en 1920. Dos ascensos al hilo lo dejaron en el Campeonato Uruguayo de 1921, y ahí se mantuvo hasta 1928. Sus mejores temporadas fueron 1922 y 1923: quinto puesto.</p>
-        <p>Por esta camiseta pasaron José Nasazzi y Héctor «el Manco» Castro, que debutaron en Lito, y también Pedro Cea. Los tres estuvieron después en las conquistas grandes de Uruguay, la del Mundial de 1930 incluida.</p>
-        <p>Durante el cisma del fútbol uruguayo, Lito fue uno de los tres clubes que presentaron dos equipos en las competencias paralelas. Al de la AUF le decían el <em>Lito redondo</em>; al de la Federación, el <em>Lito cuadrado</em>. La diferencia estaba en la forma del escudo de cada camiseta.</p>
-        <p>Cuando el fútbol se profesionalizó en 1932, el club siguió amateur y jugó en el ascenso hasta desaparecer de la competencia oficial cerca de 1947. Desde 1952 volvió a jugar en la Federación Uruguaya de Fútbol Amateur, impulsado por los hijos de Vicente Cappuccio: dos campeonatos y dos subcampeonatos. Dejó de competir en 1960.</p>
-        <p>En 2022, impulsado por Rodolfo Neme, Lito volvió a las competencias oficiales de la AUF, setenta y cinco años después, en la Divisional D. En 2023 salió campeón —2 a 0 a Rincón de Carrasco en la final— y subió a la Primera División Amateur.</p>
+        <p>Un club nace de un barrio antes que de un acta. Lito no se mudó nunca: la misma cuadrícula de calles que llevaba al café lleva hoy a la cancha.</p>
       </div>
       <div>
         <figure class="foto-album" style="margin:0">
@@ -296,34 +345,80 @@ def cap_club():
         <p class="epigrafe">Reemplazar por una foto real de la sede o la cancha.</p>
       </div>
     </div>
-
-    <ul class="cronologia" style="margin-top:44px">
-      <li><b>1917</b><span><strong>Fundación.</strong> El 24 de julio, en el Café Lito de Agraciada y Santa Fe.</span></li>
-      <li><b>1919</b><span><strong>Divisional Extra.</strong> Primer título y primer ascenso.</span></li>
-      <li><b>1920</b><span><strong>Divisional Intermedia.</strong> Segundo título al hilo y salto a Primera.</span></li>
-      <li><b>1921</b><span><strong>Primera División.</strong> Debut en el Campeonato Uruguayo; se mantiene hasta 1928. Quinto en 1922 y en 1923.</span></li>
-      <li><b>1932</b><span><strong>Llega el profesionalismo.</strong> Lito sigue amateur y juega en el ascenso.</span></li>
-      <li><b>1947</b><span><strong>Se apaga.</strong> Desaparece de la competencia oficial.</span></li>
-      <li><b>1952</b><span><strong>La Federación.</strong> Vuelve al amateurismo: dos campeonatos y dos subcampeonatos hasta 1960.</span></li>
-      <li><b>2022</b><span><strong>El regreso.</strong> Setenta y cinco años después, de vuelta en la AUF, en la Divisional D.</span></li>
-      <li><b>2023</b><span><strong>Campeón.</strong> Final ganada 2 a 0 y ascenso a la Primera División Amateur.</span></li>
-    </ul>
   </div>
 </section>
 
-<section class="lamina">
+<section class="seccion barrio">
+  <div class="marco">
+    <p class="cintilla">El barrio</p>
+    <h2>Lito es de Arroyo Seco</h2>
+    <p class="prosa">Entre el puerto y la Rambla, de calles cortas y galpones bajos. El club se fundó a metros de acá y nunca se fue.</p>
+    <div class="barrio-grilla">
+""" + hueco("Calle de Arroyo Seco", "3 / 4") + hueco("Esquina del barrio", "3 / 4") + hueco("Fachadas y arquitectura", "3 / 4") + hueco("Un lugar de la historia del club", "3 / 4") + """
+    </div>
+    <p class="epigrafe">Cuatro lugares reservados para fotos reales del barrio. Se cargan pasándole el archivo al mismo bloque; no hay que tocar el diseño.</p>
+  </div>
+</section>
+""" + momento("1921", "Hicimos historia", "Ocho temporadas en la Primera del fútbol uruguayo y tres campeones del mundo formados acá.", "historia") + """
+<section class="seccion">
+  <div class="marco">
+    <div class="rejilla rejilla--2">
+      <div class="prosa">
+        <p>Afiliado a la AUF, Lito ganó la Divisional Extra en 1919 y la Intermedia en 1920. Dos ascensos al hilo lo dejaron en el Campeonato Uruguayo de 1921, y ahí se mantuvo hasta 1928. Sus mejores temporadas fueron 1922 y 1923: quinto puesto, entre los grandes.</p>
+        <p>Cuando el fútbol se profesionalizó en 1932, el club siguió amateur y jugó en el ascenso hasta desaparecer de la competencia oficial cerca de 1947. Desde 1952 volvió a jugar en la Federación Uruguaya de Fútbol Amateur, impulsado por los hijos de Vicente Cappuccio: dos campeonatos y dos subcampeonatos. Dejó de competir en 1960. Después, silencio.</p>
+      </div>
+      <div class="archivo">
+""" + hueco("Archivo", "4 / 3", "assets/img/historia/archivo-1.jpg", "Fotografía de archivo del fútbol uruguayo de la época", "Archivo · pie de foto a confirmar") + """
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lamina campeones">
   <div class="marco claro">
-    <p class="cintilla">Sede y cancha</p>
-    <h2>Dónde late el club</h2>
-    <dl class="datos">
-      <div><dt>Barrio</dt><dd>Arroyo Seco, Montevideo</dd></div>
-      <div><dt>Apodo</dt><dd>La azulgrana de Arroyo Seco</dd></div>
-      <div><dt>Fundación</dt><dd>24 de julio de 1917</dd></div>
-      <div><dt>Categoría</dt><dd>Primera División Amateur</dd></div>
-      <div><dt>Afiliación</dt><dd>Asociación Uruguaya de Fútbol (AUF)</dd></div>
-      <div><dt>Dirección</dt><dd>A confirmar</dd></div>
-      <div><dt>Cancha</dt><dd>A confirmar</dd></div>
-    </dl>
+    <p class="cintilla">De Lito al mundo</p>
+    <h2>De Lito a campeones del mundo</h2>
+    <p class="prosa campeones-bajada">Tres jugadores que pasaron por esta camiseta terminaron levantando la copa con Uruguay.</p>
+    <div class="campeones-grilla">
+      <article class="campeon">
+""" + hueco("Retrato · José Nasazzi", "4 / 5", "assets/img/historia/nasazzi.jpg", "Retrato de José Nasazzi") + """
+        <h3>José Nasazzi</h3>
+        <p class="detalle">Debutó en Lito. Capitán de Uruguay.</p>
+      </article>
+      <article class="campeon">
+""" + hueco("Retrato · Héctor «Manco» Castro", "4 / 5") + """
+        <h3>Héctor «Manco» Castro</h3>
+        <p class="detalle">Debutó en Lito.</p>
+      </article>
+      <article class="campeon">
+""" + hueco("Retrato · Pedro Cea", "4 / 5") + """
+        <h3>Pedro Cea</h3>
+        <p class="detalle">Pasó por Lito.</p>
+      </article>
+    </div>
+    <p class="epigrafe epigrafe--claro">Faltan dos retratos y confirmar los pies de foto. Se cargan en el mismo bloque.</p>
+  </div>
+</section>
+
+<section class="seccion escision">
+  <div class="marco">
+    <p class="cintilla">La escisión</p>
+    <h2>Dos Lito a la vez</h2>
+    <p class="prosa">Durante el cisma del fútbol uruguayo, Lito fue uno de los tres clubes que presentaron dos equipos en las competencias paralelas. La única forma de distinguirlos era el escudo de la camiseta.</p>
+    <div class="escision-fila">
+      <article class="escision-lado">
+""" + hueco("Escudo del Lito redondo", "1 / 1") + """
+        <h3>Lito redondo</h3>
+        <p class="detalle">El equipo de la AUF. Escudo de forma redondeada.</p>
+      </article>
+      <p class="escision-versus">vs.</p>
+      <article class="escision-lado">
+""" + hueco("Escudo del Lito cuadrado", "1 / 1") + """
+        <h3>Lito cuadrado</h3>
+        <p class="detalle">El equipo de la Federación. Escudo de forma cuadrada.</p>
+      </article>
+    </div>
+    <p class="epigrafe">Los dos escudos históricos van acá. Todavía no están en los archivos del club.</p>
   </div>
 </section>
 
@@ -331,15 +426,62 @@ def cap_club():
   <div class="marco">
     <div class="rejilla rejilla--2">
       <div>
+        <p class="cintilla">Archivo</p>
+        <h2>La línea de tiempo</h2>
+        <ul class="cronologia cronologia--compacta">
+          <li><b>1917</b><span><strong>Fundación.</strong> El 24 de julio, en el Café Lito de Agraciada y Santa Fe.</span></li>
+          <li><b>1919</b><span><strong>Divisional Extra.</strong> Primer título y primer ascenso.</span></li>
+          <li><b>1920</b><span><strong>Divisional Intermedia.</strong> Segundo título al hilo y salto a Primera.</span></li>
+          <li><b>1921</b><span><strong>Primera División.</strong> Debut en el Campeonato Uruguayo; se mantiene hasta 1928.</span></li>
+          <li><b>1932</b><span><strong>Llega el profesionalismo.</strong> Lito sigue amateur y juega en el ascenso.</span></li>
+          <li><b>1947</b><span><strong>Se apaga.</strong> Desaparece de la competencia oficial.</span></li>
+          <li><b>1952</b><span><strong>La Federación.</strong> Vuelve al amateurismo hasta 1960.</span></li>
+          <li><b>2022</b><span><strong>El regreso.</strong> De vuelta en la AUF, en la Divisional D.</span></li>
+          <li><b>2023</b><span><strong>Campeón.</strong> Final ganada 2 a 0 y ascenso.</span></li>
+        </ul>
+      </div>
+      <div>
         <p class="cintilla">Palmarés</p>
         <h2>Lo ganado</h2>
-        <ul class="cronologia">
+        <ul class="cronologia cronologia--compacta">
           <li><b>2023</b><span><strong>Divisional D.</strong> Campeón.</span></li>
           <li><b>2022</b><span><strong>Divisional D.</strong> Campeón de la fase regular.</span></li>
           <li><b>1920</b><span><strong>Divisional Intermedia.</strong> Campeón.</span></li>
           <li><b>1919</b><span><strong>Divisional Extra.</strong> Campeón.</span></li>
         </ul>
-        <p class="aviso-formulario" style="margin-top:14px">Más dos campeonatos y dos subcampeonatos de Primera División Amateur en la Federación, entre 1952 y 1960.</p>
+        <p class="aviso-formulario" style="margin-top:14px">Más dos campeonatos y dos subcampeonatos en la Federación, entre 1952 y 1960.</p>
+        <div class="archivo" style="margin-top:26px">
+""" + hueco("Archivo", "3 / 4", "assets/img/historia/archivo-2.jpg", "Fotografía de archivo del fútbol uruguayo de la época", "Archivo · pie de foto a confirmar") + """
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+""" + momento("2022", "Volvimos", "Setenta y cinco años después del último partido oficial.", "volvimos") + """
+<section class="regreso">
+  <div class="regreso-foto" role="presentation"></div>
+  <div class="marco regreso-cuerpo">
+    <p class="regreso-antetitulo">75 años después</p>
+    <p class="regreso-titulo">Lito volvió.</p>
+    <ol class="regreso-hitos">
+      <li><b>2022</b><span>Regreso a la competición AUF.</span></li>
+      <li><b>2023</b><span>Campeón de la Divisional D.</span></li>
+      <li><b>2026</b><span>Una nueva etapa.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="seccion">
+  <div class="marco">
+    <div class="rejilla rejilla--2">
+      <div>
+        <p class="cintilla">Hoy</p>
+        <h2>El Lito de ahora</h2>
+        <p class="prosa">Primera Divisional C, plantel de primera y formativas trabajando todo el año. La cancha, la tribuna y el domingo volvieron a ser del barrio.</p>
+        <div class="acciones">
+          <a class="boton" href="plantel.html">Ver el plantel</a>
+          <a class="boton boton--fantasma" href="fixture.html">Fixture y tabla</a>
+        </div>
       </div>
       <div>
         <p class="cintilla">En números</p>
@@ -353,6 +495,46 @@ def cap_club():
           <div><dt>Registro en Primera</dt><dd>168 partidos: 53 ganados, 50 empatados, 65 perdidos</dd></div>
         </dl>
       </div>
+    </div>
+  </div>
+</section>
+""" + momento("2026", "El próximo capítulo", "Una cancha propia en Arroyo Seco y un club que quiere crecer sin dejar de ser del barrio.", "proximo") + """
+<section class="lamina">
+  <div class="marco claro">
+    <div class="rejilla rejilla--2">
+      <div>
+        <p class="cintilla">Lo que viene</p>
+        <h2>El terreno ya existe</h2>
+        <p class="prosa">Sobre el predio que el club usa hoy hay un proyecto de cancha, tribunas e instalaciones deportivas para el barrio. Está dibujado, no construido: los renders del capítulo VI muestran cómo sería.</p>
+        <p><a class="boton boton--oro" href="proyecto.html">Ver el proyecto</a></p>
+      </div>
+      <div>
+        <figure class="hueco">
+          <img src="assets/img/proyecto/terreno.jpg" alt="Vista aérea del predio actual del Centro Atlético Lito en Arroyo Seco" loading="lazy">
+          <figcaption>El predio hoy, desde el aire.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion">
+  <div class="marco">
+    <p class="cintilla">Sede y cancha</p>
+    <h2>Dónde late el club</h2>
+    <div class="rejilla rejilla--2">
+      <dl class="datos">
+        <div><dt>Barrio</dt><dd>Arroyo Seco, Montevideo</dd></div>
+        <div><dt>Apodo</dt><dd>La azulgrana de Arroyo Seco</dd></div>
+        <div><dt>Fundación</dt><dd>24 de julio de 1917</dd></div>
+        <div><dt>Categoría</dt><dd>Primera Divisional C</dd></div>
+      </dl>
+      <dl class="datos">
+        <div><dt>Afiliación</dt><dd>Asociación Uruguaya de Fútbol (AUF)</dd></div>
+        <div><dt>Dirección</dt><dd>A confirmar</dd></div>
+        <div><dt>Cancha</dt><dd>A confirmar</dd></div>
+        <div><dt>Presidencia</dt><dd>Rodolfo Neme</dd></div>
+      </dl>
     </div>
   </div>
 </section>
@@ -397,19 +579,78 @@ def cap_club():
       <div>
         <p class="cintilla">Identidad</p>
         <h2>El escudo es la firma del club</h2>
-        <p class="prosa">Blasón de cuarteles en rojo y azul, con las iniciales del club, la pelota al centro y el año de fundación al pie, todo dentro de un borde dorado. El azul y el rojo vienen de la primera camiseta, la de 1917.</p>
+        <p class="prosa">Blasón de cuarteles en rojo y azul, con las iniciales del club, la pelota al centro y el año de fundación al pie. El azul y el rojo vienen de la primera camiseta, la de 1917.</p>
         <div class="rejilla rejilla--4" style="margin-top:18px">
           <div style="background:var(--azul);color:var(--hueso);padding:14px"><span class="mono">Azul Lito</span><br><span class="mono" style="color:var(--oro)">#1C2C6B</span></div>
           <div style="background:var(--rojo);color:var(--hueso);padding:14px"><span class="mono">Rojo Lito</span><br><span class="mono">#D12C3E</span></div>
-          <div style="background:var(--oro);color:var(--tinta);padding:14px"><span class="mono">Oro Lito</span><br><span class="mono">#D4A85A</span></div>
           <div style="background:var(--hueso-80);color:var(--tinta);padding:14px"><span class="mono">Hueso</span><br><span class="mono">#F4EFE6</span></div>
+          <div style="border:1px solid var(--oro);color:var(--tinta);padding:14px"><span class="mono" style="color:var(--oro-80)">Oro Lito</span><br><span class="mono">#D4A85A</span></div>
         </div>
         <p class="aviso-formulario" style="margin-top:14px">Uso de marca y archivos vectoriales: <a href="mailto:marca@calito.uy">marca@calito.uy</a></p>
       </div>
     </div>
   </div>
 </section>
-""" + folio("I", "El club")
+""" + cierre() + folio("I", "El club")
+
+
+def cap_proyecto():
+    return portadilla("VI", "El próximo capítulo", "Una cancha propia en Arroyo Seco. Todavía no está construida: esto es el proyecto.") + """
+<section class="seccion">
+  <div class="marco">
+    <div class="rejilla rejilla--2">
+      <div class="prosa">
+        <p class="cintilla">El punto de partida</p>
+        <h2>El predio, hoy</h2>
+        <p>Lito juega y entrena en Arroyo Seco, sobre un predio que el club viene usando y ordenando. La foto es real y es de ahora: cancha principal, canchas auxiliares y las instalaciones que hay.</p>
+        <p>Sobre ese mismo terreno está dibujado el proyecto de la cancha nueva.</p>
+      </div>
+      <div>
+        <figure class="hueco">
+          <img src="assets/img/proyecto/terreno.jpg" alt="Vista aérea del predio actual del club en Arroyo Seco" loading="lazy">
+          <figcaption>El predio actual, desde el aire. Foto real.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lamina">
+  <div class="marco claro">
+    <p class="marbete">Proyecto · no construido</p>
+    <p class="cintilla">La cancha que viene</p>
+    <h2>Cómo se vería</h2>
+    <p class="prosa">Cancha con tribunas, instalaciones deportivas y espacio abierto para el barrio. Las imágenes que siguen son renders del proyecto: muestran una intención, no una obra terminada ni una fecha.</p>
+    <div class="renders">
+""" + hueco("Render · vista aérea de la cancha", "16 / 9") + hueco("Render · el frente sobre la calle", "16 / 9") + hueco("Render · interior de las instalaciones", "16 / 9") + """
+    </div>
+    <p class="epigrafe epigrafe--claro">Los renders se cargan en este bloque, en <code>assets/img/proyecto/</code>.</p>
+  </div>
+</section>
+
+<section class="seccion">
+  <div class="marco">
+    <p class="cintilla">Qué significa</p>
+    <h2>Una cancha es una sede</h2>
+    <div class="rejilla rejilla--3" style="margin-top:26px">
+      <article class="tarjeta tarjeta--borde-oro"><h3>Para el plantel</h3><p>Jugar de local en el barrio, con vestuarios y cancha propios.</p></article>
+      <article class="tarjeta tarjeta--borde-oro"><h3>Para las formativas</h3><p>Un lugar fijo donde entrenar todo el año.</p></article>
+      <article class="tarjeta tarjeta--borde-oro"><h3>Para el barrio</h3><p>Espacio deportivo abierto en Arroyo Seco.</p></article>
+    </div>
+    <p class="aviso-formulario" style="margin-top:26px">El proyecto está en desarrollo. Plazos, etapas y financiación se publican acá cuando el club los confirme.</p>
+  </div>
+</section>
+
+<section class="franja-cierre">
+  <div class="marco">
+    <div>
+      <h2>Bancá el próximo capítulo</h2>
+      <p>La cuota social sostiene el club mientras el proyecto avanza.</p>
+    </div>
+    <a class="boton boton--oro" href="socios.html">Hacete socio</a>
+  </div>
+</section>
+""" + cierre() + folio("VI", "El próximo capítulo")
 
 
 def cap_plantel():
@@ -540,7 +781,7 @@ def cap_galeria():
 
 
 def cap_socios():
-    return portadilla("VI", "Hacete socio", "La cuota social paga la cancha, los viajes y las formativas. Ser socio de Lito es entrar a la cancha y tener voz en la asamblea.") + """
+    return portadilla("VII", "Hacete socio", "La cuota social paga la cancha, los viajes y las formativas. Ser socio de Lito es entrar a la cancha y tener voz en la asamblea.") + """
 <section class="lamina estandarte">
   <div class="marco claro estandarte-fila">
     <figure class="estandarte-foto">
@@ -617,11 +858,11 @@ def cap_socios():
     </div>
   </div>
 </section>
-""" + folio("VI", "Hacete socio")
+""" + folio("VII", "Hacete socio")
 
 
 def cap_contacto():
-    return portadilla("VII", "Contacto", "Sede, prensa, formativas y uso de marca. Escribinos y te respondemos.") + """
+    return portadilla("VIII", "Contacto", "Sede, prensa, formativas y uso de marca. Escribinos y te respondemos.") + """
 <section class="seccion">
   <div class="marco">
     <div class="rejilla rejilla--2">
@@ -661,7 +902,7 @@ def cap_contacto():
     </div>
   </div>
 </section>
-""" + folio("VII", "Contacto")
+""" + folio("VIII", "Contacto")
 
 
 CUERPOS = {
@@ -670,6 +911,7 @@ CUERPOS = {
     "fixture.html": cap_fixture,
     "noticias.html": cap_noticias,
     "galeria.html": cap_galeria,
+    "proyecto.html": cap_proyecto,
     "socios.html": cap_socios,
     "contacto.html": cap_contacto,
 }
@@ -680,6 +922,7 @@ DESCRIPCIONES = {
     "fixture.html": "Próximos partidos, resultados y tabla de posiciones del Centro Atlético Lito.",
     "noticias.html": "Noticias, partes de prensa y anuncios del Centro Atlético Lito.",
     "galeria.html": "Fotos del plantel y de los partidos del Centro Atlético Lito.",
+    "proyecto.html": "El proyecto de cancha e instalaciones del Centro Atlético Lito en Arroyo Seco.",
     "socios.html": "Categorías de socio, cuotas y alta en el Centro Atlético Lito.",
     "contacto.html": "Datos de contacto, prensa y uso de marca del Centro Atlético Lito.",
 }

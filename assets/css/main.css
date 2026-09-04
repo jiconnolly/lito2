@@ -581,10 +581,10 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 .indice li { margin: 0; }
 .indice a {
   display: grid;
-  grid-template-columns: 1.9em minmax(0, 1fr) auto;
+  grid-template-columns: 1.8em auto minmax(0, 1fr);
   align-items: baseline;
-  gap: 7px;
-  padding: 6px 2px;
+  gap: 6px;
+  padding: 4px 2px;
   text-decoration: none;
   color: var(--tinta);
   border-bottom: 1px dotted var(--sepia-suave);
@@ -596,12 +596,16 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 }
 .indice .titulo {
   font-family: var(--display); font-weight: 500;
-  font-size: clamp(14px, 2vw, 16.5px);
-  text-transform: uppercase; letter-spacing: .03em;
+  font-size: clamp(12.5px, 1.75vw, 14.5px);
+  text-transform: uppercase; letter-spacing: .015em;
+  /* Con ocho capítulos, el título tiene que entrar en una línea o la guarda
+     se come las marcas del pie. */
+  white-space: nowrap;
 }
 .indice .apunte {
   font-family: var(--prosa); font-style: italic;
-  font-size: 12.5px; color: var(--sepia); text-align: right;
+  font-size: 11.5px; color: var(--sepia); text-align: right;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 
 /* ============================================================
@@ -618,7 +622,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 
 .cabecera-fila { display: flex; align-items: center; gap: 14px; min-height: 62px; }
 
-.marca { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--tinta); }
+.marca { display: flex; align-items: center; gap: 11px; flex: none; text-decoration: none; color: var(--tinta); }
 .marca img { width: 30px; }
 .marca-texto {
   font-family: var(--display); font-weight: 600; font-size: 14.5px;
@@ -641,10 +645,10 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 
 .menu { margin-left: auto; display: flex; gap: 2px; flex-wrap: wrap; }
 .menu a {
-  font-family: var(--display); font-weight: 500; font-size: 12.5px;
-  letter-spacing: .06em; text-transform: uppercase;
+  font-family: var(--display); font-weight: 500; font-size: 11.5px;
+  letter-spacing: .05em; text-transform: uppercase;
   color: var(--sepia); text-decoration: none;
-  padding: 9px 8px; border-bottom: 2px solid transparent;
+  padding: 9px 6px; border-bottom: 2px solid transparent;
 }
 .menu a:hover { color: var(--azul); border-bottom-color: var(--rojo); }
 .menu a[aria-current="page"] { color: var(--azul); border-bottom-color: var(--oro); }
@@ -888,6 +892,266 @@ table.posiciones .fila-nuestra td:nth-child(2) { color: var(--azul); font-weight
 }
 
 
+
+
+/* ============================================================
+   EL ARCO NARRATIVO — cuatro momentos: 1917, 1921, 2022, 2026
+   ============================================================ */
+
+/* Riel: el índice del relato, arriba del capítulo. */
+.riel { background: var(--papel-sombra); border-bottom: 1px solid var(--sepia-suave); }
+.riel-fila { display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+.riel-fila::-webkit-scrollbar { display: none; }
+.riel a {
+  flex: 1 1 0; min-width: 132px;
+  display: flex; flex-direction: column; gap: 3px;
+  padding: 15px 4px 14px;
+  text-decoration: none; color: var(--sepia);
+  border-top: 2px solid transparent;
+  transition: color .15s ease, border-color .15s ease;
+}
+.riel a + a { box-shadow: inset 1px 0 0 var(--sepia-suave); }
+.riel a b {
+  font-family: var(--mono); font-size: 12.5px; letter-spacing: .16em;
+  color: var(--oro-80);
+}
+.riel a span {
+  font-family: var(--display); font-weight: 500; font-size: 14px;
+  letter-spacing: .05em; text-transform: uppercase; color: var(--azul);
+}
+.riel a:hover { border-top-color: var(--rojo); color: var(--tinta); }
+.riel a:hover span { color: var(--rojo); }
+@media (max-width: 620px) {
+  /* En el teléfono el riel se acomoda en dos filas: los cuatro momentos
+     tienen que verse de una, no quedar escondidos detrás de un arrastre. */
+  .riel-fila { display: grid; grid-template-columns: 1fr 1fr; overflow: visible; }
+  .riel a { min-width: 0; padding: 12px 4px; }
+  .riel a + a { box-shadow: none; }
+  .riel a:nth-child(even) { box-shadow: inset 1px 0 0 var(--sepia-suave); }
+  .riel a:nth-child(n+3) { border-top: 1px solid var(--sepia-suave); }
+}
+
+/* Cabecera de un momento: el año manda y el título lo sigue. */
+.momento { padding: clamp(46px, 7vw, 82px) 0 0; scroll-margin-top: 70px; }
+.momento-fila {
+  display: grid; grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(20px, 4vw, 44px); align-items: baseline;
+  padding-bottom: clamp(16px, 2.4vw, 22px);
+  border-bottom: 2px solid var(--azul);
+}
+.momento-anio {
+  margin: 0;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(42px, 9vw, 92px); line-height: .86;
+  letter-spacing: -.01em;
+  color: var(--oro-80);
+}
+.momento-titulo {
+  margin: 0 0 6px;
+  font-size: clamp(24px, 4.4vw, 40px);
+  text-transform: uppercase; letter-spacing: .02em;
+  color: var(--azul);
+}
+.momento-bajada {
+  margin: 0; max-width: 52ch;
+  font-family: var(--prosa); font-size: clamp(15px, 1.9vw, 17.5px);
+  color: var(--sepia);
+}
+@media (max-width: 620px) {
+  .momento-fila { grid-template-columns: 1fr; gap: 8px; align-items: start; }
+}
+
+/* Huecos: fotos que todavía no existen. Discretos, no rompen la página, y
+   se reemplazan pasándole el archivo al mismo bloque de build.py. */
+.hueco { margin: 0; }
+.hueco img { width: 100%; display: block; filter: sepia(.06) contrast(1.02); }
+.hueco figcaption {
+  margin-top: 8px;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--sepia);
+}
+.hueco--vacio {
+  display: grid; place-items: center; padding: 18px;
+  border: 1px dashed var(--sepia-suave);
+  background:
+    repeating-linear-gradient(45deg, rgba(138, 126, 104, .05) 0 2px, transparent 2px 11px),
+    var(--papel-sombra);
+}
+.hueco-rotulo {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--sepia); text-align: center;
+  max-width: 22ch; line-height: 1.7;
+}
+.claro .hueco--vacio {
+  border-color: rgba(212, 168, 90, .34);
+  background:
+    repeating-linear-gradient(45deg, rgba(244, 239, 230, .05) 0 2px, transparent 2px 11px),
+    rgba(4, 7, 20, .18);
+}
+.claro .hueco-rotulo { color: rgba(244, 239, 230, .72); }
+.claro .hueco figcaption { color: rgba(244, 239, 230, .66); }
+.epigrafe--claro { color: rgba(244, 239, 230, .66); }
+
+/* El barrio */
+.barrio-grilla {
+  display: grid; gap: 18px; margin-top: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+/* Archivo: las fotos viejas van en blanco y negro cálido, como copias. */
+.archivo .hueco img { filter: grayscale(1) sepia(.22) contrast(1.06) brightness(1.02); }
+
+/* De Lito a campeones del mundo */
+.campeones-bajada { max-width: 46ch; margin-bottom: 34px; }
+.campeones-grilla {
+  display: grid; gap: clamp(18px, 3vw, 30px);
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+.campeon { text-align: left; }
+.campeon .hueco img, .campeon .hueco--vacio { aspect-ratio: 4 / 5; object-fit: cover; }
+.campeon .hueco img { filter: grayscale(.15) contrast(1.04); }
+.campeon h3 {
+  margin: 15px 0 3px; min-height: 2.2em; font-size: clamp(17px, 2.2vw, 21px);
+  text-transform: uppercase; letter-spacing: .03em;
+  border-top: 2px solid var(--oro); padding-top: 12px;
+}
+.campeon .detalle { margin: 0; }
+
+/* Lito redondo vs Lito cuadrado */
+.escision-fila {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: clamp(16px, 3.4vw, 38px); align-items: center;
+  margin-top: 30px;
+}
+.escision-lado { text-align: center; }
+.escision-lado .hueco--vacio { max-width: 220px; margin: 0 auto; }
+.escision-lado:first-of-type .hueco--vacio { border-radius: 50%; }
+.escision-lado h3 {
+  margin: 16px 0 4px; font-size: clamp(16px, 2.1vw, 20px);
+  text-transform: uppercase; letter-spacing: .04em; color: var(--azul);
+}
+.escision-lado .detalle { margin: 0 auto; max-width: 26ch; }
+.escision-versus {
+  margin: 0; position: relative; font-family: var(--prosa); font-style: italic;
+  font-size: clamp(18px, 2.6vw, 26px); color: var(--oro-80);
+}
+@media (max-width: 620px) {
+  .escision-fila { grid-template-columns: 1fr; }
+  .escision-versus { text-align: center; }
+}
+
+/* El regreso: la sección que tiene que pegar */
+.regreso {
+  position: relative; isolation: isolate;
+  padding: clamp(54px, 9vw, 110px) 0;
+  color: var(--hueso);
+  background: var(--azul);
+  overflow: hidden;
+}
+/* El velo va como primera capa del mismo fondo: como pseudo-elemento
+   quedaba por debajo de la foto y el texto se perdía encima de la imagen. */
+/* El velo y la foto van como capas del mismo fondo, en ese orden: la primera
+   capa pinta arriba. Con un pseudo-elemento de z-index negativo la foto
+   terminaba encima del velo y el texto se perdía. */
+.regreso-foto {
+  position: absolute; inset: 0; z-index: -1;
+  background-image:
+    linear-gradient(100deg, rgba(9, 15, 40, .9) 0 24%, rgba(9, 15, 40, .74) 52%, rgba(9, 15, 40, .5)),
+    linear-gradient(to bottom, rgba(9, 15, 40, .35), transparent 38%, rgba(9, 15, 40, .28)),
+    url('../img/galeria/partido-5.jpg');
+  background-size: cover, cover, cover;
+  background-position: center, center, 50% 38%;
+  background-repeat: no-repeat;
+}
+.regreso-antetitulo {
+  margin: 0 0 10px;
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: .3em;
+  text-transform: uppercase; color: var(--oro);
+}
+.regreso-titulo {
+  margin: 0 0 clamp(26px, 4vw, 40px);
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(42px, 9.4vw, 104px); line-height: .9;
+  letter-spacing: -.015em; text-transform: uppercase;
+  color: var(--hueso);
+  text-shadow: 0 2px 24px rgba(4, 7, 20, .5);
+}
+.regreso-hitos {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 0;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  border-top: 1px solid rgba(212, 168, 90, .45);
+}
+.regreso-hitos li {
+  padding: 20px 22px 20px 0;
+  border-right: 1px solid rgba(212, 168, 90, .28);
+}
+.regreso-hitos li:last-child { border-right: 0; }
+.regreso-hitos b {
+  display: block; margin-bottom: 5px;
+  font-family: var(--mono); font-size: 13px; letter-spacing: .18em;
+  color: var(--oro);
+}
+.regreso-hitos span {
+  font-family: var(--prosa); font-size: clamp(15px, 1.9vw, 17.5px);
+  color: rgba(244, 239, 230, .96);
+  text-shadow: 0 1px 8px rgba(4, 7, 20, .8);
+}
+.regreso-hitos b { text-shadow: 0 1px 8px rgba(4, 7, 20, .85); }
+.regreso-antetitulo { text-shadow: 0 1px 8px rgba(4, 7, 20, .85); }
+@media (max-width: 620px) {
+  .regreso-hitos li { border-right: 0; border-bottom: 1px solid rgba(212, 168, 90, .22); padding-right: 0; }
+  .regreso-hitos li:last-child { border-bottom: 0; }
+}
+
+/* Marbete: avisa que lo que se ve es proyecto y no obra. */
+.marbete {
+  display: inline-block; margin: 0 0 18px;
+  padding: 7px 13px;
+  border: 1px solid var(--oro);
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--oro);
+}
+.renders {
+  display: grid; gap: clamp(16px, 2.6vw, 26px); margin-top: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.renders .hueco { position: relative; }
+/* Cada render lleva su propia marca: nadie tiene que deducir que es un dibujo. */
+.renders .hueco::after {
+  content: "Proyecto"; position: absolute; top: 10px; left: 10px;
+  padding: 5px 10px; background: rgba(11, 18, 46, .82);
+  border: 1px solid rgba(212, 168, 90, .6);
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--oro);
+}
+
+/* Cierre: la última página del libro */
+.cierre {
+  background: var(--papel-sombra);
+  border-top: 1px solid var(--sepia-suave);
+  padding: clamp(50px, 8vw, 92px) 0;
+  text-align: center;
+}
+.cierre-frase {
+  margin: 0 auto; max-width: 22ch;
+  font-family: var(--prosa); font-size: clamp(22px, 4.2vw, 38px);
+  line-height: 1.22; color: var(--azul);
+}
+.cierre-frase em { color: var(--rojo); font-style: italic; }
+.cierre-escudo {
+  width: clamp(52px, 8vw, 70px); margin: clamp(24px, 4vw, 36px) auto clamp(14px, 2.4vw, 20px);
+  opacity: .9;
+}
+.cierre-firma {
+  margin: 0 auto; max-width: none;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .26em;
+  text-transform: uppercase; color: var(--sepia);
+}
+.cierre-firma span { display: block; margin-top: 6px; color: var(--oro-80); }
+
+.cronologia--compacta li { padding: 11px 0; }
+.cronologia--compacta { font-size: 14.5px; }
 
 /* ---------- Estandarte: la lámina que abre "Hacete socio" ----------
    El escudo bordado en la camiseta, que es lo único que hay para mostrar
@@ -1137,8 +1401,10 @@ body:has(.visor[open]) .cabecera { backdrop-filter: none; z-index: 1; }
   .datos div { grid-template-columns: 1fr; gap: 3px; }
 }
 
-@media (max-width: 760px) {
-  :root { --encuadernacion: 14px; }
+/* Con ocho capítulos la cornisa no entra en una línea hasta bien entrado el
+   escritorio: el menú desplegable arranca antes que el resto de los ajustes
+   de pantalla angosta. */
+@media (max-width: 1140px) {
   .menu-boton { display: block; }
   .menu {
     display: none; width: 100%; flex-direction: column; gap: 0;
@@ -1147,6 +1413,10 @@ body:has(.visor[open]) .cabecera { backdrop-filter: none; z-index: 1; }
   .menu.abierto { display: flex; }
   .cabecera-fila { flex-wrap: wrap; padding-top: 10px; padding-bottom: 2px; min-height: 0; }
   .menu a { padding: 11px 0; border-bottom: 1px dotted var(--sepia-suave); width: 100%; }
+}
+
+@media (max-width: 760px) {
+  :root { --encuadernacion: 14px; }
   .fila-partido { grid-template-columns: 1fr; gap: 7px; }
   .fila-partido .dato { text-align: left; }
   .campo-doble { grid-template-columns: 1fr; }

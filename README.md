@@ -24,8 +24,9 @@ plantel.html        Capítulo II — plantel, cuerpo técnico y formativas
 fixture.html        Capítulo III — partidos, resultados y tabla
 noticias.html       Capítulo IV — listado de noticias
 galeria.html        Capítulo V — álbum de fotos del plantel y los partidos
-socios.html         Capítulo VI — cuotas y alta de socio
-contacto.html       Capítulo VII — contacto, prensa y uso de marca
+proyecto.html       Capítulo VI — el proyecto de cancha e instalaciones
+socios.html         Capítulo VII — cuotas y alta de socio
+contacto.html       Capítulo VIII — contacto, prensa y uso de marca
 
 assets/css/main.css Hoja de estilos única
 assets/js/main.js   Apertura del libro, menú, partidos, tabla, plantel, noticias y galería
@@ -33,9 +34,11 @@ assets/img/         Escudo, favicon, imagen para redes y fotos
 assets/img/texturas Fondo de la portada, cuero de la tapa y papel de las hojas
 assets/img/marcas   AUF y sponsors, al pie del índice
 assets/img/galeria  Las fotos del álbum
+assets/img/historia Archivo y retratos históricos
+assets/img/proyecto El predio actual y los renders del proyecto
 data/*.json         Datos editables
 worker/api.js       Worker de Cloudflare (todavía sin publicar)
-build.py            Regenera las ocho páginas desde plantillas compartidas
+build.py            Regenera las nueve páginas desde plantillas compartidas
 ```
 
 Las páginas comparten cabecera y pie. **Para cambiar el menú, el pie, los textos
@@ -54,6 +57,23 @@ HTML sueltos: el script los sobreescribe.
 
 Los archivos con `"ejemplo": true` muestran un aviso visible en el sitio
 ("datos de ejemplo"). Al cargar la información real hay que sacar esa clave.
+
+## Los huecos: fotos que todavía no existen
+
+Varios bloques tienen un lugar reservado para una foto que el club todavía no
+mandó: el barrio, los retratos de Castro y Cea, los dos escudos históricos, los
+renders del proyecto. Todos usan la misma función de `build.py`:
+
+```python
+hueco("Retrato · Pedro Cea", "4 / 5")                       # marco vacío
+hueco("Retrato · Pedro Cea", "4 / 5",
+      "assets/img/historia/cea.jpg", "Retrato de Pedro Cea")  # ya con la foto
+```
+
+Sin archivo dibuja un marco discreto con el rótulo de lo que va ahí. Para
+cargar la foto se deja el archivo en `assets/img/` y se le pasa la ruta como
+tercer argumento al mismo llamado: no hay que tocar nada del marcado alrededor.
+La proporción es la del marco vacío; cuando la foto está, manda la foto.
 
 ## Sumar una foto al álbum
 
@@ -113,10 +133,29 @@ Para forzar el refresco a mano:
 Ojo: mientras `NOINDEX` esté en `True` hay plataformas (LinkedIn, Slack) que
 directamente no arman la vista previa.
 
+## El arco narrativo
+
+El capítulo I está ordenado en cuatro momentos —1917 nacimos, 1921 hicimos
+historia, 2022 volvimos, 2026 el próximo capítulo— y el riel de arriba del
+capítulo es el índice de ese relato. Los cuatro se generan con `momento()`, así
+que agregar o cambiar uno es una línea.
+
+"El próximo capítulo" es la idea que ata el regreso del club, el Lito de hoy y
+el proyecto de cancha. Aparece como capítulo VI, como último momento del
+capítulo I y en el cierre del libro; no conviene repetirla más que eso.
+
+El cierre (`cierre()`) es la última página del libro y va sólo en los dos
+capítulos que cierran el arco: I y VI. Si se pone en todos, deja de significar.
+
 ## Antes de publicar
 
 - [ ] Reemplazar las fotos de `assets/img/fotos/` que siguen siendo placeholders (sede, hinchada, noticias).
 - [ ] Cargar fotos de partidos en el grupo "Partidos" de `data/fotos.json`.
+- [ ] Cargar los retratos de Héctor «Manco» Castro y Pedro Cea.
+- [ ] Confirmar los pies de las dos fotos de archivo de `assets/img/historia/`.
+- [ ] Cargar los dos escudos históricos: Lito redondo y Lito cuadrado.
+- [ ] Cargar cuatro fotos reales de Arroyo Seco (nada de banco de imágenes).
+- [ ] Cargar los renders del proyecto en el capítulo VI.
 - [ ] Cargar dirección de la sede, cancha, teléfono y horarios en `build.py`
       (páginas `club.html` y `contacto.html`). El manual de marca indica
       Av. Carlos María Ramírez s/n — confirmar cuál corresponde.
