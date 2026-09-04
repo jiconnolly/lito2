@@ -727,6 +727,8 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 .claro .boton--fantasma:hover { background: var(--oro); border-color: var(--oro); color: var(--tinta); }
 .boton--oro { background: var(--oro); border-color: var(--oro); color: var(--tinta); }
 .boton--oro:hover { background: var(--oro-80); border-color: var(--oro-80); }
+.claro .boton--oro, .claro .boton--oro:hover { color: var(--tinta); }
+.claro .boton, .claro .boton:hover { color: var(--hueso); }
 
 .acciones { display: flex; gap: 13px; flex-wrap: wrap; margin-top: 26px; }
 
@@ -885,6 +887,50 @@ table.posiciones .fila-nuestra td:nth-child(2) { color: var(--azul); font-weight
   font-family: var(--prosa); font-style: italic; font-size: 15px; color: var(--sepia);
 }
 
+
+
+/* ---------- Estandarte: la lámina que abre "Hacete socio" ----------
+   El escudo bordado en la camiseta, que es lo único que hay para mostrar
+   cuando se le pide a alguien que se haga socio. La foto es oscura y la
+   lámina también: se funden en vez de pegarse una encima de la otra. */
+
+.estandarte { padding-top: 0; padding-bottom: 0; }
+.estandarte-fila {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(28px, 5vw, 60px); align-items: center;
+  padding-top: clamp(34px, 5vw, 58px); padding-bottom: clamp(34px, 5vw, 58px);
+}
+.estandarte-foto {
+  margin: 0; position: relative; isolation: isolate;
+  box-shadow: 0 26px 60px rgba(4, 7, 20, .55);
+}
+.estandarte-foto img { width: 100%; display: block; }
+/* La foto se apoya en la lámina en vez de estar pegada encima: el borde de
+   abajo se funde con el azul y arriba corre un filete de oro. */
+.estandarte-foto::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(15, 26, 64, .82), rgba(15, 26, 64, 0) 17%),
+    linear-gradient(to right, rgba(15, 26, 64, .34), transparent 11%, transparent 89%, rgba(15, 26, 64, .34));
+}
+.estandarte-foto::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; z-index: 1;
+  background: linear-gradient(90deg, transparent, var(--oro), transparent);
+}
+.estandarte-texto .cintilla { margin-top: 0; }
+.estandarte-lema {
+  margin: 4px 0 18px;
+  font-family: var(--prosa); font-style: italic; font-weight: 500;
+  font-size: clamp(30px, 5.4vw, 52px);
+  line-height: 1.06; letter-spacing: .01em;
+  color: var(--oro);
+}
+.estandarte-texto .prosa { margin-bottom: 26px; }
+
+@media (max-width: 760px) {
+  .estandarte-fila { grid-template-columns: 1fr; gap: 22px; }
+  .estandarte-foto { max-width: 420px; margin: 0 auto; }
+}
 
 /* ---------- Galería: el álbum del club ----------
    Cada foto va pegada con esquineros sobre el papel, como en un álbum de

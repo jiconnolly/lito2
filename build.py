@@ -541,6 +541,20 @@ def cap_galeria():
 
 def cap_socios():
     return portadilla("VI", "Hacete socio", "La cuota social paga la cancha, los viajes y las formativas. Ser socio de Lito es entrar a la cancha y tener voz en la asamblea.") + """
+<section class="lamina estandarte">
+  <div class="marco claro estandarte-fila">
+    <figure class="estandarte-foto">
+      <img src="assets/img/fotos/escudo-camiseta.jpg" alt="El escudo de Lito bordado en la camiseta de juego" width="1120" height="1400" loading="lazy">
+    </figure>
+    <div class="estandarte-texto">
+      <p class="cintilla">El escudo</p>
+      <p class="estandarte-lema">Garra y Corazón</p>
+      <p class="prosa">El escudo no se hereda: se sostiene. La cuota social paga la cancha, los viajes y las formativas, que es lo que hace que esa camiseta salga a jugar cada domingo.</p>
+      <p><a class="boton boton--oro" href="#cuotas">Ver las cuotas</a></p>
+    </div>
+  </div>
+</section>
+
 <section class="seccion" id="cuotas">
   <div class="marco">
     <p class="cintilla">Categorías</p>
