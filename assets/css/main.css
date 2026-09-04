@@ -146,25 +146,54 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
    ============================================================ */
 
 .escena {
+  position: relative;
   min-height: 100svh;
   overflow: hidden;
-  display: grid;
-  place-items: center;
-  padding: 66px 22px 176px;
-  perspective: 2000px;
-  perspective-origin: 50% 42%;
+  perspective: 1800px;
+  perspective-origin: 50% 44%;
+  background: #17110c;
+}
+
+/* La cámara: mesa y libro se mueven juntos, como una sola toma.
+   Cerrado, la toma está lejos y de costado; al abrir, se acerca y se endereza. */
+.camara {
+  position: absolute; inset: 0;
+  transform-style: preserve-3d;
+  transform: translateZ(160px);
+  transition: transform 1.5s cubic-bezier(.32, .68, .16, 1);
+}
+.camara.lejos {
+  transform: translateZ(-200px) rotateX(12deg) rotateY(-18deg) rotateZ(-1.5deg);
+}
+
+/* El plano de la mesa. Es más grande que el encuadre para que al girar la toma
+   nunca se vea su borde, pero la foto se mide contra la pantalla (vh), no
+   contra el plano: así el encuadre no depende del tamaño del plano. */
+.tablero {
+  position: absolute; inset: -45%;
   background-color: #17110c;
-  background-image:
-    radial-gradient(ellipse 52% 44% at 50% 44%, rgba(255, 214, 150, .07), transparent 72%),
-    radial-gradient(ellipse 92% 90% at 50% 46%, transparent 42%, rgba(0, 0, 0, .58) 100%),
-    url('../img/texturas/escritorio.jpg');
-  background-size: cover, cover, cover;
-  background-position: center, center, 50% 46%;
+  background-image: url('../img/texturas/escritorio.jpg');
+  background-size: auto 125vh;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
+/* Luz y viñeta: van sobre el encuadre, no sobre el plano */
+.escena::after {
+  content: "";
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background:
+    radial-gradient(ellipse 50% 42% at 50% 46%, rgba(255, 214, 150, .08), transparent 72%),
+    radial-gradient(ellipse 86% 84% at 50% 48%, transparent 38%, rgba(0, 0, 0, .66) 100%);
+}
+
 /* La mesa sostiene el libro y su sombra proyectada */
-.mesa { position: relative; transform-style: preserve-3d; }
+.mesa {
+  position: absolute; left: 50%; top: 47%;
+  width: min(424px, 82vw); aspect-ratio: 3 / 4;
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+}
 
 .sombra {
   position: absolute; left: 6%; right: -6%; bottom: -3%; height: 88%;
@@ -174,24 +203,18 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   transition: transform 1.05s cubic-bezier(.3, .7, .2, 1), opacity 1.05s ease;
   pointer-events: none;
 }
-.mesa.cerrado .sombra {
+.escena.lejos .sombra {
   transform: translateZ(-70px) translate(9%, 4%) rotate(-4deg) scale(1.08, .92);
   opacity: .95;
 }
 
 .libro {
   position: relative;
-  width: min(424px, 82vw);
-  aspect-ratio: 3 / 4;
+  position: absolute; inset: 0;
   transform-style: preserve-3d;
-  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-  transition: transform 1.05s cubic-bezier(.3, .7, .2, 1);
 }
 
-/* Apoyado de costado sobre la mesa: al tocarlo se endereza y recién ahí se abre. */
-.libro.cerrado {
-  transform: translateZ(150px) rotateX(17deg) rotateY(-25deg) rotateZ(-3.5deg) scale(.9);
-}
+/* El libro queda quieto sobre la mesa; el desvío de la toma lo pone la cámara. */
 
 /* Canto de las hojas asomando bajo la tapa */
 .libro::after {
@@ -207,7 +230,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   position: absolute; inset: 0; z-index: 3;
   transform-origin: left center;
   transform-style: preserve-3d;
-  transition: transform 1.4s cubic-bezier(.32, .72, .2, 1) .62s;
+  transition: transform 1.35s cubic-bezier(.32, .72, .2, 1) 1.05s;
   cursor: pointer;
   border: 0; padding: 0; margin: 0;
   background: transparent;
@@ -321,7 +344,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
   padding: clamp(22px, 4.4vw, 34px) clamp(20px, 4vw, 30px) clamp(18px, 3vw, 26px) clamp(30px, 5vw, 44px);
   overflow: auto;
   box-shadow: inset 15px 0 22px -14px rgba(12, 16, 36, .5);
-  transition: opacity .55s ease 1.15s;
+  transition: opacity .55s ease 1.95s;
 }
 .libro.cerrado .hoja-indice { opacity: 0; transition-delay: 0s; }
 
@@ -376,7 +399,7 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 }
 
 .pie-tapa {
-  position: absolute; left: 0; right: 0; bottom: -86px;
+  position: absolute; left: 0; right: 0; bottom: 42px; z-index: 5;
   display: flex; justify-content: center; gap: 18px;
   font-family: var(--mono); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase;
   text-shadow: 0 1px 8px rgba(0, 0, 0, .95), 0 0 3px rgba(0, 0, 0, .8);
@@ -390,15 +413,15 @@ p { margin: 0 0 1.05em; max-width: 66ch; }
 .pie-tapa button:hover, .pie-tapa a:hover { color: var(--oro); border-bottom-color: var(--oro); }
 
 .indicacion {
-  position: absolute; left: 0; right: 0; bottom: -54px;
+  position: absolute; left: 0; right: 0; bottom: 84px; z-index: 5;
   text-align: center;
   font-family: var(--mono); font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
   color: var(--oro);
   text-shadow: 0 1px 8px rgba(0, 0, 0, .95), 0 0 3px rgba(0, 0, 0, .8);
   animation: latir 3.4s ease-in-out infinite;
 }
-.mesa:not(.cerrado) .indicacion,
-.mesa:not(.cerrado) .pie-tapa { display: none; }
+.escena:not(.lejos) .indicacion,
+.escena:not(.lejos) .pie-tapa { display: none; }
 @keyframes latir { 0%, 100% { opacity: .58 } 50% { opacity: 1 } }
 
 /* ============================================================

@@ -20,7 +20,7 @@ NOINDEX = True
 
 # Los capítulos del libro, en orden de lectura.
 CAPITULOS = [
-    ("club.html", "El club", "I", "Historia, sede y camiseta"),
+    ("club.html", "El club", "I", "Del bar Manuelito a la cancha"),
     ("plantel.html", "Plantel", "II", "Primer equipo y formativas"),
     ("fixture.html", "Fixture y tabla", "III", "Domingo a domingo"),
     ("noticias.html", "Noticias", "IV", "Partes de prensa"),
@@ -178,10 +178,12 @@ def pagina_portada():
         </li>""" for h, t, r, a in CAPITULOS)
 
     return f"""
-<div class="escena">
-  <div class="mesa">
-    <div class="sombra"></div>
-    <div class="libro" data-libro>
+<div class="escena" data-escena>
+  <div class="camara" data-camara>
+    <div class="tablero"></div>
+    <div class="mesa">
+      <div class="sombra"></div>
+      <div class="libro" data-libro>
 
     <div class="hoja-indice">
       <h1>El libro del club</h1>
@@ -199,15 +201,17 @@ def pagina_portada():
     <button class="tapa" type="button" data-abrir aria-label="Abrir el libro del club">
       <span class="cara cara-frente">
         <span class="grabado-arriba">Centro Atlético</span>
-        <img class="escudo-tapa" src="assets/img/escudo.png" alt="Escudo del Centro Atlético Lito" width="720" height="981" fetchpriority="high">
+        <img class="escudo-tapa" src="assets/img/escudo-tapa.png" alt="Escudo del Centro Atlético Lito" width="760" height="1009" fetchpriority="high">
         <span class="grabado-abajo">Montevideo · 1917</span>
       </span>
       <span class="cara cara-dorso"></span>
     </button>
 
+      </div>
     </div>
+  </div>
 
-    <p class="indicacion">Tocá el escudo para abrir</p>
+  <p class="indicacion">Tocá el escudo para abrir</p>
 
     <div class="pie-tapa">
       <button type="button" data-abrir>Saltar la apertura</button>
@@ -224,14 +228,15 @@ def pagina_portada():
 # ============================================================
 
 def cap_club():
-    return portadilla("I", "El club", "Nacimos en 1917, cuando un puñado de vecinos se cansó de jugar en el potrero y decidió formar un club.") + """
+    return portadilla("I", "El club", "Nacimos en 1917, en un bar de barrio, cuando un puñado de vecinos se cansó de jugar en el potrero y decidió formar un club.") + """
 <section class="seccion">
   <div class="marco">
     <div class="rejilla rejilla--2">
       <div class="prosa">
         <p class="cintilla">Historia</p>
         <h2>De la vereda a la cancha</h2>
-        <p class="capitular">Lito es un club de barrio en el sentido más literal: se fundó entre vecinos, se sostuvo con vecinos y sigue jugando para ellos. La sede es punto de encuentro antes que oficina, y la cancha es el lugar donde el club se explica solo.</p>
+        <p class="capitular">El nombre no se eligió: se recortó. Salió de las últimas letras del bar Manuelito, el boliche de barrio donde en 1917 un grupo de vecinos se cansó de jugar en el potrero y decidió fundar un club. De ahí en más fuimos Lito.</p>
+        <p>Es un club de barrio en el sentido más literal: se fundó entre vecinos, se sostuvo con vecinos y sigue jugando para ellos. La sede es punto de encuentro antes que oficina, y la cancha es el lugar donde el club se explica solo.</p>
         <p>Desde entonces compartimos una sola idea: el fútbol popular se sostiene con trabajo, identidad de barrio y memoria larga.</p>
         <p>Las fechas y los hitos que siguen se completan con el archivo institucional. Lo que no cambia es el marco: 1917, Montevideo, fútbol de ascenso y una hinchada que llega temprano.</p>
       </div>
@@ -244,7 +249,7 @@ def cap_club():
     </div>
 
     <ul class="cronologia" style="margin-top:44px">
-      <li><b>1917</b><span><strong>Fundación.</strong> Un grupo de vecinos del barrio formaliza el club.</span></li>
+      <li><b>1917</b><span><strong>Fundación.</strong> En el bar Manuelito, un grupo de vecinos formaliza el club. El nombre sale del propio bar.</span></li>
       <li><b>1920s</b><span><strong>Primeros años.</strong> Consolidación de la sede y de las categorías juveniles. <em>Completar con el archivo.</em></span></li>
       <li><b>Hoy</b><span><strong>Tercera División Profesional.</strong> Primer equipo, formativas y actividad social todo el año.</span></li>
     </ul>

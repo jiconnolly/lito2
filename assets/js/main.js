@@ -70,11 +70,13 @@ function libro() {
   const tomo = document.querySelector('[data-libro]');
   if (!tomo) return;
 
-  const mesa = tomo.closest('.mesa');
+  const escena = tomo.closest('.escena');
+  const camara = escena && escena.querySelector('[data-camara]');
   const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!quieto) {
     tomo.classList.add('cerrado');
-    if (mesa) mesa.classList.add('cerrado');
+    if (escena) escena.classList.add('lejos');
+    if (camara) camara.classList.add('lejos');
   }
 
   const tapa = tomo.querySelector('.tapa');
@@ -87,10 +89,11 @@ function libro() {
   const abrir = () => {
     if (!tomo.classList.contains('cerrado')) return;
     tomo.classList.remove('cerrado');
-    if (mesa) mesa.classList.remove('cerrado');
+    if (escena) escena.classList.remove('lejos');
+    if (camara) camara.classList.remove('lejos');
     apagarTapa();
     const primero = tomo.querySelector('.indice a');
-    if (primero) setTimeout(() => primero.focus({ preventScroll: true }), 1750);
+    if (primero) setTimeout(() => primero.focus({ preventScroll: true }), 2600);
   };
 
   tomo.querySelectorAll('[data-abrir]').forEach(b => b.addEventListener('click', abrir));

@@ -23,10 +23,12 @@
 <body>
 <a class="saltar" href="#contenido">Ir al contenido</a>
 
-<div class="escena">
-  <div class="mesa">
-    <div class="sombra"></div>
-    <div class="libro" data-libro>
+<div class="escena" data-escena>
+  <div class="camara" data-camara>
+    <div class="tablero"></div>
+    <div class="mesa">
+      <div class="sombra"></div>
+      <div class="libro" data-libro>
 
     <div class="hoja-indice">
       <h1>El libro del club</h1>
@@ -37,7 +39,7 @@
           <a href="club.html">
             <span class="romano">I</span>
             <span class="titulo">El club</span>
-            <span class="apunte">Historia, sede y camiseta</span>
+            <span class="apunte">Del bar Manuelito a la cancha</span>
           </a>
         </li>
         <li>
@@ -85,15 +87,17 @@
     <button class="tapa" type="button" data-abrir aria-label="Abrir el libro del club">
       <span class="cara cara-frente">
         <span class="grabado-arriba">Centro Atlético</span>
-        <img class="escudo-tapa" src="assets/img/escudo.png" alt="Escudo del Centro Atlético Lito" width="720" height="981" fetchpriority="high">
+        <img class="escudo-tapa" src="assets/img/escudo-tapa.png" alt="Escudo del Centro Atlético Lito" width="760" height="1009" fetchpriority="high">
         <span class="grabado-abajo">Montevideo · 1917</span>
       </span>
       <span class="cara cara-dorso"></span>
     </button>
 
+      </div>
     </div>
+  </div>
 
-    <p class="indicacion">Tocá el escudo para abrir</p>
+  <p class="indicacion">Tocá el escudo para abrir</p>
 
     <div class="pie-tapa">
       <button type="button" data-abrir>Saltar la apertura</button>
