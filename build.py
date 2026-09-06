@@ -449,7 +449,7 @@ def cap_club():
         </ul>
         <p class="aviso-formulario" style="margin-top:14px">Más dos campeonatos y dos subcampeonatos en la Federación, entre 1952 y 1960.</p>
         <div class="archivo" style="margin-top:26px">
-""" + hueco("Archivo", "3 / 4", "assets/img/historia/archivo-2.jpg", "Fotografía de archivo del fútbol uruguayo de la época", "Archivo · pie de foto a confirmar") + """
+""" + hueco("Archivo", "3 / 4", "assets/img/historia/archivo-2.jpg", "José Nasazzi en andas después de la final del Mundial de 1930", "José Nasazzi, el «Mariscal». De Lito a capitán del primer campeón del mundo. Uruguay, 1930.") + """
         </div>
       </div>
     </div>
