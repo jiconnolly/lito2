@@ -403,12 +403,12 @@ def cap_club():
   <div class="marco">
     <p class="cintilla">La escisión</p>
     <h2>Dos Lito a la vez</h2>
-    <p class="prosa">Durante el cisma del fútbol uruguayo, Lito fue uno de los tres clubes que presentaron dos equipos en las competencias paralelas. La única forma de distinguirlos era el escudo de la camiseta.</p>
+    <p class="prosa">Durante el cisma del fútbol uruguayo, Lito fue uno de los tres clubes que presentaron dos equipos en las competencias paralelas. La única forma de distinguirlos era el escudo de la camiseta. De los dos, el que llegó hasta hoy es el redondo.</p>
     <div class="escision-fila">
       <article class="escision-lado">
-""" + hueco("Escudo del Lito redondo", "1 / 1") + """
+""" + hueco("Escudo del Lito redondo", "1 / 1", "assets/img/escudo.png", "Escudo del Lito redondo, el de la AUF: blasón de cuarteles rojos y azules con la pelota al centro") + """
         <h3>Lito redondo</h3>
-        <p class="detalle">El equipo de la AUF. Escudo de forma redondeada.</p>
+        <p class="detalle">El equipo de la AUF. Es el escudo que el club sigue usando hoy.</p>
       </article>
       <p class="escision-versus">vs.</p>
       <article class="escision-lado">
@@ -417,7 +417,6 @@ def cap_club():
         <p class="detalle">El equipo de la Federación. Escudo de ángulos rectos.</p>
       </article>
     </div>
-    <p class="epigrafe">Falta el escudo del Lito redondo, el de la AUF.</p>
   </div>
 </section>
 
