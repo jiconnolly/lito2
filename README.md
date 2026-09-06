@@ -152,7 +152,7 @@ capítulos que cierran el arco: I y VI. Si se pone en todos, deja de significar.
 - [ ] Reemplazar las fotos de `assets/img/fotos/` que siguen siendo placeholders (sede, hinchada, noticias).
 - [ ] Cargar fotos de partidos en el grupo "Partidos" de `data/fotos.json`.
 - [ ] Confirmar los pies de las dos fotos de archivo de `assets/img/historia/`.
-- [ ] Cargar los dos escudos históricos: Lito redondo y Lito cuadrado.
+- [ ] Cargar el escudo del Lito redondo (el cuadrado ya está).
 - [ ] Cargar cuatro fotos reales de Arroyo Seco (nada de banco de imágenes).
 - [ ] Cargar dirección de la sede, cancha, teléfono y horarios en `build.py`
       (páginas `club.html` y `contacto.html`). El manual de marca indica

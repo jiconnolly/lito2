@@ -412,12 +412,12 @@ def cap_club():
       </article>
       <p class="escision-versus">vs.</p>
       <article class="escision-lado">
-""" + hueco("Escudo del Lito cuadrado", "1 / 1") + """
+""" + hueco("Escudo del Lito cuadrado", "1 / 1", "assets/img/historia/escudo-cuadrado.png", "Escudo del Lito cuadrado: cruz roja en aspa sobre fondo azul, con las iniciales C A L y el año 1917") + """
         <h3>Lito cuadrado</h3>
-        <p class="detalle">El equipo de la Federación. Escudo de forma cuadrada.</p>
+        <p class="detalle">El equipo de la Federación. Escudo de ángulos rectos.</p>
       </article>
     </div>
-    <p class="epigrafe">Los dos escudos históricos van acá. Todavía no están en los archivos del club.</p>
+    <p class="epigrafe">Falta el escudo del Lito redondo, el de la AUF.</p>
   </div>
 </section>
 

@@ -1024,8 +1024,11 @@ table.posiciones .fila-nuestra td:nth-child(2) { color: var(--azul); font-weight
   margin-top: 30px;
 }
 .escision-lado { text-align: center; }
-.escision-lado .hueco--vacio { max-width: 220px; margin: 0 auto; }
+.escision-lado .hueco { max-width: 220px; margin: 0 auto; }
+.escision-lado .hueco--vacio { display: grid; place-items: center; }
 .escision-lado:first-of-type .hueco--vacio { border-radius: 50%; }
+/* Los dos escudos se miran a la misma altura aunque tengan distinta forma. */
+.escision-lado .hueco { display: grid; align-content: center; min-height: 220px; }
 .escision-lado h3 {
   margin: 16px 0 4px; font-size: clamp(16px, 2.1vw, 20px);
   text-transform: uppercase; letter-spacing: .04em; color: var(--azul);
